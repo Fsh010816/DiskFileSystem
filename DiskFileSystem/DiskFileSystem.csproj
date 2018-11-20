@@ -60,14 +60,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BasicFile.cs" />
+    <Compile Include="FileMangerSystem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FileMangerSystem.Designer.cs">
+      <DependentUpon>FileMangerSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileShow.Designer.cs">
+      <DependentUpon>FileShow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FileMangerSystem.resx">
+      <DependentUpon>FileMangerSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileShow.resx">
+      <DependentUpon>FileShow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,6 +89,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -96,6 +110,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Beat Hazard-文件夹图标%28icon folder%29_爱给网_aigei_com.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
