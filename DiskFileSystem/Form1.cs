@@ -16,5 +16,12 @@ namespace DiskFileSystem
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DiskUsage du = new DiskUsage();
+            du.MdiParent = this;
+            du.Show();
+        }
     }
 }
