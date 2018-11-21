@@ -14,17 +14,17 @@ namespace DiskFileSystem
 {
     public partial class FileShow : Form
     {
-        //打开文件夹之前需要用到
+        //打开文件夹之前需要用到，将父文件夹的所有子文件添加进来以显示出来
         public ArrayList FileListToShow = new ArrayList();
         //
         FileMangerSystem parent;
         //父文件夹
         public BasicFile father;
+
         public FileShow(FileMangerSystem form)
         {
             InitializeComponent();
         }
-
         //点击新建文件夹
         private void 文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
         {
