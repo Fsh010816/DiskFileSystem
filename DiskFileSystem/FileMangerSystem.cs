@@ -36,6 +36,7 @@ namespace DiskFileSystem
             FileShow f = new FileShow(this);
             f.MdiParent = this;
             f.Show();
+            SetParent((int)f.Handle, (int)this.Handle);
             if (root.childFile.Count == 0)
             {
                 return;

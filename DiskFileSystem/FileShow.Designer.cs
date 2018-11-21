@@ -37,16 +37,16 @@
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.search = new System.Windows.Forms.Button();
             this.showPath = new System.Windows.Forms.Button();
             this.RightClick_File = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.属性RToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.重命名MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.属性RToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
             this.SuspendLayout();
@@ -99,16 +99,28 @@
             // 文件夹ToolStripMenuItem
             // 
             this.文件夹ToolStripMenuItem.Name = "文件夹ToolStripMenuItem";
-            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.文件夹ToolStripMenuItem.Text = "文件夹(&F)";
             this.文件夹ToolStripMenuItem.Click += new System.EventHandler(this.文件夹ToolStripMenuItem_Click);
             // 
             // 文件ToolStripMenuItem
             // 
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.文件ToolStripMenuItem.Text = "文件(&B)";
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "Beat Hazard-文件夹图标(icon folder)_爱给网_aigei_com.png");
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "58-html5版植物大战僵尸源代码-攻击(Attack)_爱给网_aigei_com.gif");
             // 
             // search
             // 
@@ -124,7 +136,7 @@
             // showPath
             // 
             this.showPath.BackColor = System.Drawing.SystemColors.Control;
-            this.showPath.BackgroundImage = global::DiskFileSystem.Properties.Resources.Beat_Hazard_文件夹图标_icon_folder__爱给网_aigei_com;
+            this.showPath.BackgroundImage = global::DiskFileSystem.Properties.Resources.FileSet;
             this.showPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.showPath.Location = new System.Drawing.Point(34, 10);
             this.showPath.Name = "showPath";
@@ -145,37 +157,31 @@
             // 打开OToolStripMenuItem
             // 
             this.打开OToolStripMenuItem.Name = "打开OToolStripMenuItem";
-            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.打开OToolStripMenuItem.Text = "打开(&O)";
             this.打开OToolStripMenuItem.Click += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             // 
             // 删除DToolStripMenuItem
             // 
             this.删除DToolStripMenuItem.Name = "删除DToolStripMenuItem";
-            this.删除DToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.删除DToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.删除DToolStripMenuItem.Text = "删除(&D)";
             this.删除DToolStripMenuItem.Click += new System.EventHandler(this.删除DToolStripMenuItem_Click);
+            // 
+            // 重命名MToolStripMenuItem
+            // 
+            this.重命名MToolStripMenuItem.Name = "重命名MToolStripMenuItem";
+            this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.重命名MToolStripMenuItem.Text = "重命名(&M)";
             // 
             // 属性RToolStripMenuItem1
             // 
             this.属性RToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBox1});
             this.属性RToolStripMenuItem1.Name = "属性RToolStripMenuItem1";
-            this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.属性RToolStripMenuItem1.Text = "属性(&R)";
             this.属性RToolStripMenuItem1.Click += new System.EventHandler(this.属性RToolStripMenuItem1_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "58-html5版植物大战僵尸源代码-攻击(Attack)_爱给网_aigei_com.gif");
-            // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "Beat Hazard-文件夹图标(icon folder)_爱给网_aigei_com.png");
             // 
             // toolStripComboBox1
             // 
@@ -184,12 +190,6 @@
             "读写"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
-            // 
-            // 重命名MToolStripMenuItem
-            // 
-            this.重命名MToolStripMenuItem.Name = "重命名MToolStripMenuItem";
-            this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.重命名MToolStripMenuItem.Text = "重命名(&M)";
             // 
             // FileShow
             // 

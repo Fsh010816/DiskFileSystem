@@ -63,29 +63,9 @@ namespace DiskFileSystem.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap _1 {
+        internal static System.Drawing.Bitmap FileSet {
             get {
-                object obj = ResourceManager.GetObject("1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap _2 {
-            get {
-                object obj = ResourceManager.GetObject("2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap Beat_Hazard_文件夹图标_icon_folder__爱给网_aigei_com {
-            get {
-                object obj = ResourceManager.GetObject("Beat Hazard-文件夹图标(icon folder)_爱给网_aigei_com", resourceCulture);
+                object obj = ResourceManager.GetObject("FileSet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
