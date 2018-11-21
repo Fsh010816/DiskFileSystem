@@ -50,13 +50,14 @@ namespace DiskFileSystem
                 }
             }
             fat[i - 1] = -1;
+            fat[0] -= size;
             return startNum[0]; //返回该文件起始块盘号
         }
         /*
 	 * 
 	 * 该方法用于删除时释放FAT表的空间
 	 */
-        public void delFat(int startNum,int[] fat)
+        public bool delFat(int startNum,int[] fat)
         {
             int nextPoint = fat[startNum];
             int nowPoint = startNum;
@@ -78,7 +79,7 @@ namespace DiskFileSystem
                 }
             }
             fat[0] += count;
-            MessageBox.Show("Fat删除空间成功", "删除成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
         }
         /*
 	 * 

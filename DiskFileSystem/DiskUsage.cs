@@ -89,7 +89,8 @@ namespace DiskFileSystem
 
         private void DiskUsage_Load(object sender, EventArgs e)
         {
-
+            string str = "磁盘剩余块:" + fat[0] + "块";
+            toolTip1.SetToolTip(label1, str);
         }
     }
 }
