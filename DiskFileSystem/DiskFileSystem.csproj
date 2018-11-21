@@ -67,7 +67,6 @@
     <Compile Include="DiskUsage.Designer.cs">
       <DependentUpon>DiskUsage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
     <Compile Include="BasicFile.cs" />
     <Compile Include="FileMangerSystem.cs">
       <SubType>Form</SubType>
@@ -86,9 +85,6 @@
     <EmbeddedResource Include="DiskUsage.resx">
       <DependentUpon>DiskUsage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FileMangerSystem.resx">
       <DependentUpon>FileMangerSystem.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,18 +93,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -129,7 +125,7 @@
     <None Include="Resources\search.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Beat Hazard-文件夹图标%28icon folder%29_爱给网_aigei_com.png" />
+    <None Include="Resources\FileSet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
