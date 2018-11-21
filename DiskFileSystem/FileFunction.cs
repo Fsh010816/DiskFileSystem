@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace DiskFileSystem
 {
     class FileFunction
@@ -16,6 +16,7 @@ namespace DiskFileSystem
         {
             if (fat[0] < size)
             {
+                MessageBox.Show("没有更多的磁盘空间","磁盘空间分配失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return -1;//不能分配
             }
             int[] startNum = new int[128];
@@ -38,6 +39,60 @@ namespace DiskFileSystem
             }
             fat[i - 1] = -1;
             return startNum[0]; //返回该文件起始块盘号
+        }
+        /*
+	 * 
+	 * 该方法用于删除时释放FAT表的空间
+	 */
+        public void delFat(int startNum,int[] fat)
+        {
+            int nextPoint = fat[startNum];
+            int nowPoint = startNum;
+            int count = 0;
+            while (fat[nowPoint] != 0 && fat[nowPoint] != 128)
+            {
+                nextPoint = fat[nowPoint];
+                if (nextPoint == -1)
+                {
+                    fat[nowPoint] = 0;
+                    count++;
+                    break;
+                }
+                else
+                {
+                    fat[nowPoint] = 0;
+                    count++;
+                    nowPoint = nextPoint;
+                }
+            }
+            fat[0] += count;
+            MessageBox.Show("Fat删除空间成功", "删除成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        /*
+	 * 
+	 * 以下为追加内容时修改fat表
+	 * 
+	 */
+
+        public bool reAddFat(int startNum, int addSize,int[] fat)
+        {
+            int nowPoint = startNum;
+            int nextPoint = fat[startNum];
+            while (fat[nowPoint] != -1)
+            {
+                nowPoint = nextPoint;
+                nextPoint = fat[nowPoint];
+            }//找到该文件终结盘块
+            nextPoint = setFat(addSize,fat);
+            if (nextPoint != -1)
+            {
+                fat[nowPoint] = nextPoint;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

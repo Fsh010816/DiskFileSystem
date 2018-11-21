@@ -91,5 +91,10 @@ namespace DiskFileSystem
             series.Points[2].Color = Color.Red;
             this.chart1.Series.Add(series);
         }
+
+        private void DiskUsage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

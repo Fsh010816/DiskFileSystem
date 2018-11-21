@@ -68,7 +68,6 @@
       <DependentUpon>DiskUsage.cs</DependentUpon>
     </Compile>
     <Compile Include="FileFunction.cs" />
-    <Compile Include="Form1.cs">
     <Compile Include="BasicFile.cs" />
     <Compile Include="FileMangerSystem.cs">
       <SubType>Form</SubType>
@@ -86,9 +85,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DiskUsage.resx">
       <DependentUpon>DiskUsage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FileMangerSystem.resx">
       <DependentUpon>FileMangerSystem.cs</DependentUpon>
