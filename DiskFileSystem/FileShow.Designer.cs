@@ -53,25 +53,31 @@
             // 
             // pathShow
             // 
-            this.pathShow.Location = new System.Drawing.Point(61, 10);
+            this.pathShow.Font = new System.Drawing.Font("隶书", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.pathShow.Location = new System.Drawing.Point(60, 10);
+            this.pathShow.Multiline = true;
             this.pathShow.Name = "pathShow";
-            this.pathShow.Size = new System.Drawing.Size(534, 21);
+            this.pathShow.Size = new System.Drawing.Size(534, 25);
             this.pathShow.TabIndex = 0;
+            this.pathShow.Text = "baidu.com";
             // 
             // searchText
             // 
+            this.searchText.Font = new System.Drawing.Font("隶书", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.searchText.Location = new System.Drawing.Point(614, 10);
+            this.searchText.Multiline = true;
             this.searchText.Name = "searchText";
-            this.searchText.Size = new System.Drawing.Size(119, 21);
+            this.searchText.Size = new System.Drawing.Size(119, 25);
             this.searchText.TabIndex = 2;
+            this.searchText.Text = "baidu.com";
             // 
             // fileView
             // 
             this.fileView.ContextMenuStrip = this.RightClick_View;
             this.fileView.LargeImageList = this.imageList2;
-            this.fileView.Location = new System.Drawing.Point(0, 53);
+            this.fileView.Location = new System.Drawing.Point(0, 41);
             this.fileView.Name = "fileView";
-            this.fileView.Size = new System.Drawing.Size(802, 400);
+            this.fileView.Size = new System.Drawing.Size(802, 412);
             this.fileView.SmallImageList = this.imageList1;
             this.fileView.TabIndex = 4;
             this.fileView.UseCompatibleStateImageBehavior = false;
@@ -127,9 +133,9 @@
             this.search.BackColor = System.Drawing.SystemColors.Control;
             this.search.BackgroundImage = global::DiskFileSystem.Properties.Resources.search;
             this.search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.search.Location = new System.Drawing.Point(728, 10);
+            this.search.Location = new System.Drawing.Point(733, 9);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(30, 21);
+            this.search.Size = new System.Drawing.Size(26, 26);
             this.search.TabIndex = 3;
             this.search.UseVisualStyleBackColor = false;
             // 
@@ -138,9 +144,9 @@
             this.showPath.BackColor = System.Drawing.SystemColors.Control;
             this.showPath.BackgroundImage = global::DiskFileSystem.Properties.Resources.FileSet;
             this.showPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.showPath.Location = new System.Drawing.Point(34, 10);
+            this.showPath.Location = new System.Drawing.Point(34, 9);
             this.showPath.Name = "showPath";
-            this.showPath.Size = new System.Drawing.Size(30, 21);
+            this.showPath.Size = new System.Drawing.Size(26, 26);
             this.showPath.TabIndex = 1;
             this.showPath.UseVisualStyleBackColor = false;
             // 

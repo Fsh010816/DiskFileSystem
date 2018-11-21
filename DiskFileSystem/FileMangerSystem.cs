@@ -17,12 +17,12 @@ namespace DiskFileSystem
         //解决覆盖问题
         [DllImport("user32.dll", EntryPoint = "SetParent")]
         public static extern int SetParent(int hWndChild, int hWndNewParent);
-
+        //所有文件的集合
         public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
         //定义FAT表
         private int[] fat = new int[128];
         //创建根目录 使用fat表的第一项
-        //桌面文件夹，从3号开始存
+        //桌面文件夹，从4号开始存
         public BasicFile root = new BasicFile("root",4);
 
         public FileMangerSystem()
@@ -50,6 +50,7 @@ namespace DiskFileSystem
                 }
             }
         }
+        //单击屏幕
         private void Double_Click(object sender, EventArgs e)
         {
             FileShow f = new FileShow(this);
@@ -70,7 +71,7 @@ namespace DiskFileSystem
                 }
             }
         }
-
+        //加载初始化
         private void FileMangerSystem_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < fat.Length; i++)
