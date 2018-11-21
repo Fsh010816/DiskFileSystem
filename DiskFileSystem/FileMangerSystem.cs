@@ -25,6 +25,8 @@ namespace DiskFileSystem
         //桌面文件夹，从4号开始存
         public BasicFile root = new BasicFile("root",4);
 
+        public int[] Fat { get => fat; set => fat = value; }
+
         public FileMangerSystem()
         {
             InitializeComponent();
@@ -74,16 +76,24 @@ namespace DiskFileSystem
         //加载初始化
         private void FileMangerSystem_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < fat.Length; i++)
+            for (int i = 0; i < Fat.Length; i++)
             {
-                fat[i] = 0;
+                Fat[i] = 0;
             }
-            fat[3] = -1; //纪录磁盘剩余块数	
-            fat[2] = -1; //纪录磁盘剩余块数	
-            fat[1] = -1; //255表示磁盘块已占用
-            fat[0] = 125; //纪录磁盘剩余块数	
+            Fat[3] = -1; //纪录磁盘剩余块数	
+            Fat[2] = -1; //纪录磁盘剩余块数	
+            Fat[1] = -1; //255表示磁盘块已占用
+            Fat[0] = 125; //纪录磁盘剩余块数	
             root.setFather(root);
             totalFiles.Add("root", root);
+        }
+
+        private void Disk_Check_Click(object sender, EventArgs e)
+        {
+            DiskUsage du = new DiskUsage(this);
+            du.MdiParent = this;
+            du.Show();
+            SetParent((int)du.Handle, (int)this.Handle);
         }
     }
 }

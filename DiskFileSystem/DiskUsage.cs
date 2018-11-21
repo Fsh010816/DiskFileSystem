@@ -12,10 +12,13 @@ namespace DiskFileSystem
 {
     public partial class DiskUsage : Form
     {
-        int[] fat = new int[128];
-        public DiskUsage()
+        private FileMangerSystem parentform;
+        private int[] fat;
+        public DiskUsage(FileMangerSystem form)
         {
             InitializeComponent();
+            parentform = form;
+            fat = form.Fat;
             for (int i = 0; i < fat.Length; i++)
             {
                 fat[i] = 0;
@@ -90,6 +93,11 @@ namespace DiskFileSystem
             series.Points[1].Color = Color.Green;
             series.Points[2].Color = Color.Red;
             this.chart1.Series.Add(series);
+        }
+
+        private void DiskUsage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

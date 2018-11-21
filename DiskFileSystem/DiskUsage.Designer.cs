@@ -28,47 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label136 = new System.Windows.Forms.Label();
-            this.label146 = new System.Windows.Forms.Label();
-            this.label156 = new System.Windows.Forms.Label();
-            this.label166 = new System.Windows.Forms.Label();
-            this.label176 = new System.Windows.Forms.Label();
-            this.label186 = new System.Windows.Forms.Label();
-            this.label196 = new System.Windows.Forms.Label();
-            this.label206 = new System.Windows.Forms.Label();
-            this.label216 = new System.Windows.Forms.Label();
-            this.label226 = new System.Windows.Forms.Label();
-            this.label236 = new System.Windows.Forms.Label();
-            this.label246 = new System.Windows.Forms.Label();
-            this.label256 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label121 = new System.Windows.Forms.Label();
             this.label122 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label131 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label132 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label133 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label134 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label135 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label137 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label138 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label139 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label140 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label141 = new System.Windows.Forms.Label();
             this.label142 = new System.Windows.Forms.Label();
             this.label143 = new System.Windows.Forms.Label();
@@ -173,7 +160,20 @@
             this.label253 = new System.Windows.Forms.Label();
             this.label254 = new System.Windows.Forms.Label();
             this.label255 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label136 = new System.Windows.Forms.Label();
+            this.label146 = new System.Windows.Forms.Label();
+            this.label156 = new System.Windows.Forms.Label();
+            this.label166 = new System.Windows.Forms.Label();
+            this.label176 = new System.Windows.Forms.Label();
+            this.label186 = new System.Windows.Forms.Label();
+            this.label196 = new System.Windows.Forms.Label();
+            this.label206 = new System.Windows.Forms.Label();
+            this.label216 = new System.Windows.Forms.Label();
+            this.label226 = new System.Windows.Forms.Label();
+            this.label236 = new System.Windows.Forms.Label();
+            this.label246 = new System.Windows.Forms.Label();
+            this.label256 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -314,174 +314,16 @@
             this.groupBox1.TabIndex = 129;
             this.groupBox1.TabStop = false;
             // 
-            // label136
+            // label1
             // 
-            this.label136.BackColor = System.Drawing.Color.Lime;
-            this.label136.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label136.Location = new System.Drawing.Point(-172, 376);
-            this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(34, 28);
-            this.label136.TabIndex = 248;
-            this.label136.Text = "120";
-            this.label136.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label146
-            // 
-            this.label146.BackColor = System.Drawing.Color.Lime;
-            this.label146.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label146.Location = new System.Drawing.Point(-172, 336);
-            this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(34, 28);
-            this.label146.TabIndex = 238;
-            this.label146.Text = "110";
-            this.label146.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label156
-            // 
-            this.label156.BackColor = System.Drawing.Color.Lime;
-            this.label156.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label156.Location = new System.Drawing.Point(-172, 299);
-            this.label156.Name = "label156";
-            this.label156.Size = new System.Drawing.Size(34, 28);
-            this.label156.TabIndex = 228;
-            this.label156.Text = "100";
-            this.label156.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label166
-            // 
-            this.label166.BackColor = System.Drawing.Color.Lime;
-            this.label166.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label166.Location = new System.Drawing.Point(-172, 260);
-            this.label166.Name = "label166";
-            this.label166.Size = new System.Drawing.Size(34, 28);
-            this.label166.TabIndex = 218;
-            this.label166.Text = "90";
-            this.label166.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label176
-            // 
-            this.label176.BackColor = System.Drawing.Color.Lime;
-            this.label176.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label176.Location = new System.Drawing.Point(-172, 221);
-            this.label176.Name = "label176";
-            this.label176.Size = new System.Drawing.Size(34, 28);
-            this.label176.TabIndex = 208;
-            this.label176.Text = "80";
-            this.label176.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label186
-            // 
-            this.label186.BackColor = System.Drawing.Color.Lime;
-            this.label186.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label186.Location = new System.Drawing.Point(-172, 184);
-            this.label186.Name = "label186";
-            this.label186.Size = new System.Drawing.Size(34, 28);
-            this.label186.TabIndex = 198;
-            this.label186.Text = "70";
-            this.label186.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label196
-            // 
-            this.label196.BackColor = System.Drawing.Color.Lime;
-            this.label196.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label196.Location = new System.Drawing.Point(-172, 145);
-            this.label196.Name = "label196";
-            this.label196.Size = new System.Drawing.Size(34, 28);
-            this.label196.TabIndex = 188;
-            this.label196.Text = "60";
-            this.label196.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label206
-            // 
-            this.label206.BackColor = System.Drawing.Color.Lime;
-            this.label206.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label206.Location = new System.Drawing.Point(-172, 107);
-            this.label206.Name = "label206";
-            this.label206.Size = new System.Drawing.Size(34, 28);
-            this.label206.TabIndex = 178;
-            this.label206.Text = "50";
-            this.label206.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label216
-            // 
-            this.label216.BackColor = System.Drawing.Color.Lime;
-            this.label216.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label216.Location = new System.Drawing.Point(-172, 70);
-            this.label216.Name = "label216";
-            this.label216.Size = new System.Drawing.Size(34, 28);
-            this.label216.TabIndex = 168;
-            this.label216.Text = "40";
-            this.label216.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label226
-            // 
-            this.label226.BackColor = System.Drawing.Color.Lime;
-            this.label226.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label226.Location = new System.Drawing.Point(-172, 31);
-            this.label226.Name = "label226";
-            this.label226.Size = new System.Drawing.Size(34, 28);
-            this.label226.TabIndex = 158;
-            this.label226.Text = "30";
-            this.label226.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label236
-            // 
-            this.label236.BackColor = System.Drawing.Color.Lime;
-            this.label236.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label236.Location = new System.Drawing.Point(-172, -10);
-            this.label236.Name = "label236";
-            this.label236.Size = new System.Drawing.Size(34, 28);
-            this.label236.TabIndex = 148;
-            this.label236.Text = "20";
-            this.label236.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label246
-            // 
-            this.label246.BackColor = System.Drawing.Color.Lime;
-            this.label246.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label246.Location = new System.Drawing.Point(-172, -47);
-            this.label246.Name = "label246";
-            this.label246.Size = new System.Drawing.Size(34, 28);
-            this.label246.TabIndex = 138;
-            this.label246.Text = "10";
-            this.label246.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label256
-            // 
-            this.label256.BackColor = System.Drawing.Color.Lime;
-            this.label256.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label256.Location = new System.Drawing.Point(-172, -86);
-            this.label256.Name = "label256";
-            this.label256.Size = new System.Drawing.Size(34, 28);
-            this.label256.TabIndex = 128;
-            this.label256.Text = "0";
-            this.label256.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chart1
-            // 
-            chartArea3.Area3DStyle.Enable3D = true;
-            chartArea3.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea3.AxisY.Minimum = 1D;
-            chartArea3.IsSameFontSizeForAllAxes = true;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(561, 12);
-            this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series3.IsValueShownAsLabel = true;
-            series3.Label = "\\n";
-            series3.Legend = "Legend1";
-            series3.LegendText = "#VALX：#PERCENT";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(522, 531);
-            this.chart1.TabIndex = 130;
-            this.chart1.Text = "chart1";
+            this.label1.BackColor = System.Drawing.Color.Lime;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 28);
+            this.label1.TabIndex = 395;
+            this.label1.Text = "0";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -493,127 +335,6 @@
             this.label2.TabIndex = 394;
             this.label2.Text = "120";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Lime;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(12, 439);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 28);
-            this.label3.TabIndex = 393;
-            this.label3.Text = "110";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Lime;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(12, 400);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 28);
-            this.label4.TabIndex = 392;
-            this.label4.Text = "100";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Lime;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(12, 361);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 28);
-            this.label5.TabIndex = 391;
-            this.label5.Text = "90";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.Lime;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(12, 324);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 28);
-            this.label6.TabIndex = 390;
-            this.label6.Text = "80";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.Lime;
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Location = new System.Drawing.Point(12, 285);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 28);
-            this.label7.TabIndex = 389;
-            this.label7.Text = "70";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.Lime;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Location = new System.Drawing.Point(12, 247);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 28);
-            this.label8.TabIndex = 388;
-            this.label8.Text = "60";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.Lime;
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Location = new System.Drawing.Point(12, 210);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 28);
-            this.label9.TabIndex = 387;
-            this.label9.Text = "50";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.Lime;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Location = new System.Drawing.Point(12, 171);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 28);
-            this.label10.TabIndex = 386;
-            this.label10.Text = "40";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.Lime;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Location = new System.Drawing.Point(12, 130);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(34, 28);
-            this.label11.TabIndex = 385;
-            this.label11.Text = "30";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.Lime;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Location = new System.Drawing.Point(12, 93);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(34, 28);
-            this.label12.TabIndex = 384;
-            this.label12.Text = "20";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.Lime;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Location = new System.Drawing.Point(12, 54);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(34, 28);
-            this.label13.TabIndex = 383;
-            this.label13.Text = "10";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label121
             // 
@@ -637,6 +358,17 @@
             this.label122.Text = "126";
             this.label122.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Lime;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Location = new System.Drawing.Point(12, 439);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 28);
+            this.label3.TabIndex = 393;
+            this.label3.Text = "110";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label131
             // 
             this.label131.BackColor = System.Drawing.Color.Lime;
@@ -647,6 +379,17 @@
             this.label131.TabIndex = 380;
             this.label131.Text = "125";
             this.label131.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Lime;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Location = new System.Drawing.Point(12, 130);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 28);
+            this.label11.TabIndex = 385;
+            this.label11.Text = "30";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label132
             // 
@@ -659,6 +402,17 @@
             this.label132.Text = "124";
             this.label132.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Lime;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Location = new System.Drawing.Point(12, 400);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 28);
+            this.label4.TabIndex = 392;
+            this.label4.Text = "100";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label133
             // 
             this.label133.BackColor = System.Drawing.Color.Lime;
@@ -669,6 +423,28 @@
             this.label133.TabIndex = 378;
             this.label133.Text = "123";
             this.label133.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Lime;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label13.Location = new System.Drawing.Point(12, 54);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(34, 28);
+            this.label13.TabIndex = 383;
+            this.label13.Text = "10";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Lime;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Location = new System.Drawing.Point(12, 361);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 28);
+            this.label5.TabIndex = 391;
+            this.label5.Text = "90";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label134
             // 
@@ -681,6 +457,17 @@
             this.label134.Text = "122";
             this.label134.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Lime;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.Location = new System.Drawing.Point(12, 93);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(34, 28);
+            this.label12.TabIndex = 384;
+            this.label12.Text = "20";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label135
             // 
             this.label135.BackColor = System.Drawing.Color.Lime;
@@ -691,6 +478,17 @@
             this.label135.TabIndex = 376;
             this.label135.Text = "121";
             this.label135.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Lime;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.Location = new System.Drawing.Point(12, 324);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 28);
+            this.label6.TabIndex = 390;
+            this.label6.Text = "80";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label137
             // 
@@ -703,6 +501,17 @@
             this.label137.Text = "119";
             this.label137.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.Lime;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Location = new System.Drawing.Point(12, 171);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 28);
+            this.label10.TabIndex = 386;
+            this.label10.Text = "40";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label138
             // 
             this.label138.BackColor = System.Drawing.Color.Lime;
@@ -713,6 +522,17 @@
             this.label138.TabIndex = 374;
             this.label138.Text = "118";
             this.label138.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Lime;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label7.Location = new System.Drawing.Point(12, 285);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 28);
+            this.label7.TabIndex = 389;
+            this.label7.Text = "70";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label139
             // 
@@ -725,6 +545,17 @@
             this.label139.Text = "117";
             this.label139.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.Lime;
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label9.Location = new System.Drawing.Point(12, 210);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 28);
+            this.label9.TabIndex = 387;
+            this.label9.Text = "50";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label140
             // 
             this.label140.BackColor = System.Drawing.Color.Lime;
@@ -735,6 +566,17 @@
             this.label140.TabIndex = 372;
             this.label140.Text = "116";
             this.label140.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.Lime;
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label8.Location = new System.Drawing.Point(12, 247);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 28);
+            this.label8.TabIndex = 388;
+            this.label8.Text = "60";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label141
             // 
@@ -1880,16 +1722,174 @@
             this.label255.Text = "1";
             this.label255.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // label136
             // 
-            this.label1.BackColor = System.Drawing.Color.Lime;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 28);
-            this.label1.TabIndex = 395;
-            this.label1.Text = "0";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label136.BackColor = System.Drawing.Color.Lime;
+            this.label136.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label136.Location = new System.Drawing.Point(-172, 376);
+            this.label136.Name = "label136";
+            this.label136.Size = new System.Drawing.Size(34, 28);
+            this.label136.TabIndex = 248;
+            this.label136.Text = "120";
+            this.label136.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label146
+            // 
+            this.label146.BackColor = System.Drawing.Color.Lime;
+            this.label146.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label146.Location = new System.Drawing.Point(-172, 336);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(34, 28);
+            this.label146.TabIndex = 238;
+            this.label146.Text = "110";
+            this.label146.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label156
+            // 
+            this.label156.BackColor = System.Drawing.Color.Lime;
+            this.label156.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label156.Location = new System.Drawing.Point(-172, 299);
+            this.label156.Name = "label156";
+            this.label156.Size = new System.Drawing.Size(34, 28);
+            this.label156.TabIndex = 228;
+            this.label156.Text = "100";
+            this.label156.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label166
+            // 
+            this.label166.BackColor = System.Drawing.Color.Lime;
+            this.label166.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label166.Location = new System.Drawing.Point(-172, 260);
+            this.label166.Name = "label166";
+            this.label166.Size = new System.Drawing.Size(34, 28);
+            this.label166.TabIndex = 218;
+            this.label166.Text = "90";
+            this.label166.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label176
+            // 
+            this.label176.BackColor = System.Drawing.Color.Lime;
+            this.label176.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label176.Location = new System.Drawing.Point(-172, 221);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(34, 28);
+            this.label176.TabIndex = 208;
+            this.label176.Text = "80";
+            this.label176.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label186
+            // 
+            this.label186.BackColor = System.Drawing.Color.Lime;
+            this.label186.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label186.Location = new System.Drawing.Point(-172, 184);
+            this.label186.Name = "label186";
+            this.label186.Size = new System.Drawing.Size(34, 28);
+            this.label186.TabIndex = 198;
+            this.label186.Text = "70";
+            this.label186.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label196
+            // 
+            this.label196.BackColor = System.Drawing.Color.Lime;
+            this.label196.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label196.Location = new System.Drawing.Point(-172, 145);
+            this.label196.Name = "label196";
+            this.label196.Size = new System.Drawing.Size(34, 28);
+            this.label196.TabIndex = 188;
+            this.label196.Text = "60";
+            this.label196.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label206
+            // 
+            this.label206.BackColor = System.Drawing.Color.Lime;
+            this.label206.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label206.Location = new System.Drawing.Point(-172, 107);
+            this.label206.Name = "label206";
+            this.label206.Size = new System.Drawing.Size(34, 28);
+            this.label206.TabIndex = 178;
+            this.label206.Text = "50";
+            this.label206.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label216
+            // 
+            this.label216.BackColor = System.Drawing.Color.Lime;
+            this.label216.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label216.Location = new System.Drawing.Point(-172, 70);
+            this.label216.Name = "label216";
+            this.label216.Size = new System.Drawing.Size(34, 28);
+            this.label216.TabIndex = 168;
+            this.label216.Text = "40";
+            this.label216.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label226
+            // 
+            this.label226.BackColor = System.Drawing.Color.Lime;
+            this.label226.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label226.Location = new System.Drawing.Point(-172, 31);
+            this.label226.Name = "label226";
+            this.label226.Size = new System.Drawing.Size(34, 28);
+            this.label226.TabIndex = 158;
+            this.label226.Text = "30";
+            this.label226.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label236
+            // 
+            this.label236.BackColor = System.Drawing.Color.Lime;
+            this.label236.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label236.Location = new System.Drawing.Point(-172, -10);
+            this.label236.Name = "label236";
+            this.label236.Size = new System.Drawing.Size(34, 28);
+            this.label236.TabIndex = 148;
+            this.label236.Text = "20";
+            this.label236.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label246
+            // 
+            this.label246.BackColor = System.Drawing.Color.Lime;
+            this.label246.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label246.Location = new System.Drawing.Point(-172, -47);
+            this.label246.Name = "label246";
+            this.label246.Size = new System.Drawing.Size(34, 28);
+            this.label246.TabIndex = 138;
+            this.label246.Text = "10";
+            this.label246.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label256
+            // 
+            this.label256.BackColor = System.Drawing.Color.Lime;
+            this.label256.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label256.Location = new System.Drawing.Point(-172, -86);
+            this.label256.Name = "label256";
+            this.label256.Size = new System.Drawing.Size(34, 28);
+            this.label256.TabIndex = 128;
+            this.label256.Text = "0";
+            this.label256.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chart1
+            // 
+            chartArea1.Area3DStyle.Enable3D = true;
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisY.Minimum = 1D;
+            chartArea1.IsSameFontSizeForAllAxes = true;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(561, 12);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.IsValueShownAsLabel = true;
+            series1.Label = "\\n";
+            series1.Legend = "Legend1";
+            series1.LegendText = "#VALX：#PERCENT";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(522, 531);
+            this.chart1.TabIndex = 130;
+            this.chart1.Text = "chart1";
             // 
             // DiskUsage
             // 
@@ -1900,6 +1900,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "DiskUsage";
             this.Text = "磁盘使用情况";
+            this.Load += new System.EventHandler(this.DiskUsage_Load);
             this.Enter += new System.EventHandler(this.DiskUsage_Enter);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();

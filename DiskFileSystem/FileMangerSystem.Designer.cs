@@ -46,6 +46,7 @@
             this.Disk_Check.Size = new System.Drawing.Size(112, 101);
             this.Disk_Check.TabIndex = 0;
             this.Disk_Check.UseVisualStyleBackColor = true;
+            this.Disk_Check.Click += new System.EventHandler(this.Disk_Check_Click);
             // 
             // Disk_Name
             // 
