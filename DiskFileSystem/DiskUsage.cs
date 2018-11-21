@@ -12,27 +12,26 @@ namespace DiskFileSystem
 {
     public partial class DiskUsage : Form
     {
+        int[] fat = new int[128];
         public DiskUsage()
         {
             InitializeComponent();
-            
-        }
-        private void DiskUsage_Enter(object sender, EventArgs e)
-        {
-            int[] fat = new int[128];
-            for(int i=0;i<fat.Length;i++)
+            for (int i = 0; i < fat.Length; i++)
             {
                 fat[i] = 0;
             }
-            fat[0] = 8;
+            fat[0] = 124;
             fat[1] = 8;
             fat[2] = 8;
-            fat[3] = 128;
-            fat[4] = 128;
-            fat[5] = 128;
-            setColorAndUpdate(fat);
+            fat[3] = 8;
+
         }
-        /* 128代表磁盘块已损坏,0代表空闲，其他代表已使用*/
+        private void DiskUsage_Enter(object sender, EventArgs e)
+        {
+            setColorAndUpdate(fat);
+            
+        }
+        /* >128代表磁盘块已损坏,0代表空闲，其他代表已使用*/
         private void setColorAndUpdate(int[] fat)
         {
             int cnt1 = 0;
@@ -57,7 +56,7 @@ namespace DiskFileSystem
                     cnt2++;
                     label.BackColor = Color.Green;
                 }
-                else if(x==128)
+                else if(x>127)
                 {
                     cnt3++;
                     label.BackColor = Color.Red;

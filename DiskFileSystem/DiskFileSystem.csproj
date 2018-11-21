@@ -67,6 +67,7 @@
     <Compile Include="DiskUsage.Designer.cs">
       <DependentUpon>DiskUsage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileFunction.cs" />
     <Compile Include="BasicFile.cs" />
     <Compile Include="FileMangerSystem.cs">
       <SubType>Form</SubType>
