@@ -6,12 +6,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace DiskFileSystem
 {
+    /*
+     * *
+     * 这是个单实例类,用来存储各种文件操作函数
+     * 
+     * */
     class FileFunction
     {
+        private static FileFunction instance = new FileFunction();
+        private FileFunction() { }
+        public static FileFunction GetInstance()
+        {
+            return instance;
+        }
+
         /*
-    * 
-    * 该方法用于在Fat表分配给文件空余的磁盘块，并且返回第一个磁盘号.
-    */
+        * 
+        * 该方法用于在Fat表分配给文件空余的磁盘块，并且返回第一个磁盘号.
+        */
         public int setFat(int size,int[] fat)
         {
             if (fat[0] < size)
