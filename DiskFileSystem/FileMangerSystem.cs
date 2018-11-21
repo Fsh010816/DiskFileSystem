@@ -19,6 +19,8 @@ namespace DiskFileSystem
         public static extern int SetParent(int hWndChild, int hWndNewParent);
         //所有文件的集合
         public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
+        //单实例函数
+        FileFunction FileFun = FileFunction.GetInstance();
         //定义FAT表
         private int[] fat = new int[128];
         //创建根目录 使用fat表的第一项
@@ -86,6 +88,7 @@ namespace DiskFileSystem
             Fat[0] = 125; //纪录磁盘剩余块数	
             root.setFather(root);
             totalFiles.Add("root", root);
+            //FileFun.setFat(10,Fat);
         }
 
         private void Disk_Check_Click(object sender, EventArgs e)
