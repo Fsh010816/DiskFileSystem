@@ -85,7 +85,7 @@ namespace DiskFileSystem
             Fat[3] = -1; //纪录磁盘剩余块数	
             Fat[2] = -1; //纪录磁盘剩余块数	
             Fat[1] = -1; //255表示磁盘块已占用
-            Fat[0] = 125; //纪录磁盘剩余块数	
+            Fat[0] = 124; //纪录磁盘剩余块数	
             root.setFather(root);
             totalFiles.Add("root", root);
             //FileFun.setFat(10,Fat);
