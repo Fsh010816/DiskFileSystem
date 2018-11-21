@@ -28,7 +28,7 @@ namespace DiskFileSystem
         {
             if (fat[0] < size)
             {
-                MessageBox.Show("没有更多的磁盘空间","磁盘空间分配失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //MessageBox.Show("没有更多的磁盘空间","磁盘空间分配失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return -1;//不能分配
             }
             int[] startNum = new int[128];

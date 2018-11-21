@@ -19,14 +19,6 @@ namespace DiskFileSystem
             InitializeComponent();
             parentform = form;
             fat = form.Fat;
-            for (int i = 0; i < fat.Length; i++)
-            {
-                fat[i] = 0;
-            }
-            fat[0] = 124;
-            fat[1] = 8;
-            fat[2] = 8;
-            fat[3] = 8;
 
         }
         private void DiskUsage_Enter(object sender, EventArgs e)
