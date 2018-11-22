@@ -18,11 +18,11 @@ namespace DiskFileSystem
         [DllImport("user32.dll", EntryPoint = "SetParent")]
         public static extern int SetParent(int hWndChild, int hWndNewParent);
         //所有文件的集合
-        public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
+        //public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //定义FAT表
-        public static int[] fat = new int[128];
+        public  int[] fat = new int[128];
         //创建根目录 使用fat表的第一项
         //桌面文件夹，从4号开始存
 
@@ -42,8 +42,9 @@ namespace DiskFileSystem
             FileShow f = new FileShow(this);
             //f.MdiParent = this;
             f.father = this.root;
-            f.Show();
             SetParent((int)f.Handle, (int)this.Handle);
+            f.Show();
+            
             //if (root.childFile.Count == 0)
             //{
             //    return;
@@ -61,10 +62,12 @@ namespace DiskFileSystem
         private void Double_Click(object sender, EventArgs e)
         {
             FileShow f = new FileShow(this);
+            Console.WriteLine(f.ToString());
            // f.MdiParent = this;
             f.father = this.root;
-            f.Show();
             SetParent((int)f.Handle, (int)this.Handle);
+            f.Show();
+           
             //if (root.childFile.Count == 0)
             //{
             //    return;
@@ -98,8 +101,9 @@ namespace DiskFileSystem
         {
             DiskUsage du = new DiskUsage(this);
             //du.MdiParent = this;
-            du.Show();
             SetParent((int)du.Handle, (int)this.Handle);
+            du.Show();
+           
         }
     }
 }

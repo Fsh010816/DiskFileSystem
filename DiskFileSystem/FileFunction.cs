@@ -107,55 +107,81 @@ namespace DiskFileSystem
                 return false;
             }
         }
+        /*
+    * 	以下为根据当前目录创建文件或者目录的方法
+    * 	 参数为 文件名 文件类型 文件大小 当前目录 文件对象字典  FAT登记表
+    */
+        public BasicFile createFile(BasicFile nowCatalog, int[] fat, String name = "新建文件1", int dept = 1, String type = "读写", int size = 1)
+        {
+            if (fat[0] >= size)
+            {   //判断磁盘剩余空间是否足够建立文件
+                //该目录下是否寻找同名目录或文件
+                if (nowCatalog.childFile.ContainsKey(name))
+                {  //判断该文件是否存在
+                    BasicFile value = nowCatalog.childFile[name];
+                    if (value.getAttr() == 3)
+                    {   //若存在同名目录 继续创建文件
+                        int startNum = setFat(size, fat);
+                        if (startNum == -1)//没有空间分配了
+                        {
+                            return null;
+                        }
+                        BasicFile file = new BasicFile(name, type, startNum, size);
+                        file.setFather(nowCatalog); //纪录上一层目录
+                        nowCatalog.childFile.Add(name, file); //在父目录添加该文件
+                        return file;
+                    }
+                    else if (value.getAttr() == 2)
+                    { //若同名文件已存在，则换名字
+
+                        return createFile(nowCatalog, fat, "新建文件" + (dept + 1), dept + 1);
+                    }
+                }
+                else
+                { //若无同名文件或文件夹，继续创建文件
+                    int startNum = setFat(size, fat);
+                    BasicFile file = new BasicFile(name, type, startNum, size);
+                    file.setFather(nowCatalog); //纪录上一层目录
+                    nowCatalog.childFile.Add(name, file); //在父目录添加该文件
+                    return file;
+                }
+            }
+            else
+            {
+                return null;
+            }
+            return null;
+
+        }
 
         //创建文件夹
-        public bool createCatolog(String name,BasicFile fatherFileSet, int[] fat, FileShow fileShow)
+        public BasicFile createCatolog(BasicFile nowCatalog, int[] fat, String name="新建文件夹1",int dept=1)
         {
             //可以创建
             if (fat[0] >= 1)
             {
                 //判断是否重命名
-                if (fatherFileSet.childFile.ContainsKey(name))
+                if (nowCatalog.childFile.ContainsKey(name))
                 {
-                    BasicFile value = fatherFileSet.childFile[name];
+                    BasicFile value = nowCatalog.childFile[name];
                     //不同类型，创建成功
                     if (value.getAttr() == 2)
                     {
                         int startNum = this.setFat(1, fat);
                         BasicFile catalog = new BasicFile(name, startNum);
                         //设置父亲
-                        //catalog.setFather(fatherFileSet);
+                        catalog.setFather(nowCatalog);
                         //添加到父文件夹下
-                        fatherFileSet.childFile.Add(catalog.getName(), catalog);
-                        //空间减减
-                        fat[0]--;
-                        //添加到界面
-                        fileShow.getFileView().Items.Add(catalog.getItem());
-                        Console.WriteLine("文件夹创建成功");
+                        nowCatalog.childFile.Add(catalog.getName(), catalog);
+                        return catalog;
+                        //Console.WriteLine("文件夹创建成功");
                     }
                     //相同类型，则帮改为默认命名
                     else if (value.getAttr() == 3)
                     {
                         Console.WriteLine("存在重复命名");
                         //以默认命名创建文件夹
-                        int i = 1;
-                        String newName;
-                        do
-                        {
-                            newName = name + Convert.ToString(i++);
-                        } while (fatherFileSet.childFile.ContainsKey(newName));
-
-                        int startNum = this.setFat(1, fat);
-                        BasicFile catalog = new BasicFile(newName, startNum);
-                        //设置父亲
-                        catalog.setFather(fatherFileSet);
-                        //添加到父文件夹下
-                        fatherFileSet.childFile.Add(catalog.getName(), catalog);
-                        //空间减减
-                        fat[0]--;
-                        //添加到界面
-                        fileShow.getFileView().Items.Add(catalog.getItem());
-                        Console.WriteLine("文件夹创建成功");
+                        return createCatolog(nowCatalog, fat, "新建文件夹" + (dept + 1), (dept + 1));
                     }
                 }
                 //不存在同名的文件夹
@@ -164,23 +190,21 @@ namespace DiskFileSystem
                     int startNum = this.setFat(1, fat);
                     BasicFile catalog = new BasicFile(name, startNum);
                     //设置父亲
-                    catalog.setFather(fatherFileSet);
+                    catalog.setFather(nowCatalog);
                     //添加到父文件夹下
-                    fatherFileSet.childFile.Add(catalog.getName(), catalog);
-                    //空间减减
-                    fat[0]--;
-                    //添加到界面
-                    fileShow.getFileView().Items.Add(catalog.getItem());
-                    Console.WriteLine("文件夹创建成功");
+                    nowCatalog.childFile.Add(catalog.getName(), catalog);
+                    return catalog;
+                    // Console.WriteLine("文件夹创建成功");
                 }
-                return true;
             }
             else
             {
                 //以false为信号弹出失败窗口
-                return false;
+                return null;
             }
+            return null;
         }
+
         //打开时显示
         public void showFile(BasicFile nowFile,FileShow fileShow)
         {
@@ -316,41 +340,32 @@ namespace DiskFileSystem
         }
 
         //打开文件夹时
-        public void openFile(String name,BasicFile fatherFile, FileShow fileShow)
+        public void openFile(BasicFile clickFile,BasicFile fatherFile,ListView fileView)
         {
-            if (fatherFile.childFile.ContainsKey(name))
-            {
-                BasicFile file; //即将打开的文件
-                fatherFile.childFile.TryGetValue(name, out file);
-                if (file.getAttr() == 2)
-                {
-                    //新建文本窗口
 
-                    Console.WriteLine("文件已打开，文件大小为 : " + file.getSize());
-                }
-                else if (file.getAttr() == 3)
-                {
-                    //清空fileShow
-                    fileShow.getFileView().Items.Clear();
-                    //设置FileShow里的father
-                    //fileShow.setFather(fatherFile) ;
-                    //添加到fileShow的待显示数组里
-                    if (file.childFile.Count() != 0)
-                    {
-                        foreach (KeyValuePair<String, BasicFile> childFile in file.childFile)
-                        {
-                            fileShow.FileListToShow.Add(childFile);
-                        }
-                    }
-                    
-                    //
-                    Console.WriteLine("文件夹已打开！");
-                }
-            }
-            else
+            if (clickFile.getAttr() == 2)
             {
-                Console.WriteLine("打开失败，文件不存在！");
+                //新建文本窗口
+
+               // Console.WriteLine("文件已打开，文件大小为 : " + file.getSize());
             }
+            else if (clickFile.getAttr() == 3)
+            {
+                //清空fileShow
+                fileView.Items.Clear();
+                //设置FileShow里的father
+                fatherFile = clickFile; //fatherFile) ;
+                //添加到fileShow的待显示数组里
+                if (fatherFile.childFile.Count != 0)
+                {
+                    foreach (var x in fatherFile.childFile)
+                    {
+                        fileView.Items.Add(x.Value.getItem());
+                    }
+
+                }
+            }
+
         }
 
         /*
@@ -368,7 +383,7 @@ namespace DiskFileSystem
             else
             {
                 //打开父文件夹
-                openFile(nowFatherFile.getName(), nowFatherFile.getFather(), fileShow);
+                //openFile(nowFatherFile.getName(), nowFatherFile.getFather(),fileShow);
             }
         }
 

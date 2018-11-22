@@ -14,16 +14,12 @@ namespace DiskFileSystem
 {
     public partial class FileShow : Form
     {
-        //打开文件夹之前需要用到，将父文件夹的所有子文件添加进来以显示出来
-        public ArrayList FileListToShow = new ArrayList();
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //
         FileMangerSystem parent;
         //父文件夹,也就是当前目录
         public BasicFile father;
-
-        public BasicFile Father { get => father; set => father = value; }
 
         public FileShow(FileMangerSystem form)
         {
@@ -37,8 +33,16 @@ namespace DiskFileSystem
         //点击新建文件夹
         private void 文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileFun.createCatolog("新建文件夹", this.Father, FileMangerSystem.fat, this);
-            Console.WriteLine(this.Father.getName());
+            BasicFile file = FileFun.createCatolog(father, parent.fat);
+            //Console.WriteLine(father.getName());
+            if (file != null)
+            {
+                fileView.Items.Add(file.getItem());
+            }
+            else
+            {
+                MessageBox.Show("创建文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         //点中文件发生的效果
@@ -50,12 +54,12 @@ namespace DiskFileSystem
         private void 删除DToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //到时候还要获得名字
-            FileFun.deleteFile("新建文件夹", this.Father);
+            FileFun.deleteFile("新建文件夹", father);
         }
         //点击新建文件
         private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BasicFile file = FileFunction.GetInstance().createFile(father, parent.totalFiles, parent.Fat);
+            BasicFile file = FileFunction.GetInstance().createFile(father, parent.Fat);
 
 
             if (file != null)
@@ -108,19 +112,18 @@ namespace DiskFileSystem
             //要根据文件里面的type决定
             toolStripComboBox1.SelectedText = "读写";
         }
+
         //右键打开
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //得到改文件夹，以及该文件夹的父亲
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
-            FileFun.openFile(clickedFile.getName(), clickedFile.getFather(), this);
-            //在这里设置father
-            this.Father = clickedFile;
+            FileFun.openFile(clickedFile, father ,fileView);
         }
 
         private BasicFile getFileByItem(ListViewItem item)
         {
-            foreach (KeyValuePair<String, BasicFile> childFile in Father.childFile)
+            foreach (var childFile in father.childFile)
             {
                 if (childFile.Value.getItem() == item)
                 {
