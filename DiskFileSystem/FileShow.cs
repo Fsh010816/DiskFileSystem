@@ -118,7 +118,7 @@ namespace DiskFileSystem
         {
             //得到改文件夹，以及该文件夹的父亲
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
-            FileFun.openFile(clickedFile, father ,fileView);
+            FileFun.openFile(clickedFile, ref father ,fileView);
         }
 
         private BasicFile getFileByItem(ListViewItem item)
