@@ -20,14 +20,15 @@ namespace DiskFileSystem
         FileFunction FileFun = FileFunction.GetInstance();
         //
         FileMangerSystem parent;
-        //父文件夹
-        private BasicFile father;
+        //父文件夹,也就是当前目录
+        public BasicFile father;
 
         public BasicFile Father { get => father; set => father = value; }
 
         public FileShow(FileMangerSystem form)
         {
             InitializeComponent();
+            parent = form;
         }
         public FileShow()
         {
@@ -54,20 +55,30 @@ namespace DiskFileSystem
         //点击新建文件
         private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileFun.createCatolog("新建文件", this.Father, FileMangerSystem.fat, this);
+            BasicFile file = FileFunction.GetInstance().createFile(father, parent.totalFiles, parent.Fat);
+
+
+            if (file != null)
+            {
+                fileView.Items.Add(file.getItem());
+            }
+            else
+            {
+                MessageBox.Show("创建文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
         //窗口被选中（生成，或形成焦点）
-        private void fileView_Enter(object sender, EventArgs e)
+        private void fileView_Activated(object sender, EventArgs e)
         {
             //如果文件夹不为空，则显示文件
-            if (FileListToShow.Count != 0)
+            fileView.Items.Clear();
+            if (father.childFile.Count!=0)
             {
-                foreach (BasicFile file in FileListToShow)
+                foreach(var x in father.childFile)
                 {
-                    fileView.Items.Add(file.getItem());
+                    fileView.Items.Add(x.Value.getItem());
                 }
-                //及时清空
-                FileListToShow.Clear();
+                
             }
         }
         //右键点击事件
@@ -123,5 +134,6 @@ namespace DiskFileSystem
         {
             return fileView;
         }
+
     }
 }

@@ -83,7 +83,6 @@
             this.fileView.UseCompatibleStateImageBehavior = false;
             this.fileView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.fileView_ItemSelectionChanged);
             this.fileView.SelectedIndexChanged += new System.EventHandler(this.fileView_SelectedIndexChanged);
-            this.fileView.Enter += new System.EventHandler(this.fileView_Enter);
             this.fileView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.fileView_MouseUp);
             // 
             // RightClick_View
@@ -209,6 +208,7 @@
             this.Controls.Add(this.fileView);
             this.Name = "FileShow";
             this.Text = "FileShow";
+            this.Activated += new System.EventHandler(this.fileView_Activated);
             this.RightClick_View.ResumeLayout(false);
             this.RightClick_File.ResumeLayout(false);
             this.ResumeLayout(false);
