@@ -24,7 +24,9 @@ namespace DiskFileSystem
         private void DiskUsage_Enter(object sender, EventArgs e)
         {
             setColorAndUpdate(fat);
-            
+            string str = "磁盘剩余块:" + fat[0] + "块";
+            toolTip1.SetToolTip(label1, str);
+
         }
         /* >128代表磁盘块已损坏,0代表空闲，其他代表已使用*/
         private void setColorAndUpdate(int[] fat)
@@ -91,6 +93,11 @@ namespace DiskFileSystem
         {
             string str = "磁盘剩余块:" + fat[0] + "块";
             toolTip1.SetToolTip(label1, str);
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
         }
     }
 }

@@ -107,5 +107,53 @@ namespace DiskFileSystem
                 return false;
             }
         }
+        /*
+	 * 	以下为根据当前目录创建文件或者目录的方法
+	 * 	 参数为 文件名 文件类型 文件大小 当前目录 文件对象字典  FAT登记表
+	 */
+        public BasicFile createFile(BasicFile nowCatalog, Dictionary<string, BasicFile> totalFiles,int[] fat, String name = "新建文件1",int dept=1, String type = "读写", int size=1)
+        {
+            if (fat[0] >= size)
+            {   //判断磁盘剩余空间是否足够建立文件
+               //该目录下是否寻找同名目录或文件
+                if (nowCatalog.childFile.ContainsKey(name))
+                {  //判断该文件是否存在
+                    BasicFile value = nowCatalog.childFile[name];
+                    if (value.getAttr() == 3)
+                    {   //若存在同名目录 继续创建文件
+                        int startNum = setFat(size,fat);
+                        if (startNum == -1)//没有空间分配了
+                        {
+                            return null;
+                        }
+                        BasicFile file = new BasicFile(name, type, startNum, size);
+                        file.setFather(nowCatalog); //纪录上一层目录
+                        nowCatalog.childFile.Add(name, file); //在父目录添加该文件
+                        totalFiles.Add(file.getName(), file);
+                        return file;
+                    }
+                    else if (value.getAttr() == 2)
+                    { //若同名文件已存在，则换名字
+
+                        return createFile(nowCatalog,totalFiles,fat,"新建文件"+(dept+1),dept+1);
+                    }
+                }
+                else
+                { //若无同名文件或文件夹，继续创建文件
+                    int startNum = setFat(size,fat);
+                    BasicFile file = new BasicFile(name, type, startNum, size);
+                    file.setFather(nowCatalog); //纪录上一层目录
+                    nowCatalog.childFile.Add(name, file); //在父目录添加该文件
+                    totalFiles.Add(file.getName(), file);
+                    return file;
+                }
+            }
+            else
+            {
+                return null;
+            }
+            return null;
+
+        }
     }
 }

@@ -25,6 +25,8 @@ namespace DiskFileSystem
         private int[] fat = new int[128];
         //创建根目录 使用fat表的第一项
         //桌面文件夹，从4号开始存
+
+        //这里要改成函数，而不是直接创建
         public BasicFile root = new BasicFile("root",4);
 
         public int[] Fat { get => fat; set => fat = value; }
@@ -41,18 +43,18 @@ namespace DiskFileSystem
             f.MdiParent = this;
             f.Show();
             SetParent((int)f.Handle, (int)this.Handle);
-            if (root.childFile.Count == 0)
-            {
-                return;
-            }
-            else
-            {
-                foreach (string key in root.childFile.Keys)
-                {
-                    //添加到这个数组里就会自动显示文件夹
-                    f.FileListToShow.Add(root.childFile[key]);
-                }
-            }
+            //if (root.childFile.Count == 0)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    foreach (string key in root.childFile.Keys)
+            //    {
+            //        //添加到这个数组里就会自动显示文件夹
+            //        f.FileListToShow.Add(root.childFile[key]);
+            //    }
+            //}
         }
         //单击屏幕
         private void Double_Click(object sender, EventArgs e)
@@ -62,18 +64,18 @@ namespace DiskFileSystem
             f.father = this.root;
             f.Show();
             SetParent((int)f.Handle, (int)this.Handle);
-            if (root.childFile.Count == 0)
-            {
-                return;
-            }
-            else
-            {
-                foreach (string key in root.childFile.Keys)
-                {
-                    //添加到这个数组里就会自动显示文件夹
-                    f.FileListToShow.Add(root.childFile[key]);
-                }
-            }
+            //if (root.childFile.Count == 0)
+            //{
+            //    return;
+            //}
+            //else
+            //{
+            //    foreach (string key in root.childFile.Keys)
+            //    {
+            //        //添加到这个数组里就会自动显示文件夹
+            //        f.FileListToShow.Add(root.childFile[key]);
+            //    }
+            //}
         }
         //加载初始化
         private void FileMangerSystem_Load(object sender, EventArgs e)

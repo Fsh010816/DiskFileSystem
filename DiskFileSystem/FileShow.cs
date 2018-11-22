@@ -14,16 +14,14 @@ namespace DiskFileSystem
 {
     public partial class FileShow : Form
     {
-        //打开文件夹之前需要用到，将父文件夹的所有子文件添加进来以显示出来
-        public ArrayList FileListToShow = new ArrayList();
-        //
         FileMangerSystem parent;
-        //父文件夹
+        //父文件夹,也就是当前目录
         public BasicFile father;
 
         public FileShow(FileMangerSystem form)
         {
             InitializeComponent();
+            parent = form;
         }
         //点击新建文件夹
         private void 文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,21 +44,30 @@ namespace DiskFileSystem
         //点击新建文件
         private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BasicFile file = new BasicFile("新建文件", 3);
-            fileView.Items.Add(file.getItem());
-            //father.childFile.Add(file.getName(), file);
+            BasicFile file = FileFunction.GetInstance().createFile(father, parent.totalFiles, parent.Fat);
+
+
+            if (file != null)
+            {
+                fileView.Items.Add(file.getItem());
+            }
+            else
+            {
+                MessageBox.Show("创建文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
         //窗口被选中（生成，或形成焦点）
         private void fileView_Enter(object sender, EventArgs e)
         {
             //如果文件夹不为空，则显示文件
-            if (FileListToShow.Count != 0)
+            fileView.Items.Clear();
+            if (father.childFile.Count!=0)
             {
-                foreach (BasicFile file in FileListToShow)
+                foreach(var x in father.childFile)
                 {
-                    fileView.Items.Add(file.getItem());
+                    fileView.Items.Add(x.Value.getItem());
                 }
-                FileListToShow.Clear();
+                
             }
         }
         //右键点击事件
