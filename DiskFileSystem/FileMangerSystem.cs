@@ -40,7 +40,8 @@ namespace DiskFileSystem
         {
             //打开自己的子目录，如果为空，就new一个
             FileShow f = new FileShow(this);
-            f.MdiParent = this;
+            //f.MdiParent = this;
+            f.father = this.root;
             f.Show();
             SetParent((int)f.Handle, (int)this.Handle);
             //if (root.childFile.Count == 0)
@@ -60,7 +61,7 @@ namespace DiskFileSystem
         private void Double_Click(object sender, EventArgs e)
         {
             FileShow f = new FileShow(this);
-            f.MdiParent = this;
+           // f.MdiParent = this;
             f.father = this.root;
             f.Show();
             SetParent((int)f.Handle, (int)this.Handle);
@@ -96,7 +97,7 @@ namespace DiskFileSystem
         private void Disk_Check_Click(object sender, EventArgs e)
         {
             DiskUsage du = new DiskUsage(this);
-            du.MdiParent = this;
+            //du.MdiParent = this;
             du.Show();
             SetParent((int)du.Handle, (int)this.Handle);
         }

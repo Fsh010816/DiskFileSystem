@@ -57,7 +57,7 @@ namespace DiskFileSystem
             }
         }
         //窗口被选中（生成，或形成焦点）
-        private void fileView_Enter(object sender, EventArgs e)
+        private void fileView_Activated(object sender, EventArgs e)
         {
             //如果文件夹不为空，则显示文件
             fileView.Items.Clear();
@@ -102,5 +102,6 @@ namespace DiskFileSystem
         {
 
         }
+
     }
 }

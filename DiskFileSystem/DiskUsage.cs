@@ -21,7 +21,7 @@ namespace DiskFileSystem
             fat = form.Fat;
 
         }
-        private void DiskUsage_Enter(object sender, EventArgs e)
+        private void DiskUsage_Activated(object sender, EventArgs e)
         {
             setColorAndUpdate(fat);
             string str = "磁盘剩余块:" + fat[0] + "块";
@@ -91,13 +91,9 @@ namespace DiskFileSystem
 
         private void DiskUsage_Load(object sender, EventArgs e)
         {
+            setColorAndUpdate(fat);
             string str = "磁盘剩余块:" + fat[0] + "块";
             toolTip1.SetToolTip(label1, str);
-        }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
         }
     }
 }
