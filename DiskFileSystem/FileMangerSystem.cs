@@ -18,7 +18,7 @@ namespace DiskFileSystem
         [DllImport("user32.dll", EntryPoint = "SetParent")]
         public static extern int SetParent(int hWndChild, int hWndNewParent);
         //所有文件的集合
-        //public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
+        public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //定义FAT表
