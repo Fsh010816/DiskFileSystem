@@ -119,6 +119,8 @@ namespace DiskFileSystem
             //得到改文件夹，以及该文件夹的父亲
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
             FileFun.openFile(clickedFile, ref father ,fileView);
+            if(clickedFile.Attr==3)
+            pathShow.Text += @"\" + clickedFile.Name;
         }
 
         private BasicFile getFileByItem(ListViewItem item)
@@ -138,5 +140,54 @@ namespace DiskFileSystem
             return fileView;
         }
 
+        private void pathShow_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar ==(char)Keys.Enter)
+            {
+                BasicFile value=FileFun.searchFile(pathShow.Text, parent.root);
+                if(value==null)
+                {
+                    MessageBox.Show("非法路径", "非法!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    if(value.Attr==2)//是文件则打开,不跳转
+                    {
+
+                    }
+                    else if(value.Attr==3)//是目录
+                    {
+                        father = value;
+                        //如果文件夹不为空，则显示文件
+                        fileView.Items.Clear();
+                        if (father.ChildFile.Count != 0)
+                        {
+                            foreach (var x in father.ChildFile)
+                            {
+                                fileView.Items.Add(x.Value.Item);
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string fatherpath;
+            father = FileFun.backFile(pathShow.Text, parent.root,out fatherpath);
+            pathShow.Text = fatherpath;
+            fileView.Items.Clear();
+            if (father.ChildFile.Count != 0)
+            {
+                foreach (var x in father.ChildFile)
+                {
+                    fileView.Items.Add(x.Value.Item);
+                }
+
+            }
+
+        }
     }
 }
