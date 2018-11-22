@@ -340,7 +340,7 @@ namespace DiskFileSystem
         }
 
         //打开文件夹时
-        public void openFile(BasicFile clickFile,BasicFile fatherFile,ListView fileView)
+        public void openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView)
         {
 
             if (clickFile.getAttr() == 2)
