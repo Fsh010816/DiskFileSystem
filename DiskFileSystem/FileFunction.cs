@@ -49,7 +49,7 @@ namespace DiskFileSystem
                     j++;
                 }
             }
-            fat[i - 1] = -1;
+            fat[i - 1] = -1; 
             fat[0] -= size;
             return startNum[0]; //返回该文件起始块盘号
         }
