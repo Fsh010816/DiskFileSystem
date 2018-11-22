@@ -18,14 +18,14 @@ namespace DiskFileSystem
         [DllImport("user32.dll", EntryPoint = "SetParent")]
         public static extern int SetParent(int hWndChild, int hWndNewParent);
         //所有文件的集合
-        public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
+        //public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //定义FAT表
-        private int[] fat = new int[128];
+        public static int[] fat = new int[128];
         //创建根目录 使用fat表的第一项
         //桌面文件夹，从4号开始存
-        public BasicFile root = new BasicFile("root",4);
+        public static BasicFile root = new BasicFile("root",4);
 
         public int[] Fat { get => fat; set => fat = value; }
 
@@ -36,7 +36,7 @@ namespace DiskFileSystem
         //右键打开或者单击
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //打开自己的子目录，如果为空，就new一个
+            //打开自己的子目录
             FileShow f = new FileShow(this);
             f.MdiParent = this;
             f.Show();
@@ -59,7 +59,7 @@ namespace DiskFileSystem
         {
             FileShow f = new FileShow(this);
             f.MdiParent = this;
-            f.father = this.root;
+            f.setFather(root);
             f.Show();
             SetParent((int)f.Handle, (int)this.Handle);
             if (root.childFile.Count == 0)
@@ -87,8 +87,8 @@ namespace DiskFileSystem
             Fat[1] = -1; //255表示磁盘块已占用
             Fat[0] = 125; //纪录磁盘剩余块数	
             root.setFather(root);
-            totalFiles.Add("root", root);
-            //FileFun.setFat(10,Fat);
+            //totalFiles.Add("root", root);
+           // FileFun.setFat(10,Fat);
         }
 
         private void Disk_Check_Click(object sender, EventArgs e)
