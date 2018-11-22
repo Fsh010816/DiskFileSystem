@@ -41,6 +41,7 @@ namespace DiskFileSystem
             this.size = 1;
             this.item = new ListViewItem(name);
             this.item.ImageIndex = 0;
+            //this.item.Text = ;
         }
         public String getName()
         {

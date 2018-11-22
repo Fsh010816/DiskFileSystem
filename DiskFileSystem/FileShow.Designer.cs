@@ -104,14 +104,14 @@
             // 文件夹ToolStripMenuItem
             // 
             this.文件夹ToolStripMenuItem.Name = "文件夹ToolStripMenuItem";
-            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.文件夹ToolStripMenuItem.Text = "文件夹(&F)";
             this.文件夹ToolStripMenuItem.Click += new System.EventHandler(this.文件夹ToolStripMenuItem_Click);
             // 
             // 文件ToolStripMenuItem
             // 
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.文件ToolStripMenuItem.Text = "文件(&B)";
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
