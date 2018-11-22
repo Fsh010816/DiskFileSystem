@@ -116,10 +116,10 @@ namespace DiskFileSystem
             if (fat[0] >= size)
             {   //判断磁盘剩余空间是否足够建立文件
                 //该目录下是否寻找同名目录或文件
-                if (nowCatalog.childFile.ContainsKey(name))
+                if (nowCatalog.ChildFile.ContainsKey(name))
                 {  //判断该文件是否存在
-                    BasicFile value = nowCatalog.childFile[name];
-                    if (value.getAttr() == 3)
+                    BasicFile value = nowCatalog.ChildFile[name];
+                    if (value.Attr == 3)
                     {   //若存在同名目录 继续创建文件
                         int startNum = setFat(size, fat);
                         if (startNum == -1)//没有空间分配了
@@ -127,11 +127,11 @@ namespace DiskFileSystem
                             return null;
                         }
                         BasicFile file = new BasicFile(name, type, startNum, size);
-                        file.setFather(nowCatalog); //纪录上一层目录
-                        nowCatalog.childFile.Add(name, file); //在父目录添加该文件
+                        file.Father = nowCatalog; //纪录上一层目录
+                        nowCatalog.ChildFile.Add(name, file); //在父目录添加该文件
                         return file;
                     }
-                    else if (value.getAttr() == 2)
+                    else if (value.Attr == 2)
                     { //若同名文件已存在，则换名字
 
                         return createFile(nowCatalog, fat, "新建文件" + (dept + 1), dept + 1);
@@ -141,8 +141,8 @@ namespace DiskFileSystem
                 { //若无同名文件或文件夹，继续创建文件
                     int startNum = setFat(size, fat);
                     BasicFile file = new BasicFile(name, type, startNum, size);
-                    file.setFather(nowCatalog); //纪录上一层目录
-                    nowCatalog.childFile.Add(name, file); //在父目录添加该文件
+                    file.Father = nowCatalog; //纪录上一层目录
+                    nowCatalog.ChildFile.Add(name, file); //在父目录添加该文件
                     return file;
                 }
             }
@@ -161,23 +161,23 @@ namespace DiskFileSystem
             if (fat[0] >= 1)
             {
                 //判断是否重命名
-                if (nowCatalog.childFile.ContainsKey(name))
+                if (nowCatalog.ChildFile.ContainsKey(name))
                 {
-                    BasicFile value = nowCatalog.childFile[name];
+                    BasicFile value = nowCatalog.ChildFile[name];
                     //不同类型，创建成功
-                    if (value.getAttr() == 2)
+                    if (value.Attr == 2)
                     {
                         int startNum = this.setFat(1, fat);
                         BasicFile catalog = new BasicFile(name, startNum);
                         //设置父亲
-                        catalog.setFather(nowCatalog);
+                        catalog.Father = nowCatalog;
                         //添加到父文件夹下
-                        nowCatalog.childFile.Add(catalog.getName(), catalog);
+                        nowCatalog.ChildFile.Add(catalog.Name, catalog);
                         return catalog;
                         //Console.WriteLine("文件夹创建成功");
                     }
                     //相同类型，则帮改为默认命名
-                    else if (value.getAttr() == 3)
+                    else if (value.Attr == 3)
                     {
                         Console.WriteLine("存在重复命名");
                         //以默认命名创建文件夹
@@ -190,9 +190,9 @@ namespace DiskFileSystem
                     int startNum = this.setFat(1, fat);
                     BasicFile catalog = new BasicFile(name, startNum);
                     //设置父亲
-                    catalog.setFather(nowCatalog);
+                    catalog.Father = nowCatalog;
                     //添加到父文件夹下
-                    nowCatalog.childFile.Add(catalog.getName(), catalog);
+                    nowCatalog.ChildFile.Add(catalog.Name, catalog);
                     return catalog;
                     // Console.WriteLine("文件夹创建成功");
                 }
@@ -208,24 +208,24 @@ namespace DiskFileSystem
         //打开时显示
         public void showFile(BasicFile nowFile,FileShow fileShow)
         {
-            if(nowFile.childFile.Count != 0)
+            if(nowFile.ChildFile.Count != 0)
             {
-                foreach (KeyValuePair<String, BasicFile> file in nowFile.childFile)
+                foreach (KeyValuePair<String, BasicFile> file in nowFile.ChildFile)
                 {
-                    if (file.Value.getAttr() == 3)
+                    if (file.Value.Attr == 3)
                     { //目录文件
-                        Console.WriteLine("文件名 : " + file.Value.getName());
+                        Console.WriteLine("文件名 : " + file.Value.Name);
                         Console.WriteLine("操作类型 ： " + "文件夹");
-                        Console.WriteLine("起始盘块 ： " + file.Value.getStartNum());
-                        Console.WriteLine("大小 : " + file.Value.getSize());
+                        Console.WriteLine("起始盘块 ： " + file.Value.StartNum);
+                        Console.WriteLine("大小 : " + file.Value.Size);
                         Console.WriteLine("<-------------------------------------->");
                     }
-                    else if (file.Value.getAttr() == 2)
+                    else if (file.Value.Attr == 2)
                     {
-                        Console.WriteLine("文件名 : " + file.Value.getName());
+                        Console.WriteLine("文件名 : " + file.Value.Name);
                         Console.WriteLine("操作类型 ： " + "文件夹");
-                        Console.WriteLine("起始盘块 ： " + file.Value.getStartNum());
-                        Console.WriteLine("大小 : " + file.Value.getSize());
+                        Console.WriteLine("起始盘块 ： " + file.Value.StartNum);
+                        Console.WriteLine("大小 : " + file.Value.Size);
                         Console.WriteLine("<-------------------------------------->");
                     }
                 }
@@ -261,18 +261,18 @@ namespace DiskFileSystem
         //删除某个父目录下的某个文件
         public void deleteFile(String name,BasicFile fatherFile)
         {
-            if (fatherFile.childFile.ContainsKey(name))
+            if (fatherFile.ChildFile.ContainsKey(name))
             {
                 BasicFile file;
-                fatherFile.childFile.TryGetValue(name, out file);
-                fatherFile.childFile.Remove(name);
-                if (file.getAttr() == 3)
+                fatherFile.ChildFile.TryGetValue(name, out file);
+                fatherFile.ChildFile.Remove(name);
+                if (file.Attr == 3)
                 {
-                    Console.WriteLine("删除文件夹成功: " + file.getName());
+                    Console.WriteLine("删除文件夹成功: " + file.Name);
                 }
-                else if(file.getAttr() == 2)
+                else if(file.Attr == 2)
                 {
-                    Console.WriteLine("删除文件成功: " + file.getName());
+                    Console.WriteLine("删除文件成功: " + file.Name);
                 }
             }
             else
@@ -291,9 +291,9 @@ namespace DiskFileSystem
 
         public void reName(String name, String newName,BasicFile fatherFile)
         {
-            if (fatherFile.childFile.ContainsKey(name))
+            if (fatherFile.ChildFile.ContainsKey(name))
             {
-                if (fatherFile.childFile.ContainsKey(newName))
+                if (fatherFile.ChildFile.ContainsKey(newName))
                 {
                    Console.WriteLine("重命名失败，同名文件已存在！");
                     //showFile();
@@ -301,10 +301,10 @@ namespace DiskFileSystem
                 else
                 {
                     BasicFile file;
-                    fatherFile.childFile.TryGetValue(name, out file);
-                    file.setName(newName);
-                    fatherFile.childFile.Remove(name);
-                    fatherFile.childFile.Add(name,file);
+                    fatherFile.ChildFile.TryGetValue(name, out file);
+                    file.Name = newName;
+                    fatherFile.ChildFile.Remove(name);
+                    fatherFile.ChildFile.Add(name,file);
                     Console.WriteLine("重命名成功！");
                 }
             }
@@ -317,19 +317,19 @@ namespace DiskFileSystem
 
         public void changeType(String name, String type, BasicFile fatherFile)
         {
-            if (fatherFile.childFile.ContainsKey(name))
+            if (fatherFile.ChildFile.ContainsKey(name))
             {
                 BasicFile file;
-                fatherFile.childFile.TryGetValue(name, out file);
-                if(file.getType() == type)
+                fatherFile.ChildFile.TryGetValue(name, out file);
+                if(file.Type == type)
                 {
                     Console.WriteLine("改类型失败，相同的类型");
                 }
                 else
                 {
-                    file.setType(type);
-                    fatherFile.childFile.Remove(name);
-                    fatherFile.childFile.Add(name, file);
+                    file.Type = type;
+                    fatherFile.ChildFile.Remove(name);
+                    fatherFile.ChildFile.Add(name, file);
                     Console.WriteLine("更改类型成功！");
                 }
             }
@@ -343,24 +343,24 @@ namespace DiskFileSystem
         public void openFile(BasicFile clickFile,BasicFile fatherFile,ListView fileView)
         {
 
-            if (clickFile.getAttr() == 2)
+            if (clickFile.Attr == 2)
             {
                 //新建文本窗口
 
                // Console.WriteLine("文件已打开，文件大小为 : " + file.getSize());
             }
-            else if (clickFile.getAttr() == 3)
+            else if (clickFile.Attr == 3)
             {
                 //清空fileShow
                 fileView.Items.Clear();
                 //设置FileShow里的father
                 fatherFile = clickFile; //fatherFile) ;
                 //添加到fileShow的待显示数组里
-                if (fatherFile.childFile.Count != 0)
+                if (fatherFile.ChildFile.Count != 0)
                 {
-                    foreach (var x in fatherFile.childFile)
+                    foreach (var x in fatherFile.ChildFile)
                     {
-                        fileView.Items.Add(x.Value.getItem());
+                        fileView.Items.Add(x.Value.Item);
                     }
 
                 }
@@ -376,7 +376,7 @@ namespace DiskFileSystem
 
         public void backFile(BasicFile nowFatherFile, FileShow fileShow)
         {
-            if (nowFatherFile.getFather() == null)
+            if (nowFatherFile.Father == null)
             {
                 Console.WriteLine("已经是最上层目录");
             }

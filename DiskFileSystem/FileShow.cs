@@ -37,7 +37,7 @@ namespace DiskFileSystem
             //Console.WriteLine(father.getName());
             if (file != null)
             {
-                fileView.Items.Add(file.getItem());
+                fileView.Items.Add(file.Item);
             }
             else
             {
@@ -64,7 +64,7 @@ namespace DiskFileSystem
 
             if (file != null)
             {
-                fileView.Items.Add(file.getItem());
+                fileView.Items.Add(file.Item);
             }
             else
             {
@@ -76,11 +76,11 @@ namespace DiskFileSystem
         {
             //如果文件夹不为空，则显示文件
             fileView.Items.Clear();
-            if (father.childFile.Count!=0)
+            if (father.ChildFile.Count!=0)
             {
-                foreach(var x in father.childFile)
+                foreach(var x in father.ChildFile)
                 {
-                    fileView.Items.Add(x.Value.getItem());
+                    fileView.Items.Add(x.Value.Item);
                 }
                 
             }
@@ -123,9 +123,9 @@ namespace DiskFileSystem
 
         private BasicFile getFileByItem(ListViewItem item)
         {
-            foreach (var childFile in father.childFile)
+            foreach (var childFile in father.ChildFile)
             {
-                if (childFile.Value.getItem() == item)
+                if (childFile.Value.Item == item)
                 {
                     return childFile.Value;
                 }
