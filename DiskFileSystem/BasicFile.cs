@@ -13,6 +13,7 @@ namespace DiskFileSystem
         private String name; //文件名或目录名
         private String type; //文件类型
         private String content; //文件内容
+        private String path; //文件路径
         private int attr; //用来识别是文件还是目录 
         private int startNum;   //在FAT表中起始位置
         private int size;   //文件的大小
@@ -30,27 +31,38 @@ namespace DiskFileSystem
         public ListViewItem Item { get => item; set => item = value; }
         public bool IsOpening { get => isOpening; set => isOpening = value; }
         public string Content { get => content; set => content = value; }
+        public string Path { get => path; set => path = value; }
 
         //文件构造函数
-        public BasicFile(String name, String type, int startNum, int size)
+        public BasicFile(String name, String type, int startNum, int size, String fatherPath)
         {
             this.Name = name;
             this.Type = type;
             this.Attr = 2;
             this.StartNum = startNum;
             this.Size = size;
+            this.Path = fatherPath + @"\" + name;
             this.Item = new ListViewItem(name);
             //暂时定为0
             this.Item.ImageIndex = 1;
         }
         //文件夹构造函数
-        public BasicFile(String name, int startNum)
+        public BasicFile(String name, int startNum,String fatherPath)
         {
             this.Name = name;
             this.Attr = 3;
             this.StartNum = startNum;
             this.Type = "  ";
             this.Size = 1;
+            if(fatherPath == "")
+            {
+                this.Path = "root:";
+            }
+            else
+            {
+                this.Path = fatherPath + @"\" + name;
+            }
+            
             this.Item = new ListViewItem(name);
             this.Item.ImageIndex = 2;
         }

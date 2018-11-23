@@ -20,15 +20,11 @@ namespace DiskFileSystem
         FileMangerSystem parent;
         //父文件夹,也就是当前目录
         public BasicFile father;
-        private String nowPath;
-
-        public string NowPath { get => nowPath; set => nowPath = value; }
 
         public FileShow(FileMangerSystem form)
         {
             InitializeComponent();
             parent = form;
-            nowPath = "root:";
         }
         public FileShow()
         {
@@ -126,7 +122,6 @@ namespace DiskFileSystem
             if(clickedFile.Attr==3)
             {
                pathShow.Text += @"\" + clickedFile.Name;
-               NowPath = pathShow.Text;
             }
             
         }
@@ -165,7 +160,6 @@ namespace DiskFileSystem
                     }
                     else if(value.Attr==3)//是目录
                     {
-                        NowPath = pathShow.Text;
                         father = value;
                         //如果文件夹不为空，则显示文件
                         fileView.Items.Clear();
@@ -185,9 +179,8 @@ namespace DiskFileSystem
         private void button1_Click(object sender, EventArgs e)
         {
             string fatherpath;
-            father = FileFun.backFile(NowPath, parent.root,out fatherpath);
+            father = FileFun.backFile(father.Path, parent.root,out fatherpath);
             pathShow.Text = fatherpath;
-            NowPath = fatherpath;
             fileView.Items.Clear();
             if (father.ChildFile.Count != 0)
             {

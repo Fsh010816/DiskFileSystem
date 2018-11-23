@@ -79,7 +79,7 @@ namespace DiskFileSystem
             Fat[2] = -1; //纪录磁盘剩余块数	
             Fat[1] = -1; //255表示磁盘块已占用
             Fat[0] = 124; //纪录磁盘剩余块数	
-            root =  new BasicFile("root", 3);
+            root =  new BasicFile("root", 3, "");
             root.Father = root;
         }
 

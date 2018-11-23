@@ -126,7 +126,7 @@ namespace DiskFileSystem
                         {
                             return null;
                         }
-                        BasicFile file = new BasicFile(name, type, startNum, size);
+                        BasicFile file = new BasicFile(name, type, startNum, size, nowCatalog.Path);
                         file.Father = nowCatalog; //纪录上一层目录
                         nowCatalog.ChildFile.Add(name, file); //在父目录添加该文件
                         return file;
@@ -140,7 +140,7 @@ namespace DiskFileSystem
                 else
                 { //若无同名文件或文件夹，继续创建文件
                     int startNum = setFat(size, fat);
-                    BasicFile file = new BasicFile(name, type, startNum, size);
+                    BasicFile file = new BasicFile(name, type, startNum, size,nowCatalog.Path);
                     file.Father = nowCatalog; //纪录上一层目录
                     nowCatalog.ChildFile.Add(name, file); //在父目录添加该文件
                     return file;
@@ -168,7 +168,7 @@ namespace DiskFileSystem
                     if (value.Attr == 2)
                     {
                         int startNum = this.setFat(1, fat);
-                        BasicFile catalog = new BasicFile(name, startNum);
+                        BasicFile catalog = new BasicFile(name, startNum,nowCatalog.Path);
                         //设置父亲
                         catalog.Father = nowCatalog;
                         //添加到父文件夹下
@@ -188,7 +188,7 @@ namespace DiskFileSystem
                 else
                 {
                     int startNum = this.setFat(1, fat);
-                    BasicFile catalog = new BasicFile(name, startNum);
+                    BasicFile catalog = new BasicFile(name, startNum, nowCatalog.Path);
                     //设置父亲
                     catalog.Father = nowCatalog;
                     //添加到父文件夹下
@@ -435,14 +435,10 @@ namespace DiskFileSystem
             }
             else
             {
-                string fatherpath=@"root:";
-                string[] tmp = path.Split(@"\"[0]);
-                for(int i=1;i<tmp.Length-1;i++)
-                {
-                    fatherpath += @"\"+tmp[i];
-                }
+                BasicFile value=searchFile(path, root);
+                string fatherpath = value.Father.Path;
                 fpath = fatherpath;
-                return searchFile(fatherpath, root);
+                return value.Father;
             }
         }
 
