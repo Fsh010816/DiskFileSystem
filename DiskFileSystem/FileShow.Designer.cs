@@ -47,6 +47,7 @@
             this.重命名MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.属性RToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
             this.SuspendLayout();
@@ -54,17 +55,17 @@
             // pathShow
             // 
             this.pathShow.Font = new System.Drawing.Font("隶书", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pathShow.Location = new System.Drawing.Point(60, 10);
-            this.pathShow.Multiline = true;
+            this.pathShow.Location = new System.Drawing.Point(76, 7);
             this.pathShow.Name = "pathShow";
-            this.pathShow.Size = new System.Drawing.Size(534, 25);
+            this.pathShow.Size = new System.Drawing.Size(534, 26);
             this.pathShow.TabIndex = 0;
-            this.pathShow.Text = "baidu.com";
+            this.pathShow.Text = "root:";
+            this.pathShow.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pathShow_KeyPress);
             // 
             // searchText
             // 
             this.searchText.Font = new System.Drawing.Font("隶书", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.searchText.Location = new System.Drawing.Point(614, 10);
+            this.searchText.Location = new System.Drawing.Point(616, 8);
             this.searchText.Multiline = true;
             this.searchText.Name = "searchText";
             this.searchText.Size = new System.Drawing.Size(119, 25);
@@ -77,7 +78,7 @@
             this.fileView.LargeImageList = this.imageList2;
             this.fileView.Location = new System.Drawing.Point(0, 41);
             this.fileView.Name = "fileView";
-            this.fileView.Size = new System.Drawing.Size(802, 412);
+            this.fileView.Size = new System.Drawing.Size(892, 412);
             this.fileView.SmallImageList = this.imageList1;
             this.fileView.TabIndex = 4;
             this.fileView.UseCompatibleStateImageBehavior = false;
@@ -134,7 +135,7 @@
             this.search.BackColor = System.Drawing.SystemColors.Control;
             this.search.BackgroundImage = global::DiskFileSystem.Properties.Resources.search;
             this.search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.search.Location = new System.Drawing.Point(733, 9);
+            this.search.Location = new System.Drawing.Point(741, 7);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(26, 26);
             this.search.TabIndex = 3;
@@ -145,7 +146,7 @@
             this.showPath.BackColor = System.Drawing.SystemColors.Control;
             this.showPath.BackgroundImage = global::DiskFileSystem.Properties.Resources.FileSet;
             this.showPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.showPath.Location = new System.Drawing.Point(34, 9);
+            this.showPath.Location = new System.Drawing.Point(44, 7);
             this.showPath.Name = "showPath";
             this.showPath.Size = new System.Drawing.Size(26, 26);
             this.showPath.TabIndex = 1;
@@ -198,11 +199,22 @@
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(10, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 28);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FileShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(893, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.search);
             this.Controls.Add(this.searchText);
             this.Controls.Add(this.showPath);
@@ -239,5 +251,6 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripMenuItem 重命名MToolStripMenuItem;
         public System.Windows.Forms.ListView fileView;
+        private System.Windows.Forms.Button button1;
     }
 }

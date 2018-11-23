@@ -204,9 +204,51 @@ namespace DiskFileSystem
             }
             return null;
         }
-
-        //打开时显示
-        public void showFile(BasicFile nowFile,FileShow fileShow)
+        /*
+	 * 以下根据绝对路径寻找文件或目录
+	 * @return 返回目录或者文件。如果返回的是文件,则要打开不用跳转到父目录，如果返回的是目录，则要跳转到该目录
+	 */
+        public BasicFile searchFile(string path,BasicFile root)
+        {
+            if (path.Length == 0)
+            {
+                return null;
+            }
+            else
+            {
+                string[] name = path.Split(@"\"[0]);
+                if(name[0].Equals(@"root:"))
+                {
+                    if(name.Length==1)//只是根目录
+                    {
+                        return root;
+                    }
+                    else//有多级目录
+                    {
+                        BasicFile tmpCatalog = root;
+                        for (int i = 1; i < name.Length; i++)
+                        {
+                            if (tmpCatalog.ChildFile.ContainsKey(name[i]))//判断该文件是否存在
+                            {
+                                tmpCatalog = tmpCatalog.ChildFile[name[i]];
+                            }
+                            else
+                            {
+                                return null;//非法路径
+                            }
+                        }
+                        return tmpCatalog;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            
+        }
+            //打开时显示
+            public void showFile(BasicFile nowFile,FileShow fileShow)
         {
             if(nowFile.ChildFile.Count != 0)
             {
@@ -381,16 +423,24 @@ namespace DiskFileSystem
 	 * 
 	 */
 
-        public void backFile(BasicFile nowFatherFile, FileShow fileShow)
+        public BasicFile backFile(string path,BasicFile root,out string fpath)
         {
-            if (nowFatherFile.Father == null)
+            if (path.Equals(@"root:"))
             {
                 Console.WriteLine("已经是最上层目录");
+                fpath = path;
+                return root;
             }
             else
             {
-                //打开父文件夹
-                //openFile(nowFatherFile.getName(), nowFatherFile.getFather(),fileShow);
+                string fatherpath=@"root:";
+                string[] tmp = path.Split(@"\"[0]);
+                for(int i=1;i<tmp.Length-1;i++)
+                {
+                    fatherpath += @"\"+tmp[i];
+                }
+                fpath = fatherpath;
+                return searchFile(fatherpath, root);
             }
         }
 
