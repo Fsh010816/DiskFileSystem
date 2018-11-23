@@ -20,11 +20,15 @@ namespace DiskFileSystem
         FileMangerSystem parent;
         //父文件夹,也就是当前目录
         public BasicFile father;
+        private String nowPath;
+
+        public string NowPath { get => nowPath; set => nowPath = value; }
 
         public FileShow(FileMangerSystem form)
         {
             InitializeComponent();
             parent = form;
+            nowPath = "root:";
         }
         public FileShow()
         {
@@ -120,7 +124,11 @@ namespace DiskFileSystem
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
             FileFun.openFile(clickedFile, ref father ,fileView);
             if(clickedFile.Attr==3)
-            pathShow.Text += @"\" + clickedFile.Name;
+            {
+               pathShow.Text += @"\" + clickedFile.Name;
+               NowPath = pathShow.Text;
+            }
+            
         }
 
         private BasicFile getFileByItem(ListViewItem item)
@@ -135,12 +143,7 @@ namespace DiskFileSystem
             return null;
         }
 
-        public ListView getFileView()
-        {
-            return fileView;
-        }
-
-        private void FileShow_FormClosed(object sender, KeyPressEventArgs e)
+        private void FileShow_FormClosed(object sender, EventArgs e)
         {
             this.parent.root.IsOpening = false;
         }
@@ -162,6 +165,7 @@ namespace DiskFileSystem
                     }
                     else if(value.Attr==3)//是目录
                     {
+                        NowPath = pathShow.Text;
                         father = value;
                         //如果文件夹不为空，则显示文件
                         fileView.Items.Clear();
@@ -181,8 +185,9 @@ namespace DiskFileSystem
         private void button1_Click(object sender, EventArgs e)
         {
             string fatherpath;
-            father = FileFun.backFile(pathShow.Text, parent.root,out fatherpath);
+            father = FileFun.backFile(NowPath, parent.root,out fatherpath);
             pathShow.Text = fatherpath;
+            NowPath = fatherpath;
             fileView.Items.Clear();
             if (father.ChildFile.Count != 0)
             {

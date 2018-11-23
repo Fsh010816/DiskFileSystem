@@ -12,6 +12,7 @@ namespace DiskFileSystem
         private Dictionary<String, BasicFile> childFile = new Dictionary<String, BasicFile>();
         private String name; //文件名或目录名
         private String type; //文件类型
+        private String content; //文件内容
         private int attr; //用来识别是文件还是目录 
         private int startNum;   //在FAT表中起始位置
         private int size;   //文件的大小
@@ -28,6 +29,7 @@ namespace DiskFileSystem
         public BasicFile Father { get => father; set => father = value; }
         public ListViewItem Item { get => item; set => item = value; }
         public bool IsOpening { get => isOpening; set => isOpening = value; }
+        public string Content { get => content; set => content = value; }
 
         //文件构造函数
         public BasicFile(String name, String type, int startNum, int size)

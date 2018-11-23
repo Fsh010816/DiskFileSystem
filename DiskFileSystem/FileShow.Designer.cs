@@ -39,8 +39,6 @@
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.search = new System.Windows.Forms.Button();
-            this.showPath = new System.Windows.Forms.Button();
             this.RightClick_File = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +46,8 @@
             this.属性RToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.search = new System.Windows.Forms.Button();
+            this.showPath = new System.Windows.Forms.Button();
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +55,7 @@
             // pathShow
             // 
             this.pathShow.Font = new System.Drawing.Font("隶书", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pathShow.Location = new System.Drawing.Point(76, 7);
+            this.pathShow.Location = new System.Drawing.Point(70, 7);
             this.pathShow.Name = "pathShow";
             this.pathShow.Size = new System.Drawing.Size(534, 26);
             this.pathShow.TabIndex = 0;
@@ -65,7 +65,7 @@
             // searchText
             // 
             this.searchText.Font = new System.Drawing.Font("隶书", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.searchText.Location = new System.Drawing.Point(616, 8);
+            this.searchText.Location = new System.Drawing.Point(621, 8);
             this.searchText.Multiline = true;
             this.searchText.Name = "searchText";
             this.searchText.Size = new System.Drawing.Size(119, 25);
@@ -130,28 +130,6 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "TXT.png");
             // 
-            // search
-            // 
-            this.search.BackColor = System.Drawing.SystemColors.Control;
-            this.search.BackgroundImage = global::DiskFileSystem.Properties.Resources.search;
-            this.search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.search.Location = new System.Drawing.Point(741, 7);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(26, 26);
-            this.search.TabIndex = 3;
-            this.search.UseVisualStyleBackColor = false;
-            // 
-            // showPath
-            // 
-            this.showPath.BackColor = System.Drawing.SystemColors.Control;
-            this.showPath.BackgroundImage = global::DiskFileSystem.Properties.Resources.FileSet;
-            this.showPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.showPath.Location = new System.Drawing.Point(44, 7);
-            this.showPath.Name = "showPath";
-            this.showPath.Size = new System.Drawing.Size(26, 26);
-            this.showPath.TabIndex = 1;
-            this.showPath.UseVisualStyleBackColor = false;
-            // 
             // RightClick_File
             // 
             this.RightClick_File.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -201,13 +179,36 @@
             // 
             // button1
             // 
+            this.button1.BackgroundImage = global::DiskFileSystem.Properties.Resources.back;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Location = new System.Drawing.Point(10, 7);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 28);
+            this.button1.Size = new System.Drawing.Size(26, 26);
             this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // search
+            // 
+            this.search.BackColor = System.Drawing.SystemColors.Control;
+            this.search.BackgroundImage = global::DiskFileSystem.Properties.Resources.search;
+            this.search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.search.Location = new System.Drawing.Point(741, 7);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(26, 26);
+            this.search.TabIndex = 3;
+            this.search.UseVisualStyleBackColor = false;
+            // 
+            // showPath
+            // 
+            this.showPath.BackColor = System.Drawing.SystemColors.Control;
+            this.showPath.BackgroundImage = global::DiskFileSystem.Properties.Resources.FileSet;
+            this.showPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.showPath.Location = new System.Drawing.Point(44, 7);
+            this.showPath.Name = "showPath";
+            this.showPath.Size = new System.Drawing.Size(26, 26);
+            this.showPath.TabIndex = 1;
+            this.showPath.UseVisualStyleBackColor = false;
             // 
             // FileShow
             // 
