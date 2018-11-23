@@ -84,6 +84,7 @@
             this.fileView.UseCompatibleStateImageBehavior = false;
             this.fileView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.fileView_ItemSelectionChanged);
             this.fileView.SelectedIndexChanged += new System.EventHandler(this.fileView_SelectedIndexChanged);
+            this.fileView.DoubleClick += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             this.fileView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.fileView_MouseUp);
             // 
             // RightClick_View
