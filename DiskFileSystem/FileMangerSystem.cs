@@ -24,10 +24,10 @@ namespace DiskFileSystem
         //定义FAT表
         public  int[] fat = new int[128];
         //创建根目录 使用fat表的第一项
-        //桌面文件夹，从4号开始存
 
+        //桌面文件夹，从4号开始存
         //这里要改成函数，而不是直接创建
-        public BasicFile root = new BasicFile("root",4);
+        public BasicFile root;
 
         public int[] Fat { get => fat; set => fat = value; }
 
@@ -38,52 +38,39 @@ namespace DiskFileSystem
         //右键打开或者单击
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(root.IsOpening == true)
+            {
+                MessageBox.Show("不能重复打开文件！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            root.IsOpening = true;
             //打开自己的子目录
             FileShow f = new FileShow(this);
-            //f.MdiParent = this;
             f.father = this.root;
+            root.Father = null;
             SetParent((int)f.Handle, (int)this.Handle);
             f.Show();
-            
-            //if (root.childFile.Count == 0)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-            //    foreach (string key in root.childFile.Keys)
-            //    {
-            //        //添加到这个数组里就会自动显示文件夹
-            //        f.FileListToShow.Add(root.childFile[key]);
-            //    }
-            //}
         }
         //单击屏幕
         private void Double_Click(object sender, EventArgs e)
         {
+            if (root.IsOpening == true)
+            {
+                MessageBox.Show("不能重复打开文件！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            root.IsOpening = true;
             FileShow f = new FileShow(this);
             Console.WriteLine(f.ToString());
-           // f.MdiParent = this;
             f.father = this.root;
+            root.Father = null;
             SetParent((int)f.Handle, (int)this.Handle);
             f.Show();
-           
-            //if (root.childFile.Count == 0)
-            //{
-            //    return;
-            //}
-            //else
-            //{
-            //    foreach (string key in root.childFile.Keys)
-            //    {
-            //        //添加到这个数组里就会自动显示文件夹
-            //        f.FileListToShow.Add(root.childFile[key]);
-            //    }
-            //}
         }
         //加载初始化
         private void FileMangerSystem_Load(object sender, EventArgs e)
         {
+            
             for (int i = 0; i < Fat.Length; i++)
             {
                 Fat[i] = 0;
@@ -92,9 +79,8 @@ namespace DiskFileSystem
             Fat[2] = -1; //纪录磁盘剩余块数	
             Fat[1] = -1; //255表示磁盘块已占用
             Fat[0] = 124; //纪录磁盘剩余块数	
+            root =  new BasicFile("root", 3);
             root.Father = root;
-            //totalFiles.Add("root", root);
-           // FileFun.setFat(10,Fat);
         }
 
         private void Disk_Check_Click(object sender, EventArgs e)

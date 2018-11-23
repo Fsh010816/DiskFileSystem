@@ -343,19 +343,27 @@ namespace DiskFileSystem
         public void openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView)
         {
 
+            
             if (clickFile.Attr == 2)
             {
+                if (clickFile.IsOpening == true)
+                {
+                    MessageBox.Show("不能重复打开文件！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
                 //新建文本窗口
+                //设置为已打开状态
+                clickFile.IsOpening = true;
 
-               // Console.WriteLine("文件已打开，文件大小为 : " + file.getSize());
             }
             else if (clickFile.Attr == 3)
             {
+
                 //清空fileShow
                 fileView.Items.Clear();
                 //设置FileShow里的father
-                fatherFile = clickFile; //fatherFile) ;
-                //添加到fileShow的待显示数组里
+                fatherFile = clickFile;
+                //显示子目录
                 if (fatherFile.ChildFile.Count != 0)
                 {
                     foreach (var x in fatherFile.ChildFile)
@@ -365,7 +373,6 @@ namespace DiskFileSystem
 
                 }
             }
-
         }
 
         /*

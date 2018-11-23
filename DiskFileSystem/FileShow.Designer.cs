@@ -120,12 +120,14 @@
             this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList2.Images.SetKeyName(0, "Beat Hazard-文件夹图标(icon folder)_爱给网_aigei_com.png");
+            this.imageList2.Images.SetKeyName(1, "TXT.png");
+            this.imageList2.Images.SetKeyName(2, "FileSet.png");
             // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "58-html5版植物大战僵尸源代码-攻击(Attack)_爱给网_aigei_com.gif");
+            this.imageList1.Images.SetKeyName(0, "TXT.png");
             // 
             // search
             // 
@@ -207,8 +209,10 @@
             this.Controls.Add(this.pathShow);
             this.Controls.Add(this.fileView);
             this.Name = "FileShow";
+            this.ShowInTaskbar = false;
             this.Text = "FileShow";
             this.Activated += new System.EventHandler(this.fileView_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileShow_FormClosed);
             this.RightClick_View.ResumeLayout(false);
             this.RightClick_File.ResumeLayout(false);
             this.ResumeLayout(false);

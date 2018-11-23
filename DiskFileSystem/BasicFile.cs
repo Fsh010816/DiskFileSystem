@@ -39,7 +39,7 @@ namespace DiskFileSystem
             this.Size = size;
             this.Item = new ListViewItem(name);
             //暂时定为0
-            this.Item.ImageIndex = 0;
+            this.Item.ImageIndex = 1;
         }
         //文件夹构造函数
         public BasicFile(String name, int startNum)
@@ -50,69 +50,8 @@ namespace DiskFileSystem
             this.Type = "  ";
             this.Size = 1;
             this.Item = new ListViewItem(name);
-            this.Item.ImageIndex = 0;
-            //this.item.Text = ;
+            this.Item.ImageIndex = 2;
         }
-        //public String getName()
-        //{
-        //    return name;
-        //}
-        //public void setName(String name)
-        //{
-        //    this.name = name;
-        //}
-        //public String getType()
-        //{
-        //    return type;
-        //}
-        //public void setType(String type)
-        //{
-        //    this.type = type;
-        //}
-        //public int getAttr()
-        //{
-        //    return attr;
-        //}
-        //public void setAttr(int attr)
-        //{
-        //    this.attr = attr;
-        //}
-        //public int getStartNum()
-        //{
-        //    return startNum;
-        //}
-        //public void setStartNum(int startNum)
-        //{
-        //    this.startNum = startNum;
-        //}
-        //public int getSize()
-        //{
-        //    return size;
-        //}
-        //public void setSize(int size)
-        //{
-        //    this.size = size;
-        //}
-
-        //public BasicFile getFather()
-        //{
-        //    return father;
-        //}
-
-        //public void setFather(BasicFile father)
-        //{
-        //    this.father = father;
-        //}
-
-        //public ListViewItem getItem()
-        //{
-        //    return this.item;
-        //}
-
-        //public void setIsOpening()
-        //{
-
-        //}
     }
 
    

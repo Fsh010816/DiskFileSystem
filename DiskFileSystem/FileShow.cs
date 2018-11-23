@@ -138,5 +138,10 @@ namespace DiskFileSystem
             return fileView;
         }
 
+        private void FileShow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.parent.root.IsOpening = false;
+        }
+
     }
 }
