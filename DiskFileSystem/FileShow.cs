@@ -140,6 +140,11 @@ namespace DiskFileSystem
             return fileView;
         }
 
+        private void FileShow_FormClosed(object sender, KeyPressEventArgs e)
+        {
+            this.parent.root.IsOpening = false;
+        }
+
         private void pathShow_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar ==(char)Keys.Enter)
