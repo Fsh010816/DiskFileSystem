@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 using System.Runtime.InteropServices;
 
 namespace DiskFileSystem
@@ -123,12 +124,6 @@ namespace DiskFileSystem
         {
 
         }
-        //默认属性问题
-        private void 属性RToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //要根据文件里面的type决定
-            toolStripComboBox1.SelectedText = "读写";
-        }
 
         //右键打开
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
@@ -224,6 +219,28 @@ namespace DiskFileSystem
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void 重命名MToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
+            string s = Interaction.InputBox("请输入一个名称", "重命名", clickedFile.Name, -1, -1);
+            bool flag=FileFun.reName(clickedFile, s, clickedFile.Father);
+            //MessageBox.Show(clickedFile.Name, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //MessageBox.Show(clickedFile.Path, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (!flag)
+            {
+                MessageBox.Show("重命名失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            fileView_Activated(this, e);
+
+        }
+
+        private void 属性RToolStripMenuItem1_MouseEnter(object sender, EventArgs e)
+        {
+            //要根据文件里面的type决定
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
+            toolStripComboBox1.Text = clickedFile.Type;
         }
     }
 }

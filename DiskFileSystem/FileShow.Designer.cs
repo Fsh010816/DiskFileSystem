@@ -84,6 +84,7 @@
             this.fileView.UseCompatibleStateImageBehavior = false;
             this.fileView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.fileView_ItemSelectionChanged);
             this.fileView.SelectedIndexChanged += new System.EventHandler(this.fileView_SelectedIndexChanged);
+            this.fileView.DoubleClick += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             this.fileView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.fileView_MouseUp);
             // 
             // RightClick_View
@@ -160,6 +161,7 @@
             this.重命名MToolStripMenuItem.Name = "重命名MToolStripMenuItem";
             this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.重命名MToolStripMenuItem.Text = "重命名(&M)";
+            this.重命名MToolStripMenuItem.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
             // 属性RToolStripMenuItem1
             // 
@@ -168,7 +170,7 @@
             this.属性RToolStripMenuItem1.Name = "属性RToolStripMenuItem1";
             this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.属性RToolStripMenuItem1.Text = "属性(&R)";
-            this.属性RToolStripMenuItem1.Click += new System.EventHandler(this.属性RToolStripMenuItem1_Click);
+            this.属性RToolStripMenuItem1.MouseEnter += new System.EventHandler(this.属性RToolStripMenuItem1_MouseEnter);
             // 
             // toolStripComboBox1
             // 

@@ -332,28 +332,32 @@ namespace DiskFileSystem
          * 
          */
 
-        public void reName(String name, String newName,BasicFile fatherFile)
+        public bool reName(BasicFile File, String newName,BasicFile fatherFile)
         {
-            if (fatherFile.ChildFile.ContainsKey(name))
+            if(fatherFile.ChildFile.ContainsKey(newName))
             {
-                if (fatherFile.ChildFile.ContainsKey(newName))
+                BasicFile file=null;
+                fatherFile.ChildFile.TryGetValue(newName, out file);
+                if(file.Attr==File.Attr)//存在同名
                 {
-                   Console.WriteLine("重命名失败，同名文件已存在！");
-                    //showFile();
+                    return false;
                 }
-                else
+                else//存在同名,但不是同一类型文件
                 {
-                    BasicFile file;
-                    fatherFile.ChildFile.TryGetValue(name, out file);
-                    file.Name = newName;
-                    fatherFile.ChildFile.Remove(name);
-                    fatherFile.ChildFile.Add(name,file);
-                    Console.WriteLine("重命名成功！");
+                    fatherFile.ChildFile.Remove(File.Name);
+                    fatherFile.ChildFile.Add(newName, File);
+                    File.Name = newName;
+                    File.UpdatePathandName();
+                    return true;
                 }
             }
             else
             {
-                Console.WriteLine("重命名失败，没有该文件！");
+                fatherFile.ChildFile.Remove(File.Name);
+                fatherFile.ChildFile.Add(newName, File);
+                File.Name = newName;
+                File.UpdatePathandName();
+                return true;
             }
         }
 
