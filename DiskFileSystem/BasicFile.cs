@@ -46,6 +46,7 @@ namespace DiskFileSystem
             //暂时定为0
             this.Item.ImageIndex = 1;
             this.IsOpening = false;
+            this.Content = "";
         }
         //文件夹构造函数
         public BasicFile(String name, int startNum,String fatherPath)

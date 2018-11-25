@@ -84,6 +84,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TXTFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TXTFrom.Designer.cs">
+      <DependentUpon>TXTFrom.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DiskUsage.resx">
       <DependentUpon>DiskUsage.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +103,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TXTFrom.resx">
+      <DependentUpon>TXTFrom.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

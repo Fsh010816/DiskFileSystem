@@ -9,10 +9,29 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using System.Runtime.InteropServices;
+
 namespace DiskFileSystem
 {
     public partial class FileShow : Form
     {
+        //
+        [DllImport("user32.dll", EntryPoint = "SetParent")]
+        public static extern int SetParent(int hWndChild, int hWndNewParent);
+
+        //
+        private const int GWL_STYLE = -16;
+        private const int WS_CHILD = 0x40000000;//设置窗口属性为child
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
+        public static extern int GetWindowLong(IntPtr hwnd, int nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
+        public static extern int SetWindowLong(IntPtr hwnd, int nIndex, int dwNewLong);
+
+        //
+
+
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //
@@ -113,7 +132,18 @@ namespace DiskFileSystem
         {
             //得到改文件夹，以及该文件夹的父亲
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
-            FileFun.openFile(clickedFile, ref father ,fileView);
+            Form form = FileFun.openFile(clickedFile, ref father ,fileView);
+            if(form != null)
+            {
+                var s = GetWindowLong(this.parent.Handle, GWL_STYLE);
+
+
+                SetWindowLong(form.Handle, GWL_STYLE, s | WS_CHILD);
+
+                SetParent((int)form.Handle, (int)this.parent.Handle);
+
+                form.Show();
+            }
             if(clickedFile.Attr==3)
             {
                pathShow.Text += @"\" + clickedFile.Name;
@@ -185,6 +215,11 @@ namespace DiskFileSystem
                 }
 
             }
+
+        }
+
+        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
 
