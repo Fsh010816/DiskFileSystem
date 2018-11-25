@@ -66,6 +66,22 @@ namespace DiskFileSystem
             this.Item = new ListViewItem(name);
             this.Item.ImageIndex = 2;
         }
+        //重新确定该文件路径
+        public void setNewPath()
+        {
+            if(path.Equals("root:"))//如果这是根目录
+            {
+                return;
+            }
+            string[] tmp = path.Split(@"\"[0]);
+            string newpath = "root:";
+            for(int i=1;i<tmp.Length-1;i++)
+            {
+                newpath += @"\"+tmp[i];
+            }
+            newpath += @"\"+Name;
+            path = newpath;
+        }
     }
 
    
