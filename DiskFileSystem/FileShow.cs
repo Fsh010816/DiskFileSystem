@@ -53,7 +53,9 @@ namespace DiskFileSystem
         private void 删除DToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //到时候还要获得名字
-            FileFun.deleteFile("新建文件夹", father);
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
+            FileFun.deleteFile(clickedFile, clickedFile.Father,this.parent.Fat);
+            fileView_Activated(this, e);
         }
         //点击新建文件
         private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)

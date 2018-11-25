@@ -301,25 +301,33 @@ namespace DiskFileSystem
         }
 
         //删除某个父目录下的某个文件
-        public void deleteFile(String name,BasicFile fatherFile)
+        public bool deleteFile(BasicFile File,BasicFile fatherFile,int[] fat)
         {
-            if (fatherFile.ChildFile.ContainsKey(name))
+            if (fatherFile.ChildFile.ContainsKey(File.Name))
             {
-                BasicFile file;
-                fatherFile.ChildFile.TryGetValue(name, out file);
-                fatherFile.ChildFile.Remove(name);
-                if (file.Attr == 3)
+                if(File.Attr==2)//如果是文件
                 {
-                    Console.WriteLine("删除文件夹成功: " + file.Name);
+                    if(File.IsOpening==true)//因为文件正在打开，删除失败
+                    {
+                        return false;
+                    }
+                    BasicFile file;
+                    fatherFile.ChildFile.TryGetValue(File.Name, out file);
+                    fatherFile.ChildFile.Remove(File.Name);
+                    delFat(File.StartNum, fat);
+                    return true;
                 }
-                else if(file.Attr == 2)
+                else
                 {
-                    Console.WriteLine("删除文件成功: " + file.Name);
+
+                    return true;
                 }
+               
             }
             else
             {
                 Console.WriteLine("删除失败，不存在此文件");
+                return false;
             }
            
         }

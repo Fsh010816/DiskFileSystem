@@ -45,6 +45,7 @@ namespace DiskFileSystem
             this.Item = new ListViewItem(name);
             //暂时定为0
             this.Item.ImageIndex = 1;
+            this.IsOpening = false;
         }
         //文件夹构造函数
         public BasicFile(String name, int startNum,String fatherPath)
@@ -62,7 +63,7 @@ namespace DiskFileSystem
             {
                 this.Path = fatherPath + @"\" + name;
             }
-            
+            this.IsOpening = false;
             this.Item = new ListViewItem(name);
             this.Item.ImageIndex = 2;
         }
