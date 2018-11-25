@@ -320,7 +320,42 @@ namespace DiskFileSystem
                 }
                 else
                 {
-
+                    if(File.ChildFile.Count==0)//该目录下没有文件和目录
+                    {
+                        BasicFile file;
+                        fatherFile.ChildFile.TryGetValue(File.Name, out file);
+                        fatherFile.ChildFile.Remove(File.Name);
+                        delFat(File.StartNum, fat);
+                        return true;
+                    }
+                    else
+                    {
+                        bool flag = true;//判断子目录子文件能否删除成功
+                        foreach(var x in File.ChildFile.ToArray())
+                        {
+                            if(!deleteFile(x.Value, File, fat))
+                            {
+                                flag = false;
+                                break;
+                            }
+                            //if(File.ChildFile.Count==0)//子目录子文件全删除完成
+                            //{
+                            //    break;
+                            //}
+                        }
+                        if(!flag)
+                        {
+                            return false;
+                        }
+                        else//子目录子文件能删除成功
+                        {
+                            BasicFile file;
+                            fatherFile.ChildFile.TryGetValue(File.Name, out file);
+                            fatherFile.ChildFile.Remove(File.Name);
+                            delFat(File.StartNum, fat);
+                            return true;
+                        }
+                    }
                     return true;
                 }
                
