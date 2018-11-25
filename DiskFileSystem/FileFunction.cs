@@ -337,16 +337,16 @@ namespace DiskFileSystem
             {
                 BasicFile file=null;
                 fatherFile.ChildFile.TryGetValue(newName, out file);
-                if(file.Attr==2)//存在同名文件
+                if(file.Attr==File.Attr)//存在同名
                 {
                     return false;
                 }
-                else if(file.Attr==3)//存在同名文件夹
+                else//存在同名,但不是同一类型文件
                 {
                     fatherFile.ChildFile.Remove(File.Name);
                     fatherFile.ChildFile.Add(newName, File);
                     File.Name = newName;
-                    File.setNewPath();
+                    File.UpdatePathandName();
                     return true;
                 }
             }
@@ -355,10 +355,9 @@ namespace DiskFileSystem
                 fatherFile.ChildFile.Remove(File.Name);
                 fatherFile.ChildFile.Add(newName, File);
                 File.Name = newName;
-                File.setNewPath();
+                File.UpdatePathandName();
                 return true;
             }
-            return false;
         }
 
 

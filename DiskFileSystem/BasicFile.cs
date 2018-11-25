@@ -66,8 +66,8 @@ namespace DiskFileSystem
             this.Item = new ListViewItem(name);
             this.Item.ImageIndex = 2;
         }
-        //重新确定该文件路径
-        public void setNewPath()
+        //重新确定该文件路径和item的名字
+        public void UpdatePathandName()
         {
             if(path.Equals("root:"))//如果这是根目录
             {
@@ -81,6 +81,7 @@ namespace DiskFileSystem
             }
             newpath += @"\"+Name;
             path = newpath;
+            Item.Text = name;
         }
     }
 

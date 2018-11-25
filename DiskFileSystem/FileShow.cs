@@ -8,8 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Windows.Forms;
-
-
+using Microsoft.VisualBasic;
 namespace DiskFileSystem
 {
     public partial class FileShow : Form
@@ -190,6 +189,21 @@ namespace DiskFileSystem
                 }
 
             }
+
+        }
+
+        private void 重命名MToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
+            string s = Interaction.InputBox("请输入一个名称", "重命名", clickedFile.Name, -1, -1);
+            bool flag=FileFun.reName(clickedFile, s, clickedFile.Father);
+            //MessageBox.Show(clickedFile.Name, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //MessageBox.Show(clickedFile.Path, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (!flag)
+            {
+                MessageBox.Show("重命名失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            fileView_Activated(this, e);
 
         }
     }

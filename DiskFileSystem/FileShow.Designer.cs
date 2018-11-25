@@ -139,34 +139,35 @@
             this.重命名MToolStripMenuItem,
             this.属性RToolStripMenuItem1});
             this.RightClick_File.Name = "RightClick";
-            this.RightClick_File.Size = new System.Drawing.Size(133, 92);
+            this.RightClick_File.Size = new System.Drawing.Size(181, 114);
             // 
             // 打开OToolStripMenuItem
             // 
             this.打开OToolStripMenuItem.Name = "打开OToolStripMenuItem";
-            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.打开OToolStripMenuItem.Text = "打开(&O)";
             this.打开OToolStripMenuItem.Click += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             // 
             // 删除DToolStripMenuItem
             // 
             this.删除DToolStripMenuItem.Name = "删除DToolStripMenuItem";
-            this.删除DToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.删除DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.删除DToolStripMenuItem.Text = "删除(&D)";
             this.删除DToolStripMenuItem.Click += new System.EventHandler(this.删除DToolStripMenuItem_Click);
             // 
             // 重命名MToolStripMenuItem
             // 
             this.重命名MToolStripMenuItem.Name = "重命名MToolStripMenuItem";
-            this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.重命名MToolStripMenuItem.Text = "重命名(&M)";
+            this.重命名MToolStripMenuItem.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
             // 属性RToolStripMenuItem1
             // 
             this.属性RToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBox1});
             this.属性RToolStripMenuItem1.Name = "属性RToolStripMenuItem1";
-            this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.属性RToolStripMenuItem1.Text = "属性(&R)";
             this.属性RToolStripMenuItem1.Click += new System.EventHandler(this.属性RToolStripMenuItem1_Click);
             // 
