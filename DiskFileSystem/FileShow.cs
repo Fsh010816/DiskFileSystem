@@ -105,12 +105,6 @@ namespace DiskFileSystem
         {
 
         }
-        //默认属性问题
-        private void 属性RToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //要根据文件里面的type决定
-            toolStripComboBox1.SelectedText = "读写";
-        }
 
         //右键打开
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
@@ -205,6 +199,13 @@ namespace DiskFileSystem
             }
             fileView_Activated(this, e);
 
+        }
+
+        private void 属性RToolStripMenuItem1_MouseEnter(object sender, EventArgs e)
+        {
+            //要根据文件里面的type决定
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
+            toolStripComboBox1.Text = clickedFile.Type;
         }
     }
 }
