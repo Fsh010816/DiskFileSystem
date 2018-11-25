@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace DiskFileSystem
 {
     /*
@@ -382,7 +383,7 @@ namespace DiskFileSystem
         }
 
         //打开文件夹时
-        public void openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView)
+        public Form openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView)
         {
             //提示保存，快捷键保存，退出提示保存
             //标题星号提示
@@ -393,16 +394,17 @@ namespace DiskFileSystem
                 if (clickFile.IsOpening == true)
                 {
                     MessageBox.Show("不能重复打开文件！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+                    return null;
                 }
                 //新建文本窗口
+                TXTFrom txt = new TXTFrom(ref clickFile);
+                txt.Text = clickFile.Name;
                 //设置为已打开状态
-                clickFile.IsOpening = true;
+                return txt;
 
             }
             else if (clickFile.Attr == 3)
             {
-
                 //清空fileShow
                 fileView.Items.Clear();
                 //设置FileShow里的father
@@ -416,7 +418,9 @@ namespace DiskFileSystem
                     }
 
                 }
+                return null;
             }
+            return null;
         }
 
         /*
