@@ -66,9 +66,8 @@
             // 
             this.searchText.Font = new System.Drawing.Font("隶书", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.searchText.Location = new System.Drawing.Point(621, 8);
-            this.searchText.Multiline = true;
             this.searchText.Name = "searchText";
-            this.searchText.Size = new System.Drawing.Size(119, 25);
+            this.searchText.Size = new System.Drawing.Size(119, 26);
             this.searchText.TabIndex = 2;
             // 
             // fileView
