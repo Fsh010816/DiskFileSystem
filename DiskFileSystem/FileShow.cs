@@ -127,8 +127,8 @@ namespace DiskFileSystem
         {
             //得到改文件夹，以及该文件夹的父亲
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
-            Form FileFrom = FileFun.openFile(clickedFile, ref father, fileView, parent.Fat);
-            if (FileFrom != null)
+            Form FileFrom = FileFun.openFile(clickedFile, ref father ,fileView,parent.fat);
+            if(FileFrom != null)
             {
                 TXTFrom FileFrom1 = (TXTFrom)FileFrom;
 
@@ -235,10 +235,9 @@ namespace DiskFileSystem
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             toolStripComboBox1.Text = clickedFile.Type;
         }
-
         private void search_Click(object sender, EventArgs e)
         {
-            if(searchText.Text.Length==0)
+            if (searchText.Text.Length == 0)
             {
                 return;
             }
