@@ -514,6 +514,24 @@ namespace DiskFileSystem
                 return value.Father;
             }
         }
+        public void searchFile(BasicFile curFile,string name,ref List<BasicFile>fileArray)
+        {
+            if(curFile.Name.IndexOf(name)!=-1&&!curFile.Name.Equals("root"))//要搜索的名字是该文件名的字串
+            {
+                fileArray.Add(curFile);
+            }
+            if(curFile.ChildFile.Count!=0)
+            {
+                foreach(var x in curFile.ChildFile)
+                {
+                    searchFile(x.Value, name, ref fileArray);
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
 
     }
 }

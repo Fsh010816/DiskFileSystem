@@ -70,15 +70,17 @@
             this.searchText.Name = "searchText";
             this.searchText.Size = new System.Drawing.Size(119, 25);
             this.searchText.TabIndex = 2;
-            this.searchText.Text = "baidu.com";
             // 
             // fileView
             // 
             this.fileView.ContextMenuStrip = this.RightClick_View;
+            this.fileView.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.fileView.FullRowSelect = true;
+            this.fileView.GridLines = true;
             this.fileView.LargeImageList = this.imageList2;
             this.fileView.Location = new System.Drawing.Point(0, 41);
             this.fileView.Name = "fileView";
-            this.fileView.Size = new System.Drawing.Size(892, 412);
+            this.fileView.Size = new System.Drawing.Size(1079, 524);
             this.fileView.SmallImageList = this.imageList1;
             this.fileView.TabIndex = 4;
             this.fileView.UseCompatibleStateImageBehavior = false;
@@ -92,7 +94,7 @@
             this.RightClick_View.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.新建ToolStripMenuItem});
             this.RightClick_View.Name = "RightClick_View";
-            this.RightClick_View.Size = new System.Drawing.Size(181, 48);
+            this.RightClick_View.Size = new System.Drawing.Size(121, 26);
             // 
             // 新建ToolStripMenuItem
             // 
@@ -100,21 +102,21 @@
             this.文件夹ToolStripMenuItem,
             this.文件ToolStripMenuItem});
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.新建ToolStripMenuItem.Text = "新建(&W)";
             this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
             // 文件夹ToolStripMenuItem
             // 
             this.文件夹ToolStripMenuItem.Name = "文件夹ToolStripMenuItem";
-            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.文件夹ToolStripMenuItem.Text = "文件夹(&F)";
             this.文件夹ToolStripMenuItem.Click += new System.EventHandler(this.文件夹ToolStripMenuItem_Click);
             // 
             // 文件ToolStripMenuItem
             // 
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.文件ToolStripMenuItem.Text = "文件(&B)";
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
@@ -201,6 +203,7 @@
             this.search.Size = new System.Drawing.Size(26, 26);
             this.search.TabIndex = 3;
             this.search.UseVisualStyleBackColor = false;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // showPath
             // 
@@ -217,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 450);
+            this.ClientSize = new System.Drawing.Size(1079, 563);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.search);
             this.Controls.Add(this.searchText);
