@@ -70,7 +70,8 @@ namespace DiskFileSystem
         //加载初始化
         private void FileMangerSystem_Load(object sender, EventArgs e)
         {
-            
+            //TestFileSet.SendToBack();
+
             for (int i = 0; i < Fat.Length; i++)
             {
                 Fat[i] = 0;

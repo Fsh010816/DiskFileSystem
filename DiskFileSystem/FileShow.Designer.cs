@@ -232,6 +232,7 @@
             this.Text = "FileShow";
             this.Activated += new System.EventHandler(this.fileView_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileShow_FormClosed);
+            this.Load += new System.EventHandler(this.FileShow_Load);
             this.RightClick_View.ResumeLayout(false);
             this.RightClick_File.ResumeLayout(false);
             this.ResumeLayout(false);
