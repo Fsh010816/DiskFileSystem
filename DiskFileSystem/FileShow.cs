@@ -128,7 +128,7 @@ namespace DiskFileSystem
             //得到改文件夹，以及该文件夹的父亲
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             Form FileFrom = FileFun.openFile(clickedFile, ref father, fileView, parent.Fat);
-            if (form != null)
+            if (FileFrom != null)
             {
                 TXTFrom FileFrom1 = (TXTFrom)FileFrom;
 
@@ -183,14 +183,9 @@ namespace DiskFileSystem
                 {
                     if(value.Attr==2)//是文件则打开,不跳转
                     {
-                        Form form = FileFun.openFile(value, ref father, fileView);
+                        Form form = FileFun.openFile(value, ref father, fileView,parent.fat);
                         if (form != null)
                         {
-                            var s = GetWindowLong(this.parent.Handle, GWL_STYLE);
-
-
-                            SetWindowLong(form.Handle, GWL_STYLE, s | WS_CHILD);
-
                             SetParent((int)form.Handle, (int)this.parent.Handle);
 
                             form.Show();
