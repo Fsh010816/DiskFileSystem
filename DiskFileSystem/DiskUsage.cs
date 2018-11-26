@@ -26,7 +26,75 @@ namespace DiskFileSystem
             setColorAndUpdate(fat);
             string str = "磁盘剩余块:" + fat[0] + "块";
             toolTip1.SetToolTip(label1, str);
+            str = "FAT占用";
+            toolTip1.SetToolTip(label255, str);
+            toolTip1.SetToolTip(label254, str);
+            updateToolTip(this.parentform.root,fat);//更新标签的显示
+            updateByColor();
+        }
+        //更新占用了的磁盘块的标签
+        private void updateToolTip(BasicFile File,int[]fat)
+        {
+            string str = "";
+            if (File.Attr==2)
+            {
+                str= "文件->"+File.Path;
+            }
+            else
+            {
+                str = "目录->" + File.Path;
+            }
+            int nowNum = File.StartNum;
+            while(true)
+            {
+                Label label = null;
+                //定位到指向nowNum的label
+                foreach (var y in this.groupBox1.Controls)
+                {
+                    if (((Label)y).Text.Equals(nowNum.ToString()))
+                    {
+                        label = ((Label)y);
+                        break;
+                    }
+                }
+                toolTip1.SetToolTip(label, str);
+                nowNum = fat[nowNum];
+                if(nowNum==-1)
+                {
+                    break;
+                }
+            }
+            if(File.ChildFile.Count==0)
+            {
+                return;
+            }
+            else
+            {
+                foreach(var x in File.ChildFile)
+                {
+                    updateToolTip(x.Value, fat);
+                }
+            }
 
+        }
+        //更新空闲或者损坏磁盘块的标签
+        private void updateByColor()
+        {
+            Label label = null;
+            foreach (var y in this.groupBox1.Controls)
+            {
+                label = ((Label)y);
+                if(label.BackColor==Color.Red)
+                {
+                    string str = "已损坏";
+                    toolTip1.SetToolTip(label, str);
+                }
+                else if(label.BackColor == Color.Green)
+                {
+                    string str = "空闲";
+                    toolTip1.SetToolTip(label, str);
+                }
+            }
         }
         /* >128代表磁盘块已损坏,0代表空闲，其他代表已使用*/
         private void setColorAndUpdate(int[] fat)
@@ -91,9 +159,9 @@ namespace DiskFileSystem
 
         private void DiskUsage_Load(object sender, EventArgs e)
         {
-            setColorAndUpdate(fat);
-            string str = "磁盘剩余块:" + fat[0] + "块";
-            toolTip1.SetToolTip(label1, str);
+            //setColorAndUpdate(fat);
+            //string str = "磁盘剩余块:" + fat[0] + "块";
+            //toolTip1.SetToolTip(label1, str);
         }
     }
 }

@@ -84,6 +84,28 @@ namespace DiskFileSystem
         }
         /*
 	 * 
+	 * 该方法用于文件大小变小时候释放FAT表的空间
+	 */
+        public void delFat(int startNum,int size,int[] fat)
+        {
+            List<int> memory = new List<int>();
+            int curNum = startNum;
+            while(true)
+            {
+                memory.Add(curNum);
+                curNum = fat[curNum];
+                if(curNum==-1)
+                {
+                    break;
+                }
+            }
+            for(int i=0;i<size;i++)
+            {
+                fat[memory[memory.Count - i - 1]]=0;
+            }
+        }
+        /*
+	 * 
 	 * 以下为追加内容时修改fat表
 	 * 
 	 */
@@ -320,7 +342,42 @@ namespace DiskFileSystem
                 }
                 else
                 {
-
+                    if(File.ChildFile.Count==0)//该目录下没有文件和目录
+                    {
+                        BasicFile file;
+                        fatherFile.ChildFile.TryGetValue(File.Name, out file);
+                        fatherFile.ChildFile.Remove(File.Name);
+                        delFat(File.StartNum, fat);
+                        return true;
+                    }
+                    else
+                    {
+                        bool flag = true;//判断子目录子文件能否删除成功
+                        foreach(var x in File.ChildFile.ToArray())
+                        {
+                            if(!deleteFile(x.Value, File, fat))
+                            {
+                                flag = false;
+                                break;
+                            }
+                            //if(File.ChildFile.Count==0)//子目录子文件全删除完成
+                            //{
+                            //    break;
+                            //}
+                        }
+                        if(!flag)
+                        {
+                            return false;
+                        }
+                        else//子目录子文件能删除成功
+                        {
+                            BasicFile file;
+                            fatherFile.ChildFile.TryGetValue(File.Name, out file);
+                            fatherFile.ChildFile.Remove(File.Name);
+                            delFat(File.StartNum, fat);
+                            return true;
+                        }
+                    }
                     return true;
                 }
                
