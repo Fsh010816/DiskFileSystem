@@ -84,6 +84,28 @@ namespace DiskFileSystem
         }
         /*
 	 * 
+	 * 该方法用于文件大小变小时候释放FAT表的空间
+	 */
+        public void delFat(int startNum,int size,int[] fat)
+        {
+            List<int> memory = new List<int>();
+            int curNum = startNum;
+            while(true)
+            {
+                memory.Add(curNum);
+                curNum = fat[curNum];
+                if(curNum==-1)
+                {
+                    break;
+                }
+            }
+            for(int i=0;i<size;i++)
+            {
+                fat[memory[memory.Count - i - 1]]=0;
+            }
+        }
+        /*
+	 * 
 	 * 以下为追加内容时修改fat表
 	 * 
 	 */
