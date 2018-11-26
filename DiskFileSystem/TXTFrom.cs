@@ -47,13 +47,17 @@ namespace DiskFileSystem
         private int getDiskPart(string str)
         {
             int a = getStringLength(str);
-            if(a % 128 == 0)
+            if(a <= 64)
             {
-                return a / 128;
+                return 1;
+            }
+            if(a % 64 == 0)
+            {
+                return a / 64;
             }
             else
             {
-                return a / 128 + 1;
+                return a / 64 + 1;
             }
         }
 
@@ -113,9 +117,21 @@ namespace DiskFileSystem
 
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //少了字节
+            if(getStringLength(thisFile.Content) > getStringLength(content.Text) && getDiskPart(thisFile.Content) - getDiskPart(content.Text) >= 1)
+            {
+                Console.WriteLine(getDiskPart(thisFile.Content) - getDiskPart(content.Text));
+                FileFun.delFat(thisFile.StartNum, getDiskPart(thisFile.Content) - getDiskPart(content.Text), fat);
+            }
+            //增加了字节
+            else if(getStringLength(thisFile.Content) < getStringLength(content.Text) && getDiskPart(content.Text) - getDiskPart(thisFile.Content) >= 1)
+            {
+                FileFun.reAddFat(thisFile.StartNum, getDiskPart(content.Text) - getDiskPart(thisFile.Content), fat);
+            }
+
             thisFile.Content = content.Text;
-            FileFun.reAddFat(thisFile.StartNum, getDiskPart(content.Text), fat);
-            thisFile.Size = getStringLength(content.Text);
+            //改变大小
+            thisFile.Size = getDiskPart(content.Text);
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)

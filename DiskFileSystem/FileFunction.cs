@@ -103,6 +103,7 @@ namespace DiskFileSystem
             {
                 fat[memory[memory.Count - i - 1]]=0;
             }
+            fat[memory[memory.Count - size - 1]] = -1;
         }
         /*
 	 * 
