@@ -92,7 +92,7 @@
             this.RightClick_View.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.新建ToolStripMenuItem});
             this.RightClick_View.Name = "RightClick_View";
-            this.RightClick_View.Size = new System.Drawing.Size(181, 48);
+            this.RightClick_View.Size = new System.Drawing.Size(121, 26);
             // 
             // 新建ToolStripMenuItem
             // 
@@ -100,21 +100,21 @@
             this.文件夹ToolStripMenuItem,
             this.文件ToolStripMenuItem});
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.新建ToolStripMenuItem.Text = "新建(&W)";
             this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
             // 文件夹ToolStripMenuItem
             // 
             this.文件夹ToolStripMenuItem.Name = "文件夹ToolStripMenuItem";
-            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.文件夹ToolStripMenuItem.Text = "文件夹(&F)";
             this.文件夹ToolStripMenuItem.Click += new System.EventHandler(this.文件夹ToolStripMenuItem_Click);
             // 
             // 文件ToolStripMenuItem
             // 
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.文件ToolStripMenuItem.Text = "文件(&B)";
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
@@ -229,6 +229,7 @@
             this.Text = "FileShow";
             this.Activated += new System.EventHandler(this.fileView_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileShow_FormClosed);
+            this.Load += new System.EventHandler(this.FileShow_Load);
             this.RightClick_View.ResumeLayout(false);
             this.RightClick_File.ResumeLayout(false);
             this.ResumeLayout(false);

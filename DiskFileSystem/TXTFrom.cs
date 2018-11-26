@@ -13,11 +13,16 @@ namespace DiskFileSystem
     public partial class TXTFrom : Form
     {
         private BasicFile thisFile;
+        private int[] fat;
+        //单实例函数
+        FileFunction FileFun = FileFunction.GetInstance();
 
-        public TXTFrom(ref BasicFile clickedFile)
+        public TXTFrom(ref BasicFile clickedFile,ref int[] Fat)
         {
             InitializeComponent();
-            
+
+            this.fat = Fat;
+
             thisFile = clickedFile;
             content.Text = thisFile.Content;
             thisFile.IsOpening = true;
@@ -26,20 +31,9 @@ namespace DiskFileSystem
             timer1.Enabled = true;
         }
 
-        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            thisFile.Content = content.Text;
-        }
-
-        private void 退出EToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = "一共有" + getStringLength(content.Text) + "字节，占用"+ getDiskPart(content.Text) + "磁盘块";
+            label1.Text = "一共有" + getStringLength(content.Text) + "字节，将占用"+ getDiskPart(content.Text) + "磁盘块";
             if(thisFile.Content != content.Text)
             {
                 this.Text = thisFile.Name + "*";
@@ -87,7 +81,6 @@ namespace DiskFileSystem
 
         private void TXTFrom_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Console.WriteLine("1111");
             if (thisFile.Content != content.Text)
             {
                 //点击的是取消
@@ -111,6 +104,23 @@ namespace DiskFileSystem
                 thisFile.IsOpening = false;
                 return;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(button1, 0, this.button1.Height);
+        }
+
+        private void 保存SToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            thisFile.Content = content.Text;
+            FileFun.reAddFat(thisFile.StartNum, getDiskPart(content.Text), fat);
+            thisFile.Size = getStringLength(content.Text);
+        }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
