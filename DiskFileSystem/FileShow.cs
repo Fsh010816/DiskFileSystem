@@ -251,6 +251,7 @@ namespace DiskFileSystem
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             toolStripComboBox1.Text = clickedFile.Type;
         }
+
         private void search_Click(object sender, EventArgs e)
         {
             if (searchText.Text.Length == 0)
@@ -315,6 +316,20 @@ namespace DiskFileSystem
                 of.Show();
             }
             
+        }
+        //属性更改时发现的事件
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0], fileView.View);
+            clickedFile.Type = toolStripComboBox1.Text;
+            if(clickedFile.Type == "只读")
+            {
+                clickedFile.ReadOnly = true;
+            }
+            else
+            {
+                clickedFile.ReadOnly = false;
+            }
         }
     }
 }

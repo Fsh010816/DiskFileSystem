@@ -120,8 +120,15 @@ namespace DiskFileSystem
             contextMenuStrip1.Show(button1, 0, this.button1.Height);
         }
 
+        //保存
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(thisFile.ReadOnly)
+            {
+                MessageBox.Show("这是只读文件！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                content.Text = thisFile.Content;
+                return;
+            }
             //少了字节
             if(getStringLength(thisFile.Content) > getStringLength(content.Text) && getDiskPart(thisFile.Content) - getDiskPart(content.Text) >= 1)
             {

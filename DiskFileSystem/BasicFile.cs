@@ -21,6 +21,7 @@ namespace DiskFileSystem
         private BasicFile father = null;    //该文件或目录的上级目录
         private ListViewItem item;
         private bool isOpening;
+        private bool readOnly;
 
         public Dictionary<string, BasicFile> ChildFile { get => childFile; set => childFile = value; }
         public string Name { get => name; set => name = value; }
@@ -34,6 +35,7 @@ namespace DiskFileSystem
         public string Content { get => content; set => content = value; }
         public string Path { get => path; set => path = value; }
         public string Suffix { get => suffix; set => suffix = value; }
+        public bool ReadOnly { get => readOnly; set => readOnly = value; }
 
         //文件构造函数
         public BasicFile(String name, String type, int startNum, int size, String fatherPath,string suffix)
@@ -49,6 +51,7 @@ namespace DiskFileSystem
             this.Item.ImageIndex = 1;
             this.IsOpening = false;
             this.Content = "";
+            this.ReadOnly = false;
         }
         //文件夹构造函数
         public BasicFile(String name, int startNum,String fatherPath)
