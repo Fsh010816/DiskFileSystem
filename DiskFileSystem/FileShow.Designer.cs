@@ -73,19 +73,20 @@
             // 
             this.searchText.Font = new System.Drawing.Font("隶书", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.searchText.Location = new System.Drawing.Point(621, 8);
-            this.searchText.Multiline = true;
             this.searchText.Name = "searchText";
-            this.searchText.Size = new System.Drawing.Size(119, 25);
+            this.searchText.Size = new System.Drawing.Size(119, 26);
             this.searchText.TabIndex = 2;
-            this.searchText.Text = "baidu.com";
             // 
             // fileView
             // 
             this.fileView.ContextMenuStrip = this.RightClick_View;
+            this.fileView.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.fileView.FullRowSelect = true;
+            this.fileView.GridLines = true;
             this.fileView.LargeImageList = this.imageList2;
             this.fileView.Location = new System.Drawing.Point(0, 41);
             this.fileView.Name = "fileView";
-            this.fileView.Size = new System.Drawing.Size(892, 412);
+            this.fileView.Size = new System.Drawing.Size(1079, 524);
             this.fileView.SmallImageList = this.imageList1;
             this.fileView.TabIndex = 4;
             this.fileView.UseCompatibleStateImageBehavior = false;
@@ -109,7 +110,6 @@
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
             this.新建ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.新建ToolStripMenuItem.Text = "新建(&W)";
-            this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
             // 文件夹ToolStripMenuItem
             // 
@@ -209,6 +209,7 @@
             this.search.Size = new System.Drawing.Size(26, 26);
             this.search.TabIndex = 3;
             this.search.UseVisualStyleBackColor = false;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // showPath
             // 
@@ -265,7 +266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 450);
+            this.ClientSize = new System.Drawing.Size(1079, 563);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.search);
             this.Controls.Add(this.searchText);
@@ -277,7 +278,6 @@
             this.Text = "FileShow";
             this.Activated += new System.EventHandler(this.fileView_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileShow_FormClosed);
-            this.Load += new System.EventHandler(this.FileShow_Load);
             this.RightClick_View.ResumeLayout(false);
             this.RightClick_File.ResumeLayout(false);
             this.RightClick_FileSet.ResumeLayout(false);

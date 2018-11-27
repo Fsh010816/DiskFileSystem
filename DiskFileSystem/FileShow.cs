@@ -41,6 +41,11 @@ namespace DiskFileSystem
         //点击新建文件夹
         private void 文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(father.ChildFile.Count>=8)
+            {
+                MessageBox.Show("只能创建8个子目录或者文件", "创建文件失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             BasicFile file = FileFun.createCatolog(father, parent.fat);
             //Console.WriteLine(father.getName());
             if (file != null)
@@ -62,7 +67,7 @@ namespace DiskFileSystem
         private void 删除DToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //到时候还要获得名字
-            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             bool flag=FileFun.deleteFile(clickedFile, clickedFile.Father,this.parent.Fat);
             if(!flag)
             {
@@ -73,6 +78,11 @@ namespace DiskFileSystem
         //点击新建文件
         private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (father.ChildFile.Count >= 8)
+            {
+                MessageBox.Show("只能创建8个子目录或者文件", "创建文件或者子目录失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             BasicFile file = FileFunction.GetInstance().createFile(father, parent.Fat);
 
 
@@ -89,6 +99,7 @@ namespace DiskFileSystem
         private void fileView_Activated(object sender, EventArgs e)
         {
             //如果文件夹不为空，则显示文件
+            fileView.View = View.LargeIcon;
             fileView.Items.Clear();
             if (father.ChildFile.Count!=0)
             {
@@ -132,8 +143,8 @@ namespace DiskFileSystem
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //得到改文件夹，以及该文件夹的父亲
-            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
-            Form FileFrom = FileFun.openFile(clickedFile, ref father ,fileView,parent.Fat);
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
+            Form FileFrom = FileFun.openFile(clickedFile, ref father ,fileView,parent.fat);
             if(FileFrom != null)
             {
                 TXTFrom FileFrom1 = (TXTFrom)FileFrom;
@@ -147,17 +158,26 @@ namespace DiskFileSystem
             {
                pathShow.Text += @"\" + clickedFile.Name;
             }
-            
+            fileView_Activated(this, e);
+
+
         }
 
-        private BasicFile getFileByItem(ListViewItem item)
+        private BasicFile getFileByItem(ListViewItem item,View view)
         {
-            foreach (var childFile in father.ChildFile)
+           if(view==View.LargeIcon)
             {
-                if (childFile.Value.Item == item)
+                foreach (var childFile in father.ChildFile)
                 {
-                    return childFile.Value;
+                    if (childFile.Value.Item == item)
+                    {
+                        return childFile.Value;
+                    }
                 }
+            }
+           else if(view==View.Details)
+            {
+                return FileFun.searchFile(item.SubItems[1].Text,parent.root);//用路径寻找文件
             }
             return null;
         }
@@ -180,22 +200,19 @@ namespace DiskFileSystem
                 {
                     if(value.Attr==2)//是文件则打开,不跳转
                     {
+                        Form form = FileFun.openFile(value, ref father, fileView,parent.fat);
+                        if (form != null)
+                        {
+                            SetParent((int)form.Handle, (int)this.parent.Handle);
 
+                            form.Show();
+                        }
                     }
                     else if(value.Attr==3)//是目录
                     {
                         father = value;
-                        //如果文件夹不为空，则显示文件
-                        fileView.Items.Clear();
-                        if (father.ChildFile.Count != 0)
-                        {
-                            foreach (var x in father.ChildFile)
-                            {
-                                fileView.Items.Add(x.Value.Item);
-                            }
-
-                        }
                     }
+                    fileView_Activated(this, e);
                 }
             }
         }
@@ -205,26 +222,13 @@ namespace DiskFileSystem
             string fatherpath;
             father = FileFun.backFile(father.Path, parent.root,out fatherpath);
             pathShow.Text = fatherpath;
-            fileView.Items.Clear();
-            if (father.ChildFile.Count != 0)
-            {
-                foreach (var x in father.ChildFile)
-                {
-                    fileView.Items.Add(x.Value.Item);
-                }
-
-            }
-
-        }
-
-        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+            fileView_Activated(this, e);
 
         }
 
         private void 重命名MToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             string s = Interaction.InputBox("请输入一个名称", "重命名", clickedFile.Name, -1, -1);
             bool flag=FileFun.reName(clickedFile, s, clickedFile.Father);
             //MessageBox.Show(clickedFile.Name, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -240,13 +244,46 @@ namespace DiskFileSystem
         private void 属性RToolStripMenuItem1_MouseEnter(object sender, EventArgs e)
         {
             //要根据文件里面的type决定
-            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0]);
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             toolStripComboBox1.Text = clickedFile.Type;
         }
-
-        private void FileShow_Load(object sender, EventArgs e)
+        private void search_Click(object sender, EventArgs e)
         {
+            if (searchText.Text.Length == 0)
+            {
+                return;
+            }
+            fileView.Clear();
+            fileView.View = View.Details;
+            ColumnHeader ch = new ColumnHeader();
+            ch.Text = "文件名";   //设置列标题
 
+            ch.Width = 250;    //设置列宽度
+
+            ch.TextAlign = HorizontalAlignment.Left;   //设置列的对齐方式
+
+            fileView.Columns.Add(ch);    //将列头添加到ListView控件。
+
+            ColumnHeader ch1 = new ColumnHeader();
+
+            ch1.Text = "路径";   //设置列标题
+
+            ch1.Width = 642;    //设置列宽度
+
+            ch1.TextAlign = HorizontalAlignment.Left;   //设置列的对齐方式
+
+            fileView.Columns.Add(ch1);    //将列头添加到ListView控件。
+            List<BasicFile> fileArray = new List<BasicFile>();
+            FileFun.searchFile(parent.root, searchText.Text, ref fileArray);
+            foreach (var x in fileArray)
+            {
+                ListViewItem lv = new ListViewItem();
+                lv.Font = new Font("Tahoma", 26);
+                lv.Text = x.Name;
+                lv.ImageIndex = 0;
+                lv.SubItems.Add(x.Path);
+                fileView.Items.Add(lv);
+            }
         }
     }
 }

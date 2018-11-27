@@ -400,6 +400,10 @@ namespace DiskFileSystem
 
         public bool reName(BasicFile File, String newName,BasicFile fatherFile)
         {
+            if(newName.Equals(File.Name))//和本身名字一样
+            {
+                return true;
+            }
             if(fatherFile.ChildFile.ContainsKey(newName))
             {
                 BasicFile file=null;
@@ -513,6 +517,24 @@ namespace DiskFileSystem
                 string fatherpath = value.Father.Path;
                 fpath = fatherpath;
                 return value.Father;
+            }
+        }
+        public void searchFile(BasicFile curFile,string name,ref List<BasicFile>fileArray)
+        {
+            if(curFile.Name.IndexOf(name)!=-1&&!curFile.Name.Equals("root"))//要搜索的名字是该文件名的字串
+            {
+                fileArray.Add(curFile);
+            }
+            if(curFile.ChildFile.Count!=0)
+            {
+                foreach(var x in curFile.ChildFile)
+                {
+                    searchFile(x.Value, name, ref fileArray);
+                }
+            }
+            else
+            {
+                return;
             }
         }
 
