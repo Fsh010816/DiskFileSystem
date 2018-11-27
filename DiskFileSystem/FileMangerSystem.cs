@@ -17,12 +17,12 @@ namespace DiskFileSystem
         //解决覆盖问题
         [DllImport("user32.dll", EntryPoint = "SetParent")]
         public static extern int SetParent(int hWndChild, int hWndNewParent);
-        //所有文件的集合
-        //public Dictionary<String, BasicFile> totalFiles = new Dictionary<String, BasicFile>();
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //定义FAT表
         public int[] fat = new int[128];
+        //磁盘块能存的东西
+        private String[] disk_Content = new String[128];
         //
         public Dictionary<string, BasicFile> openedFileList = new Dictionary<string, BasicFile>();
         //创建根目录 使用fat表的第一项
@@ -35,6 +35,7 @@ namespace DiskFileSystem
 
         public int[] Fat { get => fat; set => fat = value; }
         public Dictionary<string, BasicFile> OpenedFileList { get => openedFileList; set => openedFileList = value; }
+        public string[] Disk_Content { get => disk_Content; set => disk_Content = value; }
 
         public FileMangerSystem()
         {

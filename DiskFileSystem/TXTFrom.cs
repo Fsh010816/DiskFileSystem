@@ -14,18 +14,20 @@ namespace DiskFileSystem
     {
         private BasicFile thisFile;
         private int[] fat;
+        private String[] disk;
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
 
         private Dictionary<string, BasicFile> openedFile = null;
         public Dictionary<string, BasicFile> OpenedFile { get => openedFile; set => openedFile = value; }
 
-        public TXTFrom(ref BasicFile clickedFile,ref int[] Fat, Dictionary<string, BasicFile> openedfile)
+        public TXTFrom(ref BasicFile clickedFile,ref int[] Fat, Dictionary<string, BasicFile> openedfile, String[] Disk)
         {
             InitializeComponent();
 
             this.fat = Fat;
             this.OpenedFile = openedfile;
+            this.disk = Disk;
 
             thisFile = clickedFile;
             content.Text = thisFile.Content;
@@ -145,7 +147,7 @@ namespace DiskFileSystem
             //改变大小
             thisFile.Size = getDiskPart(content.Text);
 
-
+            FileFun.setDiskContent(disk,thisFile);
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)

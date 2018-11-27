@@ -452,7 +452,7 @@ namespace DiskFileSystem
         }
 
         //打开文件夹时
-        public Form openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView,int[] fat, Dictionary<string, BasicFile> fileDictionary)
+        public Form openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView,int[] fat, Dictionary<string, BasicFile> fileDictionary,String[] disk)
         {
             if (clickFile.Attr == 2)
             {
@@ -462,7 +462,7 @@ namespace DiskFileSystem
                     return null;
                 }
                 //新建文本窗口
-                TXTFrom txt = new TXTFrom(ref clickFile,ref fat, fileDictionary);
+                TXTFrom txt = new TXTFrom(ref clickFile,ref fat, fileDictionary, disk);
                 txt.Text = clickFile.Name;
                 //设置为已打开状态
                 return txt;
@@ -489,11 +489,10 @@ namespace DiskFileSystem
         }
 
         /*
-	 * 
-	 * 以下为返回上一层目录
-	 * 
-	 */
-
+	    * 
+	    * 以下为返回上一层目录
+	    * 
+	    */
         public BasicFile backFile(string path,BasicFile root,out string fpath)
         {
             if (path.Equals(@"root:"))
@@ -510,6 +509,7 @@ namespace DiskFileSystem
                 return value.Father;
             }
         }
+
         public void searchFile(BasicFile curFile,string name,ref List<BasicFile>fileArray)
         {
             if(curFile.Name.IndexOf(name)!=-1&&!curFile.Name.Equals("root"))//要搜索的名字是该文件名的字串
@@ -526,6 +526,26 @@ namespace DiskFileSystem
             else
             {
                 return;
+            }
+        }
+
+        public void setDiskContent(String[] disk, BasicFile file)
+        {
+            int diskNo = file.StartNum;
+            String s = file.Content;
+            Console.WriteLine(s.Length);
+            for (int i=0 ; i < file.Content.Length ; i+=64)
+            {
+                if(i + 63 < file.Content.Length)
+                {
+                    disk[diskNo] = s.Substring(i, 63);
+                }
+                else
+                {
+                    disk[diskNo] = s.Substring(i, file.Content.Length - i);
+                }
+                diskNo++;
+                s = file.Content;
             }
         }
 
