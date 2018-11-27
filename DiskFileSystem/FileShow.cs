@@ -312,7 +312,7 @@ namespace DiskFileSystem
                     list.Add(x.Value);
                 }
             }
-            OpenedFile of = new OpenedFile(ref list);
+            File_information of = new File_information(ref list);
             SetParent((int)of.Handle, (int)this.parent.Handle);
             of.Show();
         }
