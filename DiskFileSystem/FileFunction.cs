@@ -361,10 +361,6 @@ namespace DiskFileSystem
                                 flag = false;
                                 break;
                             }
-                            //if(File.ChildFile.Count==0)//子目录子文件全删除完成
-                            //{
-                            //    break;
-                            //}
                         }
                         if(!flag)
                         {
@@ -379,7 +375,6 @@ namespace DiskFileSystem
                             return true;
                         }
                     }
-                    return true;
                 }
                
             }
