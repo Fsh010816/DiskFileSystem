@@ -103,7 +103,6 @@
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
             this.新建ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.新建ToolStripMenuItem.Text = "新建(&W)";
-            this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
             // 文件夹ToolStripMenuItem
             // 

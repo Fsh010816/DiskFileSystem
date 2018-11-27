@@ -42,7 +42,18 @@ namespace DiskFileSystem
             }
             else
             {
-                str = "目录->" + File.Path;
+                str = "目录->" + File.Path + "\n" + "-------------------------\n";
+                foreach(var x in File.ChildFile)
+                {
+                    if(x.Value.Attr==2)
+                    {
+                        str+= "文件->" + x.Value.Path+"\n";
+                    }
+                    else
+                    {
+                        str += "目录->" + x.Value.Path + "\n";
+                    }
+                }
             }
             int nowNum = File.StartNum;
             while(true)
@@ -135,6 +146,7 @@ namespace DiskFileSystem
             }
             UpdateSeries(cnt1, cnt2, cnt3);
         }
+        //更新图表
         /* x表示为已使用  y表示为未使用 z表示为已损坏*/
         private void UpdateSeries(double x,double y,double z)
         {

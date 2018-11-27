@@ -400,6 +400,10 @@ namespace DiskFileSystem
 
         public bool reName(BasicFile File, String newName,BasicFile fatherFile)
         {
+            if(newName.Equals(File.Name))//和本身名字一样
+            {
+                return true;
+            }
             if(fatherFile.ChildFile.ContainsKey(newName))
             {
                 BasicFile file=null;

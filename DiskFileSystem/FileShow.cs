@@ -41,6 +41,11 @@ namespace DiskFileSystem
         //点击新建文件夹
         private void 文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(father.ChildFile.Count>=8)
+            {
+                MessageBox.Show("只能创建8个子目录或者文件", "创建文件失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             BasicFile file = FileFun.createCatolog(father, parent.fat);
             //Console.WriteLine(father.getName());
             if (file != null)
@@ -73,6 +78,11 @@ namespace DiskFileSystem
         //点击新建文件
         private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (father.ChildFile.Count >= 8)
+            {
+                MessageBox.Show("只能创建8个子目录或者文件", "创建文件或者子目录失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             BasicFile file = FileFunction.GetInstance().createFile(father, parent.Fat);
 
 
@@ -206,11 +216,6 @@ namespace DiskFileSystem
             father = FileFun.backFile(father.Path, parent.root,out fatherpath);
             pathShow.Text = fatherpath;
             fileView_Activated(this, e);
-
-        }
-
-        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
         }
 
