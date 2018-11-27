@@ -24,7 +24,7 @@ namespace DiskFileSystem
         //定义FAT表
         public  int[] fat = new int[128];
         //
-        private List<BasicFile> openedFileList = new List<BasicFile>();
+        private Dictionary<string, BasicFile> openedFileList = new Dictionary<string, BasicFile>();
         //创建根目录 使用fat表的第一项
 
         //桌面文件夹，从4号开始存
@@ -34,7 +34,7 @@ namespace DiskFileSystem
         private File_information information_ = null;
 
         public int[] Fat { get => fat; set => fat = value; }
-        public List<BasicFile> OpenedFileList { get => openedFileList; set => openedFileList = value; }
+        public Dictionary<string, BasicFile> OpenedFileList { get => openedFileList; set => openedFileList = value; }
 
         public FileMangerSystem()
         {
@@ -104,7 +104,7 @@ namespace DiskFileSystem
                 MessageBox.Show("不能重复打开文件信息表！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            File_information opened = new File_information(ref openedFileList);
+            File_information opened = new File_information(OpenedFileList);
             SetParent((int)opened.Handle, (int)this.Handle);
             information_ = opened;
             information_.IsOpening = true;

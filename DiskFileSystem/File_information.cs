@@ -12,16 +12,16 @@ namespace DiskFileSystem
 {
     public partial class File_information : Form
     {
-        private List<BasicFile> fileList;
+        private Dictionary<String, BasicFile> fileList;
         private bool isOpening;
 
         public bool IsOpening { get => isOpening; set => isOpening = value; }
-        public List<BasicFile> FileList { get => this.fileList; set => this.fileList = value; }
+        public Dictionary<string, BasicFile> FileList { get => fileList; set => fileList = value; }
 
-        public File_information(ref List<BasicFile> fileSet)
+        public File_information(Dictionary<String, BasicFile> fileSet)
         {
             InitializeComponent();
-            fileList = fileSet;
+            FileList = fileSet;
             infomation_List.ClearSelection();
         }
 
@@ -45,9 +45,9 @@ namespace DiskFileSystem
                 this.infomation_List.Rows.RemoveAt(0);
             }
             //重新添加FileSet添加信息到界面
-            foreach (var infor in fileList)
+            foreach (var infor in FileList)
             {
-                BasicFile f = (BasicFile)infor;
+                BasicFile f = infor.Value;
                 int index = this.infomation_List.Rows.Add();
                 this.infomation_List.Rows[index].Cells[0].Value = f.Name;
                 this.infomation_List.Rows[index].Cells[1].Value = f.Name;

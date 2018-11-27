@@ -51,7 +51,7 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
-                this.parent.OpenedFileList.Add(file);
+                this.parent.OpenedFileList.Add(file.Path, file);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace DiskFileSystem
             }
             else
             {
-                this.parent.OpenedFileList.Remove(clickedFile);
+                this.parent.OpenedFileList.Remove(clickedFile.Name);
             }
             fileView_Activated(this, e);
         }
@@ -94,7 +94,7 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
-                this.parent.OpenedFileList.Add(file);
+                this.parent.OpenedFileList.Add(file.Path,file);
             }
             else
             {
@@ -300,21 +300,23 @@ namespace DiskFileSystem
         private void 详细信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0], fileView.View);
-            List<BasicFile> list = new List<BasicFile>();
             if(clickedFile.Attr==2)
             {
-                list.Add(clickedFile);
+                Dictionary<string, BasicFile> list = new Dictionary<string, BasicFile>();
+                list.Add(clickedFile.Name,clickedFile);
+                File_information of = new File_information(list);
+                of.Text = "详细信息";
+                SetParent((int)of.Handle, (int)this.parent.Handle);
+                of.Show();
             }
             else
             {
-                foreach(var x in clickedFile.ChildFile)
-                {
-                    list.Add(x.Value);
-                }
+                File_information of = new File_information(clickedFile.ChildFile);
+                SetParent((int)of.Handle, (int)this.parent.Handle);
+                of.Text = "详细信息";
+                of.Show();
             }
-            File_information of = new File_information(ref list);
-            SetParent((int)of.Handle, (int)this.parent.Handle);
-            of.Show();
+            
         }
     }
 }

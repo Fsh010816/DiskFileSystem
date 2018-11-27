@@ -195,18 +195,19 @@ namespace DiskFileSystem
                 List<BasicFile> list = new List<BasicFile>();
                 if(file.Attr==2)
                 {
-                    list.Add(file);
+                    Dictionary<string, BasicFile> dic = new Dictionary<string, BasicFile>();
+                    dic.Add(file.Name, file);
+                    File_information of = new File_information(dic);
+                    SetParent((int)of.Handle, (int)this.parentform.Handle);
+                    of.Show();
                 }
                 else
                 {
-                    foreach(var x in file.ChildFile)
-                    {
-                        list.Add(x.Value);
-                    }
+                    File_information of = new File_information(file.ChildFile);
+                    SetParent((int)of.Handle, (int)this.parentform.Handle);
+                    of.Show();
                 }
-                File_information of = new File_information(ref list);
-                SetParent((int)of.Handle, (int)this.parentform.Handle);
-                of.Show();
+                
             }
             //MessageBox.Show();
         }
