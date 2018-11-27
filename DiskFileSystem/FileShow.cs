@@ -118,7 +118,7 @@ namespace DiskFileSystem
                 fileView.ContextMenuStrip = null;
                 if (fileView.SelectedItems.Count > 0)
                 {
-                    if(getFileByItem(fileView.SelectedItems[0]).Attr == 2)
+                    if(getFileByItem(fileView.SelectedItems[0],View.LargeIcon).Attr == 2)
                     {
                         RightClick_File.Show(fileView, new Point(e.X, e.Y));
                     }
@@ -284,6 +284,11 @@ namespace DiskFileSystem
                 lv.SubItems.Add(x.Path);
                 fileView.Items.Add(lv);
             }
+        }
+
+        private void FileShow_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

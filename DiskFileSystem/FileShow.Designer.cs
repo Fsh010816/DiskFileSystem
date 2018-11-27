@@ -43,12 +43,12 @@
             this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重命名MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.详细信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.属性RToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.search = new System.Windows.Forms.Button();
             this.showPath = new System.Windows.Forms.Button();
-            this.详细信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClick_FileSet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -171,6 +171,12 @@
             this.重命名MToolStripMenuItem.Text = "重命名(&M)";
             this.重命名MToolStripMenuItem.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
+            // 详细信息ToolStripMenuItem
+            // 
+            this.详细信息ToolStripMenuItem.Name = "详细信息ToolStripMenuItem";
+            this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.详细信息ToolStripMenuItem.Text = "详细信息";
+            // 
             // 属性RToolStripMenuItem1
             // 
             this.属性RToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -222,12 +228,6 @@
             this.showPath.TabIndex = 1;
             this.showPath.UseVisualStyleBackColor = false;
             // 
-            // 详细信息ToolStripMenuItem
-            // 
-            this.详细信息ToolStripMenuItem.Name = "详细信息ToolStripMenuItem";
-            this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.详细信息ToolStripMenuItem.Text = "详细信息";
-            // 
             // RightClick_FileSet
             // 
             this.RightClick_FileSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -278,6 +278,7 @@
             this.Text = "FileShow";
             this.Activated += new System.EventHandler(this.fileView_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileShow_FormClosed);
+            this.Load += new System.EventHandler(this.FileShow_Load);
             this.RightClick_View.ResumeLayout(false);
             this.RightClick_File.ResumeLayout(false);
             this.RightClick_FileSet.ResumeLayout(false);
