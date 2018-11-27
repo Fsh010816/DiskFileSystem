@@ -1,6 +1,6 @@
 ﻿namespace DiskFileSystem
 {
-    partial class OpenedFile
+    partial class File_information
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.infomation_List = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,13 +37,14 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infomation_List)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // infomation_List
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.infomation_List.AllowUserToAddRows = false;
+            this.infomation_List.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.infomation_List.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
@@ -52,11 +53,11 @@
             this.Column6,
             this.Column7,
             this.Column8});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(948, 349);
-            this.dataGridView1.TabIndex = 0;
+            this.infomation_List.Location = new System.Drawing.Point(12, 12);
+            this.infomation_List.Name = "infomation_List";
+            this.infomation_List.RowTemplate.Height = 23;
+            this.infomation_List.Size = new System.Drawing.Size(948, 349);
+            this.infomation_List.TabIndex = 0;
             // 
             // Column1
             // 
@@ -99,24 +100,24 @@
             this.Column8.Name = "Column8";
             this.Column8.Width = 200;
             // 
-            // OpenedFile
+            // File_information
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 373);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "OpenedFile";
+            this.Controls.Add(this.infomation_List);
+            this.Name = "File_information";
             this.Text = "OpenedFile";
             this.Activated += new System.EventHandler(this.OpenedFile_Activated);
             this.Load += new System.EventHandler(this.OpenedFile_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infomation_List)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView infomation_List;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

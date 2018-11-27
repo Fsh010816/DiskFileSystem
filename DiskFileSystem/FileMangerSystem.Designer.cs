@@ -36,6 +36,8 @@
             this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TestFileSet_Name = new System.Windows.Forms.Label();
+            this.fileTable = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.BasicRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,11 +99,32 @@
             this.TestFileSet_Name.TabIndex = 3;
             this.TestFileSet_Name.Text = "    测试文件夹";
             // 
+            // fileTable
+            // 
+            this.fileTable.ContextMenuStrip = this.BasicRightClick;
+            this.fileTable.Location = new System.Drawing.Point(248, 12);
+            this.fileTable.Name = "fileTable";
+            this.fileTable.Size = new System.Drawing.Size(112, 101);
+            this.fileTable.TabIndex = 5;
+            this.fileTable.UseVisualStyleBackColor = true;
+            this.fileTable.Click += new System.EventHandler(this.fileTable_Click);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("宋体", 9F);
+            this.label1.Location = new System.Drawing.Point(248, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "    查看文件表";
+            // 
             // FileMangerSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 677);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.fileTable);
             this.Controls.Add(this.TestFileSet_Name);
             this.Controls.Add(this.TestFileSet);
             this.Controls.Add(this.Disk_Name);
@@ -124,5 +147,7 @@
         private System.Windows.Forms.ToolStripMenuItem 打开OToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 重命名ToolStripMenuItem;
         private System.Windows.Forms.Label TestFileSet_Name;
+        private System.Windows.Forms.Button fileTable;
+        private System.Windows.Forms.Label label1;
     }
 }

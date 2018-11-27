@@ -51,6 +51,7 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
+                this.parent.OpenedFileList.Add(file);
             }
             else
             {
@@ -89,6 +90,7 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
+                this.parent.OpenedFileList.Add(file);
             }
             else
             {

@@ -82,11 +82,11 @@
     <Compile Include="FileShow.Designer.cs">
       <DependentUpon>FileShow.cs</DependentUpon>
     </Compile>
-    <Compile Include="OpenedFile.cs">
+    <Compile Include="File_information.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OpenedFile.Designer.cs">
-      <DependentUpon>OpenedFile.cs</DependentUpon>
+    <Compile Include="File_information.Designer.cs">
+      <DependentUpon>File_information.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,8 +105,8 @@
     <EmbeddedResource Include="FileShow.resx">
       <DependentUpon>FileShow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OpenedFile.resx">
-      <DependentUpon>OpenedFile.cs</DependentUpon>
+    <EmbeddedResource Include="File_information.resx">
+      <DependentUpon>File_information.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
