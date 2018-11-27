@@ -132,6 +132,8 @@ namespace DiskFileSystem
             thisFile.Content = content.Text;
             //改变大小
             thisFile.Size = getDiskPart(content.Text);
+
+
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)

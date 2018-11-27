@@ -94,7 +94,6 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
-                this.parent.OpenedFileList.Add(file);
             }
             else
             {
@@ -157,8 +156,9 @@ namespace DiskFileSystem
 
                 SetParent((int)FileFrom1.Handle, (int)this.parent.Handle);
 
-
                 FileFrom1.Show();
+
+                this.parent.OpenedFileList.Add(clickedFile);
             }
             if(clickedFile.Attr==3)
             {
@@ -212,6 +212,7 @@ namespace DiskFileSystem
                             SetParent((int)form.Handle, (int)this.parent.Handle);
 
                             form.Show();
+                            this.parent.OpenedFileList.Add(value);
                         }
                     }
                     else if(value.Attr==3)//是目录

@@ -59,5 +59,10 @@ namespace DiskFileSystem
                 this.infomation_List.Rows[index].Cells[7].Value = f.Path;
             }
         }
+
+        private void File_information_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.IsOpening = false;
+        }
     }
 }

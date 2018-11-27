@@ -109,6 +109,7 @@
             this.Name = "File_information";
             this.Text = "OpenedFile";
             this.Activated += new System.EventHandler(this.OpenedFile_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.File_information_FormClosed);
             this.Load += new System.EventHandler(this.OpenedFile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.infomation_List)).EndInit();
             this.ResumeLayout(false);
