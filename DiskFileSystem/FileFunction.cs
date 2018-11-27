@@ -135,7 +135,7 @@ namespace DiskFileSystem
     * 	以下为根据当前目录创建文件或者目录的方法
     * 	 参数为 文件名 文件类型 文件大小 当前目录 文件对象字典  FAT登记表
     */
-        public BasicFile createFile(BasicFile nowCatalog, int[] fat, String name = "新建文件1", int dept = 1, String type = "读写", int size = 1)
+        public BasicFile createFile(BasicFile nowCatalog, int[] fat, String name = "新建文件1", int dept = 1, String type = "读写", int size = 1,string suffix="txt")
         {
             if (fat[0] >= size)
             {   //判断磁盘剩余空间是否足够建立文件
@@ -150,7 +150,7 @@ namespace DiskFileSystem
                         {
                             return null;
                         }
-                        BasicFile file = new BasicFile(name, type, startNum, size, nowCatalog.Path);
+                        BasicFile file = new BasicFile(name, type, startNum, size, nowCatalog.Path,suffix);
                         file.Father = nowCatalog; //纪录上一层目录
                         nowCatalog.ChildFile.Add(name, file); //在父目录添加该文件
                         return file;
@@ -164,7 +164,7 @@ namespace DiskFileSystem
                 else
                 { //若无同名文件或文件夹，继续创建文件
                     int startNum = setFat(size, fat);
-                    BasicFile file = new BasicFile(name, type, startNum, size,nowCatalog.Path);
+                    BasicFile file = new BasicFile(name, type, startNum, size,nowCatalog.Path, suffix);
                     file.Father = nowCatalog; //纪录上一层目录
                     nowCatalog.ChildFile.Add(name, file); //在父目录添加该文件
                     return file;

@@ -107,7 +107,14 @@ namespace DiskFileSystem
                 fileView.ContextMenuStrip = null;
                 if (fileView.SelectedItems.Count > 0)
                 {
-                    RightClick_File.Show(fileView, new Point(e.X, e.Y));
+                    if(getFileByItem(fileView.SelectedItems[0]).Attr == 2)
+                    {
+                        RightClick_File.Show(fileView, new Point(e.X, e.Y));
+                    }
+                    else
+                    {
+                        RightClick_FileSet.Show(fileView, new Point(e.X, e.Y));
+                    }
                 }
                 else
                 {

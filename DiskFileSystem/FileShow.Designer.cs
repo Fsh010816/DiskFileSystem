@@ -48,8 +48,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.search = new System.Windows.Forms.Button();
             this.showPath = new System.Windows.Forms.Button();
+            this.详细信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RightClick_FileSet = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
+            this.RightClick_FileSet.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathShow
@@ -138,9 +145,10 @@
             this.打开OToolStripMenuItem,
             this.删除DToolStripMenuItem,
             this.重命名MToolStripMenuItem,
+            this.详细信息ToolStripMenuItem,
             this.属性RToolStripMenuItem1});
             this.RightClick_File.Name = "RightClick";
-            this.RightClick_File.Size = new System.Drawing.Size(133, 92);
+            this.RightClick_File.Size = new System.Drawing.Size(133, 114);
             // 
             // 打开OToolStripMenuItem
             // 
@@ -213,6 +221,46 @@
             this.showPath.TabIndex = 1;
             this.showPath.UseVisualStyleBackColor = false;
             // 
+            // 详细信息ToolStripMenuItem
+            // 
+            this.详细信息ToolStripMenuItem.Name = "详细信息ToolStripMenuItem";
+            this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.详细信息ToolStripMenuItem.Text = "详细信息";
+            // 
+            // RightClick_FileSet
+            // 
+            this.RightClick_FileSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            this.RightClick_FileSet.Name = "RightClick";
+            this.RightClick_FileSet.Size = new System.Drawing.Size(133, 92);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem1.Text = "打开(&O)";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem2.Text = "删除(&D)";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem3.Text = "重命名(&M)";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem4.Text = "详细信息";
+            // 
             // FileShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -232,6 +280,7 @@
             this.Load += new System.EventHandler(this.FileShow_Load);
             this.RightClick_View.ResumeLayout(false);
             this.RightClick_File.ResumeLayout(false);
+            this.RightClick_FileSet.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +306,11 @@
         private System.Windows.Forms.ToolStripMenuItem 重命名MToolStripMenuItem;
         public System.Windows.Forms.ListView fileView;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem 详细信息ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip RightClick_FileSet;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
     }
 }

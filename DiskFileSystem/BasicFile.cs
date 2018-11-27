@@ -16,6 +16,7 @@ namespace DiskFileSystem
         private String path; //文件路径
         private int attr; //用来识别是文件还是目录 
         private int startNum;   //在FAT表中起始位置
+        private string suffix;//文件后缀
         private int size;   //文件的大小
         private BasicFile father = null;    //该文件或目录的上级目录
         private ListViewItem item;
@@ -32,9 +33,10 @@ namespace DiskFileSystem
         public bool IsOpening { get => isOpening; set => isOpening = value; }
         public string Content { get => content; set => content = value; }
         public string Path { get => path; set => path = value; }
+        public string Suffix { get => suffix; set => suffix = value; }
 
         //文件构造函数
-        public BasicFile(String name, String type, int startNum, int size, String fatherPath)
+        public BasicFile(String name, String type, int startNum, int size, String fatherPath,string suffix)
         {
             this.Name = name;
             this.Type = type;
@@ -54,7 +56,7 @@ namespace DiskFileSystem
             this.Name = name;
             this.Attr = 3;
             this.StartNum = startNum;
-            this.Type = "  ";
+            this.Type = "目录";
             this.Size = 1;
             if(fatherPath == "")
             {
@@ -84,6 +86,18 @@ namespace DiskFileSystem
             newpath += @"\"+Name;
             path = newpath;
             Item.Text = name;
+        }
+        override
+        public string ToString()
+        {
+           if(Attr==2)//文件
+            {
+                return Name + "," + Suffix + "," + Type + "," + startNum.ToString() + "," + Size.ToString();
+            }
+            else//目录
+            {
+                return Name + "," + " "+ "," + "目录" + "," + startNum.ToString() + "," + "0";
+            }
         }
     }
 
