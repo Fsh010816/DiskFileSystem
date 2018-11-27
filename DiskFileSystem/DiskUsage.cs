@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Runtime.InteropServices;
 namespace DiskFileSystem
 {
     public partial class DiskUsage : Form
     {
+        [DllImport("user32.dll", EntryPoint = "SetParent")]
+        public static extern int SetParent(int hWndChild, int hWndNewParent);
         private FileMangerSystem parentform;
         private int[] fat;
         public DiskUsage(FileMangerSystem form)
@@ -38,20 +40,20 @@ namespace DiskFileSystem
             string str = "";
             if (File.Attr==2)
             {
-                str= "文件->"+File.Path;
+                str= "文件->"+File.Path+".";
             }
             else
             {
-                str = "目录->" + File.Path + "\n" + "-------------------------\n";
+                str = "目录->" + File.Path + ".\n" + "-------------------------\n";
                 foreach(var x in File.ChildFile)
                 {
                     if(x.Value.Attr==2)
                     {
-                        str+= "文件->" + x.Value.Path+"\n";
+                        str+= "文件->" + x.Value.Path+".\n";
                     }
                     else
                     {
-                        str += "目录->" + x.Value.Path + "\n";
+                        str += "目录->" + x.Value.Path + ".\n";
                     }
                 }
             }
@@ -174,6 +176,40 @@ namespace DiskFileSystem
             //setColorAndUpdate(fat);
             //string str = "磁盘剩余块:" + fat[0] + "块";
             //toolTip1.SetToolTip(label1, str);
+        }
+
+        private void label190_DoubleClick(object sender, EventArgs e)
+        {
+            Label label = (Label)sender;
+            string str = toolTip1.GetToolTip(label);
+            
+            int startIndex = str.IndexOf('r');
+            int endIndex = str.IndexOf(".");
+            if(startIndex==-1||endIndex==-1)
+            {
+                return;
+            }
+            else
+            {
+                BasicFile file=FileFunction.GetInstance().searchFile(str.Substring(startIndex, endIndex - startIndex), parentform.root);
+                List<BasicFile> list = new List<BasicFile>();
+                if(file.Attr==2)
+                {
+                    Dictionary<string, BasicFile> dic = new Dictionary<string, BasicFile>();
+                    dic.Add(file.Name, file);
+                    File_information of = new File_information(dic);
+                    SetParent((int)of.Handle, (int)this.parentform.Handle);
+                    of.Show();
+                }
+                else
+                {
+                    File_information of = new File_information(file.ChildFile);
+                    SetParent((int)of.Handle, (int)this.parentform.Handle);
+                    of.Show();
+                }
+                
+            }
+            //MessageBox.Show();
         }
     }
 }

@@ -176,6 +176,7 @@
             this.详细信息ToolStripMenuItem.Name = "详细信息ToolStripMenuItem";
             this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.详细信息ToolStripMenuItem.Text = "详细信息";
+            this.详细信息ToolStripMenuItem.Click += new System.EventHandler(this.详细信息ToolStripMenuItem_Click);
             // 
             // 属性RToolStripMenuItem1
             // 
@@ -236,31 +237,33 @@
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
             this.RightClick_FileSet.Name = "RightClick";
-            this.RightClick_FileSet.Size = new System.Drawing.Size(133, 92);
+            this.RightClick_FileSet.Size = new System.Drawing.Size(181, 114);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "打开(&O)";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "删除(&D)";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.删除DToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "重命名(&M)";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem4.Text = "详细信息";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.详细信息ToolStripMenuItem_Click);
             // 
             // FileShow
             // 

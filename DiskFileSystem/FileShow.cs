@@ -51,7 +51,7 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
-                this.parent.OpenedFileList.Add(file);
+                this.parent.OpenedFileList.Add(file.Path, file);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace DiskFileSystem
             }
             else
             {
-                this.parent.OpenedFileList.Remove(clickedFile);
+                this.parent.OpenedFileList.Remove(clickedFile.Name);
             }
             fileView_Activated(this, e);
         }
@@ -296,6 +296,28 @@ namespace DiskFileSystem
         private void FileShow_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void 详细信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0], fileView.View);
+            if(clickedFile.Attr==2)
+            {
+                Dictionary<string, BasicFile> list = new Dictionary<string, BasicFile>();
+                list.Add(clickedFile.Name,clickedFile);
+                File_information of = new File_information(list);
+                of.Text = "详细信息";
+                SetParent((int)of.Handle, (int)this.parent.Handle);
+                of.Show();
+            }
+            else
+            {
+                File_information of = new File_information(clickedFile.ChildFile);
+                SetParent((int)of.Handle, (int)this.parent.Handle);
+                of.Text = "详细信息";
+                of.Show();
+            }
+            
         }
     }
 }
