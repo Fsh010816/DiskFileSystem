@@ -326,6 +326,7 @@
             this.label1.TabIndex = 395;
             this.label1.Text = "0";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label2
             // 
@@ -337,6 +338,7 @@
             this.label2.TabIndex = 394;
             this.label2.Text = "120";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label121
             // 
@@ -348,6 +350,7 @@
             this.label121.TabIndex = 382;
             this.label121.Text = "127";
             this.label121.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label121.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label122
             // 
@@ -359,6 +362,7 @@
             this.label122.TabIndex = 381;
             this.label122.Text = "126";
             this.label122.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label122.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label3
             // 
@@ -370,6 +374,7 @@
             this.label3.TabIndex = 393;
             this.label3.Text = "110";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label131
             // 
@@ -381,6 +386,7 @@
             this.label131.TabIndex = 380;
             this.label131.Text = "125";
             this.label131.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label131.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label11
             // 
@@ -392,6 +398,7 @@
             this.label11.TabIndex = 385;
             this.label11.Text = "30";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label132
             // 
@@ -403,6 +410,7 @@
             this.label132.TabIndex = 379;
             this.label132.Text = "124";
             this.label132.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label132.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label4
             // 
@@ -414,6 +422,7 @@
             this.label4.TabIndex = 392;
             this.label4.Text = "100";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label4.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label133
             // 
@@ -425,6 +434,7 @@
             this.label133.TabIndex = 378;
             this.label133.Text = "123";
             this.label133.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label133.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label13
             // 
@@ -436,6 +446,7 @@
             this.label13.TabIndex = 383;
             this.label13.Text = "10";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label13.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label5
             // 
@@ -447,6 +458,7 @@
             this.label5.TabIndex = 391;
             this.label5.Text = "90";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label134
             // 
@@ -458,6 +470,7 @@
             this.label134.TabIndex = 377;
             this.label134.Text = "122";
             this.label134.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label134.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label12
             // 
@@ -469,6 +482,7 @@
             this.label12.TabIndex = 384;
             this.label12.Text = "20";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label12.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label135
             // 
@@ -480,6 +494,7 @@
             this.label135.TabIndex = 376;
             this.label135.Text = "121";
             this.label135.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label135.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label6
             // 
@@ -491,6 +506,7 @@
             this.label6.TabIndex = 390;
             this.label6.Text = "80";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label137
             // 
@@ -502,6 +518,7 @@
             this.label137.TabIndex = 375;
             this.label137.Text = "119";
             this.label137.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label137.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label10
             // 
@@ -513,6 +530,7 @@
             this.label10.TabIndex = 386;
             this.label10.Text = "40";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label10.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label138
             // 
@@ -524,6 +542,7 @@
             this.label138.TabIndex = 374;
             this.label138.Text = "118";
             this.label138.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label138.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label7
             // 
@@ -535,6 +554,7 @@
             this.label7.TabIndex = 389;
             this.label7.Text = "70";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label139
             // 
@@ -546,6 +566,7 @@
             this.label139.TabIndex = 373;
             this.label139.Text = "117";
             this.label139.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label139.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label9
             // 
@@ -557,6 +578,7 @@
             this.label9.TabIndex = 387;
             this.label9.Text = "50";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label9.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label140
             // 
@@ -568,6 +590,7 @@
             this.label140.TabIndex = 372;
             this.label140.Text = "116";
             this.label140.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label140.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label8
             // 
@@ -579,6 +602,7 @@
             this.label8.TabIndex = 388;
             this.label8.Text = "60";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label8.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label141
             // 
@@ -590,6 +614,7 @@
             this.label141.TabIndex = 371;
             this.label141.Text = "115";
             this.label141.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label141.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label142
             // 
@@ -601,6 +626,7 @@
             this.label142.TabIndex = 370;
             this.label142.Text = "114";
             this.label142.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label142.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label143
             // 
@@ -612,6 +638,7 @@
             this.label143.TabIndex = 369;
             this.label143.Text = "113";
             this.label143.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label143.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label144
             // 
@@ -623,6 +650,7 @@
             this.label144.TabIndex = 368;
             this.label144.Text = "112";
             this.label144.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label144.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label145
             // 
@@ -634,6 +662,7 @@
             this.label145.TabIndex = 367;
             this.label145.Text = "111";
             this.label145.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label145.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label147
             // 
@@ -645,6 +674,7 @@
             this.label147.TabIndex = 366;
             this.label147.Text = "109";
             this.label147.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label147.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label148
             // 
@@ -656,6 +686,7 @@
             this.label148.TabIndex = 365;
             this.label148.Text = "108";
             this.label148.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label148.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label149
             // 
@@ -667,6 +698,7 @@
             this.label149.TabIndex = 364;
             this.label149.Text = "107";
             this.label149.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label149.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label150
             // 
@@ -678,6 +710,7 @@
             this.label150.TabIndex = 363;
             this.label150.Text = "106";
             this.label150.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label150.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label151
             // 
@@ -689,6 +722,7 @@
             this.label151.TabIndex = 362;
             this.label151.Text = "105";
             this.label151.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label151.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label152
             // 
@@ -700,6 +734,7 @@
             this.label152.TabIndex = 361;
             this.label152.Text = "104";
             this.label152.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label152.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label153
             // 
@@ -711,6 +746,7 @@
             this.label153.TabIndex = 360;
             this.label153.Text = "103";
             this.label153.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label153.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label154
             // 
@@ -722,6 +758,7 @@
             this.label154.TabIndex = 359;
             this.label154.Text = "102";
             this.label154.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label154.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label155
             // 
@@ -733,6 +770,7 @@
             this.label155.TabIndex = 358;
             this.label155.Text = "101";
             this.label155.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label155.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label157
             // 
@@ -744,6 +782,7 @@
             this.label157.TabIndex = 357;
             this.label157.Text = "99";
             this.label157.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label157.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label158
             // 
@@ -755,6 +794,7 @@
             this.label158.TabIndex = 356;
             this.label158.Text = "98";
             this.label158.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label158.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label159
             // 
@@ -766,6 +806,7 @@
             this.label159.TabIndex = 355;
             this.label159.Text = "97";
             this.label159.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label159.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label160
             // 
@@ -777,6 +818,7 @@
             this.label160.TabIndex = 354;
             this.label160.Text = "96";
             this.label160.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label160.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label161
             // 
@@ -788,6 +830,7 @@
             this.label161.TabIndex = 353;
             this.label161.Text = "95";
             this.label161.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label161.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label162
             // 
@@ -799,6 +842,7 @@
             this.label162.TabIndex = 352;
             this.label162.Text = "94";
             this.label162.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label162.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label163
             // 
@@ -810,6 +854,7 @@
             this.label163.TabIndex = 351;
             this.label163.Text = "93";
             this.label163.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label163.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label164
             // 
@@ -821,6 +866,7 @@
             this.label164.TabIndex = 350;
             this.label164.Text = "92";
             this.label164.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label164.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label165
             // 
@@ -832,6 +878,7 @@
             this.label165.TabIndex = 349;
             this.label165.Text = "91";
             this.label165.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label165.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label167
             // 
@@ -843,6 +890,7 @@
             this.label167.TabIndex = 348;
             this.label167.Text = "89";
             this.label167.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label167.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label168
             // 
@@ -854,6 +902,7 @@
             this.label168.TabIndex = 347;
             this.label168.Text = "88";
             this.label168.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label168.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label169
             // 
@@ -865,6 +914,7 @@
             this.label169.TabIndex = 346;
             this.label169.Text = "87";
             this.label169.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label169.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label170
             // 
@@ -876,6 +926,7 @@
             this.label170.TabIndex = 345;
             this.label170.Text = "86";
             this.label170.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label170.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label171
             // 
@@ -887,6 +938,7 @@
             this.label171.TabIndex = 344;
             this.label171.Text = "85";
             this.label171.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label171.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label172
             // 
@@ -898,6 +950,7 @@
             this.label172.TabIndex = 343;
             this.label172.Text = "84";
             this.label172.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label172.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label173
             // 
@@ -909,6 +962,7 @@
             this.label173.TabIndex = 342;
             this.label173.Text = "83";
             this.label173.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label173.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label174
             // 
@@ -920,6 +974,7 @@
             this.label174.TabIndex = 341;
             this.label174.Text = "82";
             this.label174.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label174.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label175
             // 
@@ -931,6 +986,7 @@
             this.label175.TabIndex = 340;
             this.label175.Text = "81";
             this.label175.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label175.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label177
             // 
@@ -942,6 +998,7 @@
             this.label177.TabIndex = 339;
             this.label177.Text = "79";
             this.label177.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label177.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label178
             // 
@@ -953,6 +1010,7 @@
             this.label178.TabIndex = 338;
             this.label178.Text = "78";
             this.label178.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label178.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label179
             // 
@@ -964,6 +1022,7 @@
             this.label179.TabIndex = 337;
             this.label179.Text = "77";
             this.label179.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label179.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label180
             // 
@@ -975,6 +1034,7 @@
             this.label180.TabIndex = 336;
             this.label180.Text = "76";
             this.label180.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label180.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label181
             // 
@@ -986,6 +1046,7 @@
             this.label181.TabIndex = 335;
             this.label181.Text = "75";
             this.label181.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label181.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label182
             // 
@@ -997,6 +1058,7 @@
             this.label182.TabIndex = 334;
             this.label182.Text = "74";
             this.label182.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label182.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label183
             // 
@@ -1008,6 +1070,7 @@
             this.label183.TabIndex = 333;
             this.label183.Text = "73";
             this.label183.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label183.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label184
             // 
@@ -1019,6 +1082,7 @@
             this.label184.TabIndex = 332;
             this.label184.Text = "72";
             this.label184.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label184.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label185
             // 
@@ -1030,6 +1094,7 @@
             this.label185.TabIndex = 331;
             this.label185.Text = "71";
             this.label185.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label185.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label187
             // 
@@ -1041,6 +1106,7 @@
             this.label187.TabIndex = 330;
             this.label187.Text = "69";
             this.label187.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label187.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label188
             // 
@@ -1052,6 +1118,7 @@
             this.label188.TabIndex = 329;
             this.label188.Text = "68";
             this.label188.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label188.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label189
             // 
@@ -1063,6 +1130,7 @@
             this.label189.TabIndex = 328;
             this.label189.Text = "67";
             this.label189.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label189.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label190
             // 
@@ -1074,6 +1142,7 @@
             this.label190.TabIndex = 327;
             this.label190.Text = "66";
             this.label190.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label190.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label191
             // 
@@ -1085,6 +1154,7 @@
             this.label191.TabIndex = 326;
             this.label191.Text = "65";
             this.label191.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label191.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label192
             // 
@@ -1096,6 +1166,7 @@
             this.label192.TabIndex = 325;
             this.label192.Text = "64";
             this.label192.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label192.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label193
             // 
@@ -1107,6 +1178,7 @@
             this.label193.TabIndex = 324;
             this.label193.Text = "63";
             this.label193.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label193.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label194
             // 
@@ -1118,6 +1190,7 @@
             this.label194.TabIndex = 323;
             this.label194.Text = "62";
             this.label194.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label194.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label195
             // 
@@ -1129,6 +1202,7 @@
             this.label195.TabIndex = 322;
             this.label195.Text = "61";
             this.label195.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label195.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label197
             // 
@@ -1140,6 +1214,7 @@
             this.label197.TabIndex = 321;
             this.label197.Text = "59";
             this.label197.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label197.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label198
             // 
@@ -1151,6 +1226,7 @@
             this.label198.TabIndex = 320;
             this.label198.Text = "58";
             this.label198.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label198.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label199
             // 
@@ -1162,6 +1238,7 @@
             this.label199.TabIndex = 319;
             this.label199.Text = "57";
             this.label199.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label199.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label200
             // 
@@ -1173,6 +1250,7 @@
             this.label200.TabIndex = 318;
             this.label200.Text = "56";
             this.label200.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label200.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label201
             // 
@@ -1184,6 +1262,7 @@
             this.label201.TabIndex = 317;
             this.label201.Text = "55";
             this.label201.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label201.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label202
             // 
@@ -1195,6 +1274,7 @@
             this.label202.TabIndex = 316;
             this.label202.Text = "54";
             this.label202.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label202.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label203
             // 
@@ -1206,6 +1286,7 @@
             this.label203.TabIndex = 315;
             this.label203.Text = "53";
             this.label203.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label203.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label204
             // 
@@ -1217,6 +1298,7 @@
             this.label204.TabIndex = 314;
             this.label204.Text = "52";
             this.label204.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label204.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label205
             // 
@@ -1228,6 +1310,7 @@
             this.label205.TabIndex = 313;
             this.label205.Text = "51";
             this.label205.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label205.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label207
             // 
@@ -1239,6 +1322,7 @@
             this.label207.TabIndex = 312;
             this.label207.Text = "49";
             this.label207.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label207.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label208
             // 
@@ -1250,6 +1334,7 @@
             this.label208.TabIndex = 311;
             this.label208.Text = "48";
             this.label208.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label208.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label209
             // 
@@ -1261,6 +1346,7 @@
             this.label209.TabIndex = 310;
             this.label209.Text = "47";
             this.label209.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label209.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label210
             // 
@@ -1272,6 +1358,7 @@
             this.label210.TabIndex = 309;
             this.label210.Text = "46";
             this.label210.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label210.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label211
             // 
@@ -1283,6 +1370,7 @@
             this.label211.TabIndex = 308;
             this.label211.Text = "45";
             this.label211.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label211.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label212
             // 
@@ -1294,6 +1382,7 @@
             this.label212.TabIndex = 307;
             this.label212.Text = "44";
             this.label212.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label212.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label213
             // 
@@ -1305,6 +1394,7 @@
             this.label213.TabIndex = 306;
             this.label213.Text = "43";
             this.label213.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label213.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label214
             // 
@@ -1316,6 +1406,7 @@
             this.label214.TabIndex = 305;
             this.label214.Text = "42";
             this.label214.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label214.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label215
             // 
@@ -1327,6 +1418,7 @@
             this.label215.TabIndex = 304;
             this.label215.Text = "41";
             this.label215.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label215.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label217
             // 
@@ -1338,6 +1430,7 @@
             this.label217.TabIndex = 303;
             this.label217.Text = "39";
             this.label217.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label217.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label218
             // 
@@ -1349,6 +1442,7 @@
             this.label218.TabIndex = 302;
             this.label218.Text = "38";
             this.label218.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label218.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label219
             // 
@@ -1360,6 +1454,7 @@
             this.label219.TabIndex = 301;
             this.label219.Text = "37";
             this.label219.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label219.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label220
             // 
@@ -1371,6 +1466,7 @@
             this.label220.TabIndex = 300;
             this.label220.Text = "36";
             this.label220.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label220.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label221
             // 
@@ -1382,6 +1478,7 @@
             this.label221.TabIndex = 299;
             this.label221.Text = "35";
             this.label221.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label221.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label222
             // 
@@ -1393,6 +1490,7 @@
             this.label222.TabIndex = 298;
             this.label222.Text = "34";
             this.label222.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label222.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label223
             // 
@@ -1404,6 +1502,7 @@
             this.label223.TabIndex = 297;
             this.label223.Text = "33";
             this.label223.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label223.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label224
             // 
@@ -1415,6 +1514,7 @@
             this.label224.TabIndex = 296;
             this.label224.Text = "32";
             this.label224.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label224.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label225
             // 
@@ -1426,6 +1526,7 @@
             this.label225.TabIndex = 295;
             this.label225.Text = "31";
             this.label225.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label225.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label227
             // 
@@ -1437,6 +1538,7 @@
             this.label227.TabIndex = 294;
             this.label227.Text = "29";
             this.label227.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label227.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label228
             // 
@@ -1448,6 +1550,7 @@
             this.label228.TabIndex = 293;
             this.label228.Text = "28";
             this.label228.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label228.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label229
             // 
@@ -1459,6 +1562,7 @@
             this.label229.TabIndex = 292;
             this.label229.Text = "27";
             this.label229.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label229.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label230
             // 
@@ -1470,6 +1574,7 @@
             this.label230.TabIndex = 291;
             this.label230.Text = "26";
             this.label230.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label230.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label231
             // 
@@ -1481,6 +1586,7 @@
             this.label231.TabIndex = 290;
             this.label231.Text = "25";
             this.label231.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label231.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label232
             // 
@@ -1492,6 +1598,7 @@
             this.label232.TabIndex = 289;
             this.label232.Text = "24";
             this.label232.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label232.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label233
             // 
@@ -1503,6 +1610,7 @@
             this.label233.TabIndex = 288;
             this.label233.Text = "23";
             this.label233.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label233.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label234
             // 
@@ -1514,6 +1622,7 @@
             this.label234.TabIndex = 287;
             this.label234.Text = "22";
             this.label234.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label234.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label235
             // 
@@ -1525,6 +1634,7 @@
             this.label235.TabIndex = 286;
             this.label235.Text = "21";
             this.label235.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label235.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label237
             // 
@@ -1536,6 +1646,7 @@
             this.label237.TabIndex = 285;
             this.label237.Text = "19";
             this.label237.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label237.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label238
             // 
@@ -1547,6 +1658,7 @@
             this.label238.TabIndex = 284;
             this.label238.Text = "18";
             this.label238.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label238.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label239
             // 
@@ -1558,6 +1670,7 @@
             this.label239.TabIndex = 283;
             this.label239.Text = "17";
             this.label239.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label239.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label240
             // 
@@ -1569,6 +1682,7 @@
             this.label240.TabIndex = 282;
             this.label240.Text = "16";
             this.label240.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label240.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label241
             // 
@@ -1580,6 +1694,7 @@
             this.label241.TabIndex = 281;
             this.label241.Text = "15";
             this.label241.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label241.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label242
             // 
@@ -1591,6 +1706,7 @@
             this.label242.TabIndex = 280;
             this.label242.Text = "14";
             this.label242.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label242.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label243
             // 
@@ -1602,6 +1718,7 @@
             this.label243.TabIndex = 279;
             this.label243.Text = "13";
             this.label243.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label243.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label244
             // 
@@ -1613,6 +1730,7 @@
             this.label244.TabIndex = 278;
             this.label244.Text = "12";
             this.label244.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label244.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label245
             // 
@@ -1624,6 +1742,7 @@
             this.label245.TabIndex = 277;
             this.label245.Text = "11";
             this.label245.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label245.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label247
             // 
@@ -1635,6 +1754,7 @@
             this.label247.TabIndex = 276;
             this.label247.Text = "9";
             this.label247.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label247.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label248
             // 
@@ -1646,6 +1766,7 @@
             this.label248.TabIndex = 275;
             this.label248.Text = "8";
             this.label248.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label248.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label249
             // 
@@ -1657,6 +1778,7 @@
             this.label249.TabIndex = 274;
             this.label249.Text = "7";
             this.label249.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label249.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label250
             // 
@@ -1668,6 +1790,7 @@
             this.label250.TabIndex = 273;
             this.label250.Text = "6";
             this.label250.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label250.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label251
             // 
@@ -1679,6 +1802,7 @@
             this.label251.TabIndex = 272;
             this.label251.Text = "5";
             this.label251.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label251.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label252
             // 
@@ -1690,6 +1814,7 @@
             this.label252.TabIndex = 271;
             this.label252.Text = "4";
             this.label252.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label252.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label253
             // 
@@ -1701,6 +1826,7 @@
             this.label253.TabIndex = 270;
             this.label253.Text = "3";
             this.label253.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label253.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label254
             // 
@@ -1712,6 +1838,7 @@
             this.label254.TabIndex = 269;
             this.label254.Text = "2";
             this.label254.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label254.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label255
             // 
@@ -1723,6 +1850,7 @@
             this.label255.TabIndex = 268;
             this.label255.Text = "1";
             this.label255.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label255.DoubleClick += new System.EventHandler(this.label190_DoubleClick);
             // 
             // label136
             // 

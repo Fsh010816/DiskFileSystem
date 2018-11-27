@@ -290,5 +290,25 @@ namespace DiskFileSystem
         {
 
         }
+
+        private void 详细信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0], fileView.View);
+            List<BasicFile> list = new List<BasicFile>();
+            if(clickedFile.Attr==2)
+            {
+                list.Add(clickedFile);
+            }
+            else
+            {
+                foreach(var x in clickedFile.ChildFile)
+                {
+                    list.Add(x.Value);
+                }
+            }
+            OpenedFile of = new OpenedFile(ref list);
+            SetParent((int)of.Handle, (int)this.parent.Handle);
+            of.Show();
+        }
     }
 }
