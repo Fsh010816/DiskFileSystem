@@ -69,10 +69,14 @@ namespace DiskFileSystem
         {
             //到时候还要获得名字
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
-            bool flag=FileFun.deleteFile(clickedFile, clickedFile.Father,this.parent.Fat);
+            bool flag=FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat);
             if(!flag)
             {
                 MessageBox.Show("删除文件失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                this.parent.OpenedFileList.Remove(clickedFile);
             }
             fileView_Activated(this, e);
         }
