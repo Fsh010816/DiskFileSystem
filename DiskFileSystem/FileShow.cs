@@ -20,8 +20,6 @@ namespace DiskFileSystem
         public static extern int SetParent(int hWndChild, int hWndNewParent);
 
         //
-
-
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //
@@ -51,7 +49,7 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
-                this.parent.OpenedFileList.Add(file.Path, file);
+                
             }
             else
             {
@@ -76,7 +74,8 @@ namespace DiskFileSystem
             }
             else
             {
-                this.parent.OpenedFileList.Remove(clickedFile.Name);
+                this.parent.OpenedFileList.Remove(clickedFile.Path);
+
             }
             fileView_Activated(this, e);
         }
@@ -94,6 +93,7 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
+                //this.parent.OpenedFileList.Add(file.Path, file);
             }
             else
             {
@@ -149,7 +149,7 @@ namespace DiskFileSystem
         {
             //得到改文件夹，以及该文件夹的父亲
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
-            Form FileFrom = FileFun.openFile(clickedFile, ref father ,fileView,parent.fat);
+            Form FileFrom = FileFun.openFile(clickedFile, ref father ,fileView,parent.fat, parent.openedFileList);
             if(FileFrom != null)
             {
                 TXTFrom FileFrom1 = (TXTFrom)FileFrom;
@@ -157,16 +157,17 @@ namespace DiskFileSystem
                 SetParent((int)FileFrom1.Handle, (int)this.parent.Handle);
 
                 FileFrom1.Show();
-
-                this.parent.OpenedFileList.Add(clickedFile);
+                if(clickedFile.Attr == 2)
+                {
+                    this.parent.OpenedFileList.Add(clickedFile.Path, clickedFile);
+                }
+                
             }
             if(clickedFile.Attr==3)
             {
                pathShow.Text += @"\" + clickedFile.Name;
             }
             fileView_Activated(this, e);
-
-
         }
 
         private BasicFile getFileByItem(ListViewItem item,View view)
@@ -206,13 +207,13 @@ namespace DiskFileSystem
                 {
                     if(value.Attr==2)//是文件则打开,不跳转
                     {
-                        Form form = FileFun.openFile(value, ref father, fileView,parent.fat);
+                        Form form = FileFun.openFile(value, ref father, fileView,parent.fat, parent.openedFileList);
                         if (form != null)
                         {
                             SetParent((int)form.Handle, (int)this.parent.Handle);
 
                             form.Show();
-                            this.parent.OpenedFileList.Add(value);
+                            this.parent.OpenedFileList.Add(value.Path, value);
                         }
                     }
                     else if(value.Attr==3)//是目录
@@ -230,7 +231,6 @@ namespace DiskFileSystem
             father = FileFun.backFile(father.Path, parent.root,out fatherpath);
             pathShow.Text = fatherpath;
             fileView_Activated(this, e);
-
         }
 
         private void 重命名MToolStripMenuItem_Click(object sender, EventArgs e)
@@ -238,14 +238,11 @@ namespace DiskFileSystem
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             string s = Interaction.InputBox("请输入一个名称", "重命名", clickedFile.Name, -1, -1);
             bool flag=FileFun.reName(clickedFile, s, clickedFile.Father);
-            //MessageBox.Show(clickedFile.Name, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //MessageBox.Show(clickedFile.Path, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             if (!flag)
             {
                 MessageBox.Show("重命名失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             fileView_Activated(this, e);
-
         }
 
         private void 属性RToolStripMenuItem1_MouseEnter(object sender, EventArgs e)

@@ -452,7 +452,7 @@ namespace DiskFileSystem
         }
 
         //打开文件夹时
-        public Form openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView,int[] fat)
+        public Form openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView,int[] fat, Dictionary<string, BasicFile> fileDictionary)
         {
             //提示保存，快捷键保存，退出提示保存
             //标题星号提示
@@ -466,7 +466,7 @@ namespace DiskFileSystem
                     return null;
                 }
                 //新建文本窗口
-                TXTFrom txt = new TXTFrom(ref clickFile,ref fat);
+                TXTFrom txt = new TXTFrom(ref clickFile,ref fat, fileDictionary);
                 txt.Text = clickFile.Name;
                 //设置为已打开状态
                 return txt;

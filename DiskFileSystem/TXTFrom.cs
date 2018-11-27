@@ -17,11 +17,15 @@ namespace DiskFileSystem
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
 
-        public TXTFrom(ref BasicFile clickedFile,ref int[] Fat)
+        private Dictionary<string, BasicFile> openedFile = null;
+        public Dictionary<string, BasicFile> OpenedFile { get => openedFile; set => openedFile = value; }
+
+        public TXTFrom(ref BasicFile clickedFile,ref int[] Fat, Dictionary<string, BasicFile> openedfile)
         {
             InitializeComponent();
 
             this.fat = Fat;
+            this.OpenedFile = openedfile;
 
             thisFile = clickedFile;
             content.Text = thisFile.Content;
@@ -98,14 +102,15 @@ namespace DiskFileSystem
                 {
                     e.Cancel = false;
                     thisFile.IsOpening = false;
+                    this.OpenedFile.Remove(thisFile.Path);
                     return;
                 }
             }
             else
             {
-                
                 e.Cancel = false;
                 thisFile.IsOpening = false;
+                this.OpenedFile.Remove(thisFile.Path);
                 return;
             }
         }

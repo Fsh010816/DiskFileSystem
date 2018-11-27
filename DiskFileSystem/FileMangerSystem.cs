@@ -22,9 +22,9 @@ namespace DiskFileSystem
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //定义FAT表
-        public  int[] fat = new int[128];
+        public int[] fat = new int[128];
         //
-        private Dictionary<string, BasicFile> openedFileList = new Dictionary<string, BasicFile>();
+        public Dictionary<string, BasicFile> openedFileList = new Dictionary<string, BasicFile>();
         //创建根目录 使用fat表的第一项
 
         //桌面文件夹，从4号开始存

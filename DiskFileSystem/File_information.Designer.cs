@@ -86,12 +86,12 @@
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "读指针(块号/块内地址)";
+            this.Column6.HeaderText = "读指针(块号)";
             this.Column6.Name = "Column6";
             // 
             // Column7
             // 
-            this.Column7.HeaderText = "写指针(块号/块内地址)";
+            this.Column7.HeaderText = "写指针(块号)";
             this.Column7.Name = "Column7";
             // 
             // Column8
@@ -110,7 +110,6 @@
             this.Text = "OpenedFile";
             this.Activated += new System.EventHandler(this.OpenedFile_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.File_information_FormClosed);
-            this.Load += new System.EventHandler(this.OpenedFile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.infomation_List)).EndInit();
             this.ResumeLayout(false);
 

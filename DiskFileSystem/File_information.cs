@@ -25,18 +25,6 @@ namespace DiskFileSystem
             infomation_List.ClearSelection();
         }
 
-        
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OpenedFile_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void OpenedFile_Activated(object sender, EventArgs e)
         {
             //清空表
@@ -49,11 +37,14 @@ namespace DiskFileSystem
             {
                 BasicFile f = infor.Value;
                 int index = this.infomation_List.Rows.Add();
-                this.infomation_List.Rows[index].Cells[0].Value = f.Name;
-                this.infomation_List.Rows[index].Cells[1].Value = f.Name;
-                this.infomation_List.Rows[index].Cells[2].Value = f.Type;
-                this.infomation_List.Rows[index].Cells[3].Value = f.StartNum;
-                this.infomation_List.Rows[index].Cells[4].Value = f.Size;
+                
+                String[] informaOfFile = f.ToString().Split(","[0]);
+                this.infomation_List.Rows[index].Cells[0].Value = informaOfFile[0];
+                this.infomation_List.Rows[index].Cells[1].Value = informaOfFile[1];
+                this.infomation_List.Rows[index].Cells[2].Value = informaOfFile[2];
+                this.infomation_List.Rows[index].Cells[3].Value = informaOfFile[3];
+                this.infomation_List.Rows[index].Cells[4].Value = informaOfFile[4];
+                //指针
                 this.infomation_List.Rows[index].Cells[5].Value = f.StartNum;
                 this.infomation_List.Rows[index].Cells[6].Value = f.StartNum + f.Size - 1;
                 this.infomation_List.Rows[index].Cells[7].Value = f.Path;
