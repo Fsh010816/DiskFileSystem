@@ -54,6 +54,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeView = new System.Windows.Forms.TreeView();
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
             this.RightClick_FileSet.SuspendLayout();
@@ -84,9 +85,9 @@
             this.fileView.FullRowSelect = true;
             this.fileView.GridLines = true;
             this.fileView.LargeImageList = this.imageList2;
-            this.fileView.Location = new System.Drawing.Point(0, 41);
+            this.fileView.Location = new System.Drawing.Point(178, 41);
             this.fileView.Name = "fileView";
-            this.fileView.Size = new System.Drawing.Size(1079, 524);
+            this.fileView.Size = new System.Drawing.Size(901, 524);
             this.fileView.SmallImageList = this.imageList1;
             this.fileView.TabIndex = 4;
             this.fileView.UseCompatibleStateImageBehavior = false;
@@ -267,11 +268,20 @@
             this.toolStripMenuItem4.Text = "详细信息";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.详细信息ToolStripMenuItem_Click);
             // 
+            // treeView
+            // 
+            this.treeView.Location = new System.Drawing.Point(10, 41);
+            this.treeView.Name = "treeView";
+            this.treeView.Size = new System.Drawing.Size(162, 524);
+            this.treeView.TabIndex = 6;
+            this.treeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
+            // 
             // FileShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1079, 563);
+            this.Controls.Add(this.treeView);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.search);
             this.Controls.Add(this.searchText);
@@ -318,5 +328,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.TreeView treeView;
     }
 }
