@@ -242,5 +242,12 @@ namespace DiskFileSystem
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            File_information of = new File_information(parentform.root.ChildFile);
+            SetParent((int)of.Handle, (int)this.parentform.Handle);
+            of.Show();
+        }
     }
 }
