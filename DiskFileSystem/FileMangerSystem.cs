@@ -67,9 +67,6 @@ namespace DiskFileSystem
             }
             root.IsOpening = true;
             FileShow f = new FileShow(this);
-            Console.WriteLine(f.ToString());
-            f.father = this.root;
-            root.Father = null;
             SetParent((int)f.Handle, (int)this.Handle);
             f.Show();
         }

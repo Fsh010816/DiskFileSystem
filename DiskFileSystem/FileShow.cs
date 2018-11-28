@@ -32,6 +32,7 @@ namespace DiskFileSystem
         {
             InitializeComponent();
             parent = form;
+            father = parent.root;
         }
         public FileShow()
         {
@@ -105,6 +106,7 @@ namespace DiskFileSystem
         private void fileView_Activated(object sender, EventArgs e)
         {
             //如果文件夹不为空，则显示文件
+            pathShow.Text = father.Path;
             fileView.View = View.LargeIcon;
             fileView.Items.Clear();
             if (father.ChildFile.Count!=0)
@@ -199,7 +201,16 @@ namespace DiskFileSystem
         {
             if (e.KeyChar ==(char)Keys.Enter)
             {
-                BasicFile value=FileFun.searchFile(pathShow.Text, parent.root);
+                BasicFile value = null;
+                if (!pathShow.Text.StartsWith("root:"))//相对路径
+                {
+                    //MessageBox.Show(father.Name);
+                    value = FileFun.searchFile(pathShow.Text, parent.root,father);
+                }
+                else//绝对路径
+                {
+                    value = FileFun.searchFile(pathShow.Text, parent.root);
+                }
                 if(value==null)
                 {
                     MessageBox.Show("非法路径", "非法!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
