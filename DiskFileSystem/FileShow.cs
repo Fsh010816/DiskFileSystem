@@ -10,6 +10,7 @@ using System.Collections;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace DiskFileSystem
 {
@@ -237,6 +238,17 @@ namespace DiskFileSystem
         {
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             string s = Interaction.InputBox("请输入一个名称", "重命名", clickedFile.Name, -1, -1);
+            if(clickedFile.Attr==2)
+            {
+                var regex = new Regex(@"^[^\/\:\*\?\""\<\>\|\,]+$");
+                var m = regex.Match(s);
+                if (!m.Success)
+                {
+                    MessageBox.Show("请勿在文件名中包含\\ / : * ？ \" < > |等字符，请重新输入有效文件名！");
+                    return;
+                }
+
+            }
             bool flag=FileFun.reName(clickedFile, s, clickedFile.Father);
             if (!flag)
             {

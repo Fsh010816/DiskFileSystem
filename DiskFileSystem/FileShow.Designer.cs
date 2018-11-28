@@ -80,7 +80,7 @@
             // fileView
             // 
             this.fileView.ContextMenuStrip = this.RightClick_View;
-            this.fileView.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.fileView.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.fileView.FullRowSelect = true;
             this.fileView.GridLines = true;
             this.fileView.LargeImageList = this.imageList2;
@@ -114,14 +114,14 @@
             // 文件夹ToolStripMenuItem
             // 
             this.文件夹ToolStripMenuItem.Name = "文件夹ToolStripMenuItem";
-            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.文件夹ToolStripMenuItem.Text = "文件夹(&F)";
             this.文件夹ToolStripMenuItem.Click += new System.EventHandler(this.文件夹ToolStripMenuItem_Click);
             // 
             // 文件ToolStripMenuItem
             // 
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.文件ToolStripMenuItem.Text = "文件(&B)";
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
@@ -148,33 +148,33 @@
             this.详细信息ToolStripMenuItem,
             this.属性RToolStripMenuItem1});
             this.RightClick_File.Name = "RightClick";
-            this.RightClick_File.Size = new System.Drawing.Size(181, 136);
+            this.RightClick_File.Size = new System.Drawing.Size(133, 114);
             // 
             // 打开OToolStripMenuItem
             // 
             this.打开OToolStripMenuItem.Name = "打开OToolStripMenuItem";
-            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.打开OToolStripMenuItem.Text = "打开(&O)";
             this.打开OToolStripMenuItem.Click += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             // 
             // 删除DToolStripMenuItem
             // 
             this.删除DToolStripMenuItem.Name = "删除DToolStripMenuItem";
-            this.删除DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.删除DToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.删除DToolStripMenuItem.Text = "删除(&D)";
             this.删除DToolStripMenuItem.Click += new System.EventHandler(this.删除DToolStripMenuItem_Click);
             // 
             // 重命名MToolStripMenuItem
             // 
             this.重命名MToolStripMenuItem.Name = "重命名MToolStripMenuItem";
-            this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.重命名MToolStripMenuItem.Text = "重命名(&M)";
             this.重命名MToolStripMenuItem.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
             // 详细信息ToolStripMenuItem
             // 
             this.详细信息ToolStripMenuItem.Name = "详细信息ToolStripMenuItem";
-            this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.详细信息ToolStripMenuItem.Text = "详细信息";
             this.详细信息ToolStripMenuItem.Click += new System.EventHandler(this.详细信息ToolStripMenuItem_Click);
             // 
@@ -183,7 +183,7 @@
             this.属性RToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBox1});
             this.属性RToolStripMenuItem1.Name = "属性RToolStripMenuItem1";
-            this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.属性RToolStripMenuItem1.Text = "属性(&R)";
             this.属性RToolStripMenuItem1.MouseEnter += new System.EventHandler(this.属性RToolStripMenuItem1_MouseEnter);
             // 
@@ -238,7 +238,7 @@
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
             this.RightClick_FileSet.Name = "RightClick";
-            this.RightClick_FileSet.Size = new System.Drawing.Size(133, 92);
+            this.RightClick_FileSet.Size = new System.Drawing.Size(181, 114);
             // 
             // toolStripMenuItem1
             // 
@@ -256,8 +256,9 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "重命名(&M)";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 

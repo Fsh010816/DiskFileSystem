@@ -52,6 +52,7 @@ namespace DiskFileSystem
             this.IsOpening = false;
             this.Content = "";
             this.ReadOnly = false;
+            this.suffix = suffix;
         }
         //文件夹构造函数
         public BasicFile(String name, int startNum,String fatherPath)
