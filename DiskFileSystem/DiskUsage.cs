@@ -195,11 +195,12 @@ namespace DiskFileSystem
                 List<BasicFile> list = new List<BasicFile>();
                 if(file.Attr==2)
                 {
-                    Dictionary<string, BasicFile> dic = new Dictionary<string, BasicFile>();
-                    dic.Add(file.Name, file);
-                    File_information of = new File_information(dic);
-                    SetParent((int)of.Handle, (int)this.parentform.Handle);
-                    of.Show();
+                    MessageBox.Show(parentform.Disk_Content[Convert.ToInt32(label.Text)],"磁盘块内容",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Dictionary<string, BasicFile> dic = new Dictionary<string, BasicFile>();
+                    //dic.Add(file.Name, file);
+                    //File_information of = new File_information(dic);
+                    //SetParent((int)of.Handle, (int)this.parentform.Handle);
+                    //of.Show();
                 }
                 else
                 {

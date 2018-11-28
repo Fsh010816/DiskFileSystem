@@ -135,7 +135,7 @@ namespace DiskFileSystem
     * 	以下为根据当前目录创建文件或者目录的方法
     * 	 参数为 文件名 文件类型 文件大小 当前目录 文件对象字典  FAT登记表
     */
-        public BasicFile createFile(BasicFile nowCatalog, int[] fat, String name = "新建文件1", int dept = 1, String type = "读写", int size = 1,string suffix="txt")
+        public BasicFile createFile(BasicFile nowCatalog, int[] fat, String name = "新建文件1.txt", int dept = 1, String type = "读写", int size = 1,string suffix="txt")
         {
             if (fat[0] >= size)
             {   //判断磁盘剩余空间是否足够建立文件
@@ -158,7 +158,7 @@ namespace DiskFileSystem
                     else if (value.Attr == 2)
                     { //若同名文件已存在，则换名字
 
-                        return createFile(nowCatalog, fat, "新建文件" + (dept + 1), dept + 1);
+                        return createFile(nowCatalog, fat, "新建文件" + (dept + 1)+".txt", dept + 1);
                     }
                 }
                 else
@@ -234,6 +234,10 @@ namespace DiskFileSystem
 	 */
         public BasicFile searchFile(string path,BasicFile root)
         {
+            if(path[path.Length-1].Equals('\\'))
+            {
+                path = path.Remove(path.Length - 1);
+            }
             if (path.Length == 0)
             {
                 return null;
@@ -241,6 +245,7 @@ namespace DiskFileSystem
             else
             {
                 string[] name = path.Split(@"\"[0]);
+                
                 if(name[0].Equals(@"root:"))
                 {
                     if(name.Length==1)//只是根目录
@@ -271,6 +276,30 @@ namespace DiskFileSystem
             }
             
         }
+        /*
+	 * 以下根据相对路径寻找文件或目录
+	 * @return 返回目录或者文件。如果返回的是文件,则要打开不用跳转到父目录，如果返回的是目录，则要跳转到该目录
+	 */
+        public BasicFile searchFile(string path, BasicFile root,BasicFile father)
+        {
+            string[] name = path.Split(@"\"[0]);
+            BasicFile curFather = father;
+            string tmp = "";
+            foreach(var x in name)
+            {
+                if(x.Equals(@".."))
+                {
+                   curFather = curFather.Father;
+                }
+                else
+                {
+                   tmp += @"\" + x;
+
+                }
+            }
+            Console.WriteLine(curFather.Path + tmp + "-------------");
+            return searchFile(curFather.Path+tmp, root);
+        }
             //打开时显示
             public void showFile(BasicFile nowFile,FileShow fileShow)
         {
@@ -296,32 +325,6 @@ namespace DiskFileSystem
                     }
                 }
             }
-            //if(nowFile.getAttr() == 2)
-            //{
-            //    //新开窗口显示文件内容
-            //}
-            //else if(nowFile.getAttr() == 3)
-            //{
-            //    //刷新窗口显示文件夹里的文件
-            //    //清除原view里的所有东西
-            //    //FileShow f = new FileShow();
-            //    //f.MdiParent = file;
-            //    //SetParent((int)f.Handle, (int)this.Handle);
-            //    //添加到fileShow数组里
-            //    if (nowFile.childFile.Count == 0)
-            //    {
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        foreach (string key in nowFile.childFile.Keys)
-            //        {
-            //            //添加到这个数组里就会自动显示文件夹
-            //            fileShow.FileListToShow.Add(nowFile.childFile[key]);
-            //        }
-            //    }
-            //    //fileShow.Show();
-            //}
         }
 
         //删除某个父目录下的某个文件
@@ -413,6 +416,11 @@ namespace DiskFileSystem
                     fatherFile.ChildFile.Add(newName, File);
                     File.Name = newName;
                     File.UpdatePathandName();
+                    if(File.Attr==2)//如果是文件，则提取后缀名
+                    {
+                        string[] str = newName.Split('.');
+                        File.Suffix =str[str.Length-1] ;
+                    }
                     return true;
                 }
             }
@@ -422,6 +430,11 @@ namespace DiskFileSystem
                 fatherFile.ChildFile.Add(newName, File);
                 File.Name = newName;
                 File.UpdatePathandName();
+                if (File.Attr == 2)//如果是文件，则提取后缀名
+                {
+                    string[] str = newName.Split('.');
+                    File.Suffix = str[str.Length - 1];
+                }
                 return true;
             }
         }

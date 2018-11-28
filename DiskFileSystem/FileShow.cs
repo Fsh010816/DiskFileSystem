@@ -10,6 +10,7 @@ using System.Collections;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace DiskFileSystem
 {
@@ -31,7 +32,7 @@ namespace DiskFileSystem
         {
             InitializeComponent();
             parent = form;
-            
+            father = parent.root;
         }
 
         public FileShow()
@@ -107,6 +108,7 @@ namespace DiskFileSystem
         private void fileView_Activated(object sender, EventArgs e)
         {
             //如果文件夹不为空，则显示文件
+            pathShow.Text = father.Path;
             fileView.View = View.LargeIcon;
             fileView.Items.Clear();
             if (father.ChildFile.Count!=0)
@@ -203,7 +205,16 @@ namespace DiskFileSystem
         {
             if (e.KeyChar ==(char)Keys.Enter)
             {
-                BasicFile value = FileFun.searchFile(pathShow.Text, parent.root);
+                BasicFile value = null;
+                if (!pathShow.Text.StartsWith("root:"))//相对路径
+                {
+                    //MessageBox.Show(father.Name);
+                    value = FileFun.searchFile(pathShow.Text, parent.root,father);
+                }
+                else//绝对路径
+                {
+                    value = FileFun.searchFile(pathShow.Text, parent.root);
+                }
                 if(value == null)
                 {
                     MessageBox.Show("非法路径", "非法!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -242,6 +253,17 @@ namespace DiskFileSystem
         {
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             string s = Interaction.InputBox("请输入一个名称", "重命名", clickedFile.Name, -1, -1);
+            if(clickedFile.Attr==2)
+            {
+                var regex = new Regex(@"^[^\/\:\*\?\""\<\>\|\,]+$");
+                var m = regex.Match(s);
+                if (!m.Success)
+                {
+                    MessageBox.Show("请勿在文件名中包含\\ / : * ？ \" < > |等字符，请重新输入有效文件名！");
+                    return;
+                }
+
+            }
             bool flag=FileFun.reName(clickedFile, s, clickedFile.Father);
             if (!flag)
             {
