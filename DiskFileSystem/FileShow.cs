@@ -19,7 +19,7 @@ namespace DiskFileSystem
         //
         [DllImport("user32.dll", EntryPoint = "SetParent")]
         public static extern int SetParent(int hWndChild, int hWndNewParent);
-
+      
         //
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
@@ -33,6 +33,7 @@ namespace DiskFileSystem
             InitializeComponent();
             parent = form;
             father = parent.root;
+            upDateTreeView();
         }
 
         public FileShow()
@@ -118,9 +119,7 @@ namespace DiskFileSystem
                     fileView.Items.Add(x.Value.Item);
                 }
                 
-            }
-            //树形视图的维护
-            upDateTreeView();
+            } 
         }
         //右键点击事件
         private void fileView_MouseUp(object sender, MouseEventArgs e)
@@ -363,6 +362,9 @@ namespace DiskFileSystem
         {
             if(lastNode.Text == "root")
             {
+                lastNode.ImageIndex = 0;
+                lastNode.SelectedImageIndex = 0;
+                //lastNode.ContextMenuStrip = RightClick_View;
                 treeView.Nodes.Add(lastNode);
             }
 
@@ -373,6 +375,9 @@ namespace DiskFileSystem
                 {
                     //是文件夹则创建节点
                     TreeNode node = new TreeNode(cFile.Name);
+                    node.ImageIndex = 0;
+                    node.SelectedImageIndex = 0;
+                    //lastNode.ContextMenuStrip = RightClick_View;
                     //添加到上一层
                     lastNode.Nodes.Add(node);
                     makeTreeViewWithFile(cFile, node);
@@ -391,16 +396,14 @@ namespace DiskFileSystem
         private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             String path = "";
-            TreeNode node = e.Node.Parent;
+            TreeNode node = e.Node;
             while(node.Text != "root")
             {
-                Console.WriteLine("1");
-                path += node.Text + @"\" + path;
+                path = node.Text + @"\" + path;
                 node = node.Parent;
             }
             path = @"root:\" + path;
             //跳转
-            Console.WriteLine(path);
 
             BasicFile value = FileFun.searchFile(path, this.parent.root);
             if (value == null)
@@ -413,6 +416,11 @@ namespace DiskFileSystem
                 father = value;
             }
             fileView_Activated(this, e);
+
+            if (e.Button == MouseButtons.Right)
+            {
+                RightClick_View.Show(treeView.PointToScreen(new Point(e.X,e.Y)));
+            }
         }
     }
 }

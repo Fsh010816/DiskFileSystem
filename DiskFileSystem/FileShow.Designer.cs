@@ -55,6 +55,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView = new System.Windows.Forms.TreeView();
+            this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
             this.RightClick_FileSet.SuspendLayout();
@@ -115,14 +116,14 @@
             // 文件夹ToolStripMenuItem
             // 
             this.文件夹ToolStripMenuItem.Name = "文件夹ToolStripMenuItem";
-            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.文件夹ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.文件夹ToolStripMenuItem.Text = "文件夹(&F)";
             this.文件夹ToolStripMenuItem.Click += new System.EventHandler(this.文件夹ToolStripMenuItem_Click);
             // 
             // 文件ToolStripMenuItem
             // 
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.文件ToolStripMenuItem.Text = "文件(&B)";
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
@@ -239,7 +240,7 @@
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
             this.RightClick_FileSet.Name = "RightClick";
-            this.RightClick_FileSet.Size = new System.Drawing.Size(181, 114);
+            this.RightClick_FileSet.Size = new System.Drawing.Size(133, 92);
             // 
             // toolStripMenuItem1
             // 
@@ -257,7 +258,7 @@
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(132, 22);
             this.toolStripMenuItem3.Text = "重命名(&M)";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
@@ -270,11 +271,20 @@
             // 
             // treeView
             // 
+            this.treeView.ImageIndex = 0;
+            this.treeView.ImageList = this.imageList3;
             this.treeView.Location = new System.Drawing.Point(10, 41);
             this.treeView.Name = "treeView";
+            this.treeView.SelectedImageIndex = 0;
             this.treeView.Size = new System.Drawing.Size(162, 524);
             this.treeView.TabIndex = 6;
             this.treeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
+            // 
+            // imageList3
+            // 
+            this.imageList3.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList3.ImageStream")));
+            this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList3.Images.SetKeyName(0, "FileSet.png");
             // 
             // FileShow
             // 
@@ -329,5 +339,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.TreeView treeView;
+        private System.Windows.Forms.ImageList imageList3;
     }
 }
