@@ -54,6 +54,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeView = new System.Windows.Forms.TreeView();
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
             this.RightClick_FileSet.SuspendLayout();
@@ -84,9 +85,9 @@
             this.fileView.FullRowSelect = true;
             this.fileView.GridLines = true;
             this.fileView.LargeImageList = this.imageList2;
-            this.fileView.Location = new System.Drawing.Point(0, 41);
+            this.fileView.Location = new System.Drawing.Point(178, 41);
             this.fileView.Name = "fileView";
-            this.fileView.Size = new System.Drawing.Size(1079, 524);
+            this.fileView.Size = new System.Drawing.Size(901, 524);
             this.fileView.SmallImageList = this.imageList1;
             this.fileView.TabIndex = 4;
             this.fileView.UseCompatibleStateImageBehavior = false;
@@ -148,33 +149,33 @@
             this.详细信息ToolStripMenuItem,
             this.属性RToolStripMenuItem1});
             this.RightClick_File.Name = "RightClick";
-            this.RightClick_File.Size = new System.Drawing.Size(181, 136);
+            this.RightClick_File.Size = new System.Drawing.Size(133, 114);
             // 
             // 打开OToolStripMenuItem
             // 
             this.打开OToolStripMenuItem.Name = "打开OToolStripMenuItem";
-            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.打开OToolStripMenuItem.Text = "打开(&O)";
             this.打开OToolStripMenuItem.Click += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             // 
             // 删除DToolStripMenuItem
             // 
             this.删除DToolStripMenuItem.Name = "删除DToolStripMenuItem";
-            this.删除DToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.删除DToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.删除DToolStripMenuItem.Text = "删除(&D)";
             this.删除DToolStripMenuItem.Click += new System.EventHandler(this.删除DToolStripMenuItem_Click);
             // 
             // 重命名MToolStripMenuItem
             // 
             this.重命名MToolStripMenuItem.Name = "重命名MToolStripMenuItem";
-            this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.重命名MToolStripMenuItem.Text = "重命名(&M)";
             this.重命名MToolStripMenuItem.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
             // 详细信息ToolStripMenuItem
             // 
             this.详细信息ToolStripMenuItem.Name = "详细信息ToolStripMenuItem";
-            this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.详细信息ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.详细信息ToolStripMenuItem.Text = "详细信息";
             this.详细信息ToolStripMenuItem.Click += new System.EventHandler(this.详细信息ToolStripMenuItem_Click);
             // 
@@ -183,7 +184,7 @@
             this.属性RToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBox1});
             this.属性RToolStripMenuItem1.Name = "属性RToolStripMenuItem1";
-            this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.属性RToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.属性RToolStripMenuItem1.Text = "属性(&R)";
             this.属性RToolStripMenuItem1.MouseEnter += new System.EventHandler(this.属性RToolStripMenuItem1_MouseEnter);
             // 
@@ -266,11 +267,20 @@
             this.toolStripMenuItem4.Text = "详细信息";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.详细信息ToolStripMenuItem_Click);
             // 
+            // treeView
+            // 
+            this.treeView.Location = new System.Drawing.Point(10, 41);
+            this.treeView.Name = "treeView";
+            this.treeView.Size = new System.Drawing.Size(162, 524);
+            this.treeView.TabIndex = 6;
+            this.treeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
+            // 
             // FileShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1079, 563);
+            this.Controls.Add(this.treeView);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.search);
             this.Controls.Add(this.searchText);
@@ -317,5 +327,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.TreeView treeView;
     }
 }

@@ -31,7 +31,9 @@ namespace DiskFileSystem
         {
             InitializeComponent();
             parent = form;
+            
         }
+
         public FileShow()
         {
             InitializeComponent();
@@ -49,7 +51,8 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
-                
+                //树形视图的维护
+                upDateTreeView();
             }
             else
             {
@@ -114,6 +117,8 @@ namespace DiskFileSystem
                 }
                 
             }
+            //树形视图的维护
+            upDateTreeView();
         }
         //右键点击事件
         private void fileView_MouseUp(object sender, MouseEventArgs e)
@@ -198,14 +203,14 @@ namespace DiskFileSystem
         {
             if (e.KeyChar ==(char)Keys.Enter)
             {
-                BasicFile value=FileFun.searchFile(pathShow.Text, parent.root);
-                if(value==null)
+                BasicFile value = FileFun.searchFile(pathShow.Text, parent.root);
+                if(value == null)
                 {
                     MessageBox.Show("非法路径", "非法!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    if(value.Attr==2)//是文件则打开,不跳转
+                    if(value.Attr == 2)//是文件则打开,不跳转
                     {
                         Form form = FileFun.openFile(value, ref father, fileView,parent.fat, parent.openedFileList, parent.Disk_Content);
                         if (form != null)
@@ -216,7 +221,7 @@ namespace DiskFileSystem
                             this.parent.OpenedFileList.Add(value.Path, value);
                         }
                     }
-                    else if(value.Attr==3)//是目录
+                    else if(value.Attr == 3)//是目录
                     {
                         father = value;
                     }
@@ -330,6 +335,62 @@ namespace DiskFileSystem
             {
                 clickedFile.ReadOnly = false;
             }
+        }
+        //树形图的构建
+        private void makeTreeViewWithFile(BasicFile file, TreeNode lastNode)
+        {
+            if(lastNode.Text == "root")
+            {
+                treeView.Nodes.Add(lastNode);
+            }
+
+            foreach (var x in file.ChildFile)
+            {
+                BasicFile cFile = x.Value;
+                if(cFile.Attr == 3)
+                {
+                    //是文件夹则创建节点
+                    TreeNode node = new TreeNode(cFile.Name);
+                    //添加到上一层
+                    lastNode.Nodes.Add(node);
+                    makeTreeViewWithFile(cFile, node);
+                }
+            }
+            treeView.ExpandAll();
+        }
+        //树形图的维护
+        private void upDateTreeView()
+        {
+            treeView.Nodes.Clear();
+            TreeNode rootNode = new TreeNode(parent.root.Name);
+            makeTreeViewWithFile(this.parent.root, rootNode);
+        }
+        //点击就可以进入该文件夹
+        private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            String path = "";
+            TreeNode node = e.Node.Parent;
+            while(node.Text != "root")
+            {
+                Console.WriteLine("1");
+                path += node.Text + @"\" + path;
+                node = node.Parent;
+            }
+            path = @"root:\" + path;
+            //跳转
+            Console.WriteLine(path);
+
+            BasicFile value = FileFun.searchFile(path, this.parent.root);
+            if (value == null)
+            {
+                MessageBox.Show("非法路径", "非法!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else if(value.Attr == 3)//是目录
+            {
+                father = value;
+            }
+            fileView_Activated(this, e);
         }
     }
 }
