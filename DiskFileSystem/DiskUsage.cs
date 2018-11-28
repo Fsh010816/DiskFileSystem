@@ -45,21 +45,13 @@ namespace DiskFileSystem
             else
             {
                 str = "目录->" + File.Path + ".\n" + "-------------------------\n";
-                foreach(var x in File.ChildFile)
-                {
-                    if(x.Value.Attr==2)
-                    {
-                        str+= "文件->" + x.Value.Path+".\n";
-                    }
-                    else
-                    {
-                        str += "目录->" + x.Value.Path + ".\n";
-                    }
-                }
             }
             int nowNum = File.StartNum;
-            while(true)
+            int index = 0;
+            var array = File.ChildFile.Values.ToArray();
+            while (true)
             {
+                string tmp = str;
                 Label label = null;
                 //定位到指向nowNum的label
                 foreach (var y in this.groupBox1.Controls)
@@ -70,7 +62,40 @@ namespace DiskFileSystem
                         break;
                     }
                 }
-                toolTip1.SetToolTip(label, str);
+                for (int i=index;i<array.Length;i++,index++)
+                {
+                    BasicFile x = array[i];
+                    if (x.Attr == 2)
+                    {
+                        tmp += "文件->" + x.Path + ".\n";
+                    }
+                    else
+                    {
+                        tmp += "目录->" + x.Path + ".\n";
+                    }
+                    if ((i+1) % 8 == 0 )
+                    {
+                        index++;
+                        break;
+                    }
+                }
+                //foreach (var x in File.ChildFile)//如果是目录遍历8个子目录或子文件
+                //{
+                //     index++;
+                //    if (x.Value.Attr == 2)
+                //    {
+                //        str += "文件->" + x.Value.Path + ".\n";
+                //    }
+                //    else
+                //    {
+                //        str += "目录->" + x.Value.Path + ".\n";
+                //    }
+                //    if (index % 8 == 0)
+                //    {
+                //        break;
+                //    }
+                //}
+                toolTip1.SetToolTip(label, tmp);
                 nowNum = fat[nowNum];
                 if(nowNum==-1)
                 {
@@ -184,7 +209,7 @@ namespace DiskFileSystem
             string str = toolTip1.GetToolTip(label);
             
             int startIndex = str.IndexOf('r');
-            int endIndex = str.IndexOf(".");
+            int endIndex = str.Length-1;
             if(startIndex==-1||endIndex==-1)
             {
                 return;
