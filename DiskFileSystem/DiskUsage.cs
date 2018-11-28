@@ -40,11 +40,11 @@ namespace DiskFileSystem
             string str = "";
             if (File.Attr==2)
             {
-                str= "文件->"+File.Path+".";
+                str= "文件->"+File.Path+"|";
             }
             else
             {
-                str = "目录->" + File.Path + ".\n" + "-------------------------\n";
+                str = "目录->" + File.Path + "|\n" + "-------------------------\n";
             }
             int nowNum = File.StartNum;
             int index = 0;
@@ -67,11 +67,11 @@ namespace DiskFileSystem
                     BasicFile x = array[i];
                     if (x.Attr == 2)
                     {
-                        tmp += "文件->" + x.Path + ".\n";
+                        tmp += "文件->" + x.Path + "\n";
                     }
                     else
                     {
-                        tmp += "目录->" + x.Path + ".\n";
+                        tmp += "目录->" + x.Path + "\n";
                     }
                     if ((i+1) % 8 == 0 )
                     {
@@ -209,8 +209,8 @@ namespace DiskFileSystem
             string str = toolTip1.GetToolTip(label);
             
             int startIndex = str.IndexOf('r');
-            int endIndex = str.Length-1;
-            if(startIndex==-1||endIndex==-1)
+            int endIndex = str.IndexOf('|');
+            if (startIndex==-1||endIndex==-1)
             {
                 return;
             }
@@ -236,6 +236,11 @@ namespace DiskFileSystem
                 
             }
             //MessageBox.Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

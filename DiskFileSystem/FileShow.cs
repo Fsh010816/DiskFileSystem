@@ -417,6 +417,7 @@ namespace DiskFileSystem
 
             if (e.Button == MouseButtons.Right)
             {
+                treeView.SelectedNode = e.Node;
                 RightClick_View.Show(treeView.PointToScreen(new Point(e.X,e.Y)));
             }
         }
