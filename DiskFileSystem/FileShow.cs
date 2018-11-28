@@ -45,7 +45,7 @@ namespace DiskFileSystem
         {
             if (father.ChildFile.Count >= father.Size * 8)
             {
-                FileFun.reAddFat(father.StartNum, 1, parent.fat);//追加目录磁盘块
+                FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
             }
             BasicFile file = FileFun.createCatolog(father, parent.fat);
             //Console.WriteLine(father.getName());
@@ -79,7 +79,8 @@ namespace DiskFileSystem
             else
             {
                 this.parent.OpenedFileList.Remove(clickedFile.Path);
-
+                //树形视图的维护
+                upDateTreeView();
             }
             fileView_Activated(this, e);
         }
@@ -88,10 +89,9 @@ namespace DiskFileSystem
         {
             if (father.ChildFile.Count>= father.Size*8)
             {
-                FileFun.reAddFat(father.StartNum, 1, parent.fat);//追加目录磁盘块
+                FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
             }
             BasicFile file = FileFunction.GetInstance().createFile(father, parent.Fat);
-
 
             if (file != null)
             {
@@ -250,23 +250,25 @@ namespace DiskFileSystem
         {
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
             string s = Interaction.InputBox("请输入一个名称", "重命名", clickedFile.Name, -1, -1);
-            if(clickedFile.Attr==2)
+            if(s == "")
             {
-                var regex = new Regex(@"^[^\/\:\*\?\""\<\>\|\,]+$");
-                var m = regex.Match(s);
-                if (!m.Success)
-                {
-                    MessageBox.Show("请勿在文件名中包含\\ / : * ？ \" < > |等字符，请重新输入有效文件名！");
-                    return;
-                }
-
+                return;
+            }
+            var regex = new Regex(@"^[^\/\:\*\?\""\<\>\|\,]+$");
+            var m = regex.Match(s);
+            if (!m.Success)
+            {
+                MessageBox.Show("请勿在文件名中包含\\ / : * ？ \" < > |等字符，请重新输入有效文件名！");
+                return;
             }
             bool flag=FileFun.reName(clickedFile, s, clickedFile.Father);
             if (!flag)
             {
                 MessageBox.Show("重命名失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            upDateTreeView();
             fileView_Activated(this, e);
+
         }
 
         private void 属性RToolStripMenuItem1_MouseEnter(object sender, EventArgs e)

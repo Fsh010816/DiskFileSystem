@@ -111,8 +111,10 @@ namespace DiskFileSystem
 	 * 
 	 */
 
-        public bool reAddFat(int startNum, int addSize,int[] fat)
+        public bool reAddFat(BasicFile file, int addSize,int[] fat)
         {
+            int startNum = file.StartNum;
+
             int nowPoint = startNum;
             int nextPoint = fat[startNum];
             while (fat[nowPoint] != -1)
@@ -124,6 +126,7 @@ namespace DiskFileSystem
             if (nextPoint != -1)
             {
                 fat[nowPoint] = nextPoint;
+                file.Size += addSize;
                 return true;
             }
             else
@@ -299,32 +302,6 @@ namespace DiskFileSystem
             }
             Console.WriteLine(curFather.Path + tmp + "-------------");
             return searchFile(curFather.Path+tmp, root);
-        }
-            //打开时显示
-            public void showFile(BasicFile nowFile,FileShow fileShow)
-        {
-            if(nowFile.ChildFile.Count != 0)
-            {
-                foreach (KeyValuePair<String, BasicFile> file in nowFile.ChildFile)
-                {
-                    if (file.Value.Attr == 3)
-                    { //目录文件
-                        Console.WriteLine("文件名 : " + file.Value.Name);
-                        Console.WriteLine("操作类型 ： " + "文件夹");
-                        Console.WriteLine("起始盘块 ： " + file.Value.StartNum);
-                        Console.WriteLine("大小 : " + file.Value.Size);
-                        Console.WriteLine("<-------------------------------------->");
-                    }
-                    else if (file.Value.Attr == 2)
-                    {
-                        Console.WriteLine("文件名 : " + file.Value.Name);
-                        Console.WriteLine("操作类型 ： " + "文件夹");
-                        Console.WriteLine("起始盘块 ： " + file.Value.StartNum);
-                        Console.WriteLine("大小 : " + file.Value.Size);
-                        Console.WriteLine("<-------------------------------------->");
-                    }
-                }
-            }
         }
 
         //删除某个父目录下的某个文件

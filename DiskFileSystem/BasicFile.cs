@@ -100,7 +100,7 @@ namespace DiskFileSystem
             }
             else//目录
             {
-                return Name + "," + " "+ "," + "目录" + "," + startNum.ToString() + "," + "1";
+                return Name + "," + " "+ "," + "目录" + "," + startNum.ToString() + "," + Size.ToString();
             }
         }
     }

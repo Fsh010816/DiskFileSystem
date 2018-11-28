@@ -140,12 +140,10 @@ namespace DiskFileSystem
             //增加了字节
             else if(getStringLength(thisFile.Content) < getStringLength(content.Text) && getDiskPart(content.Text) - getDiskPart(thisFile.Content) >= 1)
             {
-                FileFun.reAddFat(thisFile.StartNum, getDiskPart(content.Text) - getDiskPart(thisFile.Content), fat);
+                FileFun.reAddFat(thisFile, getDiskPart(content.Text) - getDiskPart(thisFile.Content), fat);
             }
 
             thisFile.Content = content.Text;
-            //改变大小
-            thisFile.Size = getDiskPart(content.Text);
 
             FileFun.setDiskContent(disk,thisFile);
         }
