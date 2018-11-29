@@ -63,6 +63,26 @@ namespace DiskFileSystem.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _1 {
+            get {
+                object obj = ResourceManager.GetObject("1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _4a4880f03069c7471a5ae3edb13a413 {
+            get {
+                object obj = ResourceManager.GetObject("4a4880f03069c7471a5ae3edb13a413", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap back {
             get {
                 object obj = ResourceManager.GetObject("back", resourceCulture);
@@ -96,6 +116,16 @@ namespace DiskFileSystem.Properties {
         internal static System.Drawing.Bitmap FileSet {
             get {
                 object obj = ResourceManager.GetObject("FileSet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap FileTable {
+            get {
+                object obj = ResourceManager.GetObject("FileTable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

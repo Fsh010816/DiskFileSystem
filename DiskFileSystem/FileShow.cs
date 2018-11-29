@@ -404,7 +404,6 @@ namespace DiskFileSystem
             }
             path = @"root:\" + path;
             //跳转
-
             BasicFile value = FileFun.searchFile(path, this.parent.root);
             if (value == null)
             {
@@ -420,8 +419,59 @@ namespace DiskFileSystem
             if (e.Button == MouseButtons.Right)
             {
                 treeView.SelectedNode = e.Node;
-                RightClick_View.Show(treeView.PointToScreen(new Point(e.X,e.Y)));
+                RightClick_Tree.Show(treeView.PointToScreen(new Point(e.X,e.Y)));
             }
+        }
+
+        private void 删除DToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            String path = "";
+            TreeNode node = treeView.SelectedNode;
+            while (node.Text != "root")
+            {
+                node = node.Parent;
+                path = node.Text + @"\" + path;
+            }
+            path = path.Replace("root",@"root:");
+            //跳转到父亲
+            BasicFile value = FileFun.searchFile(path, this.parent.root);
+            
+            if (value == null)
+            {
+                MessageBox.Show("非法路径", "非法!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else if (value.Attr == 3)//是目录
+            {
+                father = value;
+            }
+
+            //到时候还要获得名字
+            BasicFile clickedFile = getFileByName(treeView.SelectedNode.Text);
+            bool flag = FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat);
+            if (!flag)
+            {
+                MessageBox.Show("删除文件失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                this.parent.OpenedFileList.Remove(clickedFile.Path);
+                //树形视图的维护
+                upDateTreeView();
+            }
+            fileView_Activated(this, e);
+        }
+
+        private BasicFile getFileByName(String name)
+        {
+            foreach(var x in father.ChildFile)
+            {
+                if(x.Value.Name == name)
+                {
+                    return x.Value;
+                }
+            }
+            return null;
         }
     }
 }

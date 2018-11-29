@@ -46,9 +46,6 @@
             this.详细信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.属性RToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.search = new System.Windows.Forms.Button();
-            this.showPath = new System.Windows.Forms.Button();
             this.RightClick_FileSet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,9 +53,18 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView = new System.Windows.Forms.TreeView();
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.search = new System.Windows.Forms.Button();
+            this.showPath = new System.Windows.Forms.Button();
+            this.RightClick_Tree = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除DToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
             this.RightClick_FileSet.SuspendLayout();
+            this.RightClick_Tree.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathShow
@@ -198,40 +204,6 @@
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::DiskFileSystem.Properties.Resources.back;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(10, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(26, 26);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // search
-            // 
-            this.search.BackColor = System.Drawing.SystemColors.Control;
-            this.search.BackgroundImage = global::DiskFileSystem.Properties.Resources.search;
-            this.search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.search.Location = new System.Drawing.Point(741, 7);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(26, 26);
-            this.search.TabIndex = 3;
-            this.search.UseVisualStyleBackColor = false;
-            this.search.Click += new System.EventHandler(this.search_Click);
-            // 
-            // showPath
-            // 
-            this.showPath.BackColor = System.Drawing.SystemColors.Control;
-            this.showPath.BackgroundImage = global::DiskFileSystem.Properties.Resources.FileSet;
-            this.showPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.showPath.Location = new System.Drawing.Point(44, 7);
-            this.showPath.Name = "showPath";
-            this.showPath.Size = new System.Drawing.Size(26, 26);
-            this.showPath.TabIndex = 1;
-            this.showPath.UseVisualStyleBackColor = false;
-            // 
             // RightClick_FileSet
             // 
             this.RightClick_FileSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -247,6 +219,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.toolStripMenuItem1.Text = "打开(&O)";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -286,6 +259,78 @@
             this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList3.Images.SetKeyName(0, "FileSet.png");
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(10, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(26, 26);
+            this.button1.TabIndex = 5;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // search
+            // 
+            this.search.BackColor = System.Drawing.SystemColors.Control;
+            this.search.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("search.BackgroundImage")));
+            this.search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.search.Location = new System.Drawing.Point(741, 7);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(26, 26);
+            this.search.TabIndex = 3;
+            this.search.UseVisualStyleBackColor = false;
+            this.search.Click += new System.EventHandler(this.search_Click);
+            // 
+            // showPath
+            // 
+            this.showPath.BackColor = System.Drawing.SystemColors.Control;
+            this.showPath.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showPath.BackgroundImage")));
+            this.showPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.showPath.Location = new System.Drawing.Point(44, 7);
+            this.showPath.Name = "showPath";
+            this.showPath.Size = new System.Drawing.Size(26, 26);
+            this.showPath.TabIndex = 1;
+            this.showPath.UseVisualStyleBackColor = false;
+            // 
+            // RightClick_Tree
+            // 
+            this.RightClick_Tree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.删除DToolStripMenuItem1});
+            this.RightClick_Tree.Name = "RightClick_View";
+            this.RightClick_Tree.Size = new System.Drawing.Size(181, 70);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem5.Text = "新建(&W)";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem6.Text = "文件夹(&F)";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.文件夹ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem7.Text = "文件(&B)";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
+            // 
+            // 删除DToolStripMenuItem1
+            // 
+            this.删除DToolStripMenuItem1.Name = "删除DToolStripMenuItem1";
+            this.删除DToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.删除DToolStripMenuItem1.Text = "删除(&D)";
+            this.删除DToolStripMenuItem1.Click += new System.EventHandler(this.删除DToolStripMenuItem1_Click);
+            // 
             // FileShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -298,6 +343,7 @@
             this.Controls.Add(this.showPath);
             this.Controls.Add(this.pathShow);
             this.Controls.Add(this.fileView);
+            this.MaximizeBox = false;
             this.Name = "FileShow";
             this.ShowInTaskbar = false;
             this.Text = "FileShow";
@@ -307,6 +353,7 @@
             this.RightClick_View.ResumeLayout(false);
             this.RightClick_File.ResumeLayout(false);
             this.RightClick_FileSet.ResumeLayout(false);
+            this.RightClick_Tree.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +387,10 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.ImageList imageList3;
+        private System.Windows.Forms.ContextMenuStrip RightClick_Tree;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem 删除DToolStripMenuItem1;
     }
 }

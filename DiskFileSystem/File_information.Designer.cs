@@ -106,6 +106,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(970, 373);
             this.Controls.Add(this.infomation_List);
+            this.MaximizeBox = false;
             this.Name = "File_information";
             this.Text = "OpenedFile";
             this.Activated += new System.EventHandler(this.OpenedFile_Activated);
