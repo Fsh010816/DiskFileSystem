@@ -29,26 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Disk_Check = new System.Windows.Forms.Button();
             this.Disk_Name = new System.Windows.Forms.Label();
-            this.TestFileSet = new System.Windows.Forms.Button();
             this.BasicRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TestFileSet_Name = new System.Windows.Forms.Label();
             this.fileTable = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.TestFileSet = new System.Windows.Forms.Button();
+            this.Disk_Check = new System.Windows.Forms.Button();
             this.BasicRightClick.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Disk_Check
-            // 
-            this.Disk_Check.Location = new System.Drawing.Point(12, 12);
-            this.Disk_Check.Name = "Disk_Check";
-            this.Disk_Check.Size = new System.Drawing.Size(112, 101);
-            this.Disk_Check.TabIndex = 0;
-            this.Disk_Check.UseVisualStyleBackColor = true;
-            this.Disk_Check.Click += new System.EventHandler(this.Disk_Check_Click);
             // 
             // Disk_Name
             // 
@@ -58,16 +49,6 @@
             this.Disk_Name.Size = new System.Drawing.Size(112, 15);
             this.Disk_Name.TabIndex = 1;
             this.Disk_Name.Text = "     磁盘查看";
-            // 
-            // TestFileSet
-            // 
-            this.TestFileSet.ContextMenuStrip = this.BasicRightClick;
-            this.TestFileSet.Location = new System.Drawing.Point(130, 12);
-            this.TestFileSet.Name = "TestFileSet";
-            this.TestFileSet.Size = new System.Drawing.Size(112, 101);
-            this.TestFileSet.TabIndex = 2;
-            this.TestFileSet.UseVisualStyleBackColor = true;
-            this.TestFileSet.Click += new System.EventHandler(this.Double_Click);
             // 
             // BasicRightClick
             // 
@@ -97,16 +78,19 @@
             this.TestFileSet_Name.Name = "TestFileSet_Name";
             this.TestFileSet_Name.Size = new System.Drawing.Size(112, 15);
             this.TestFileSet_Name.TabIndex = 3;
-            this.TestFileSet_Name.Text = "    测试文件夹";
+            this.TestFileSet_Name.Text = "    文件管理器";
             // 
             // fileTable
             // 
+            this.fileTable.BackColor = System.Drawing.Color.White;
             this.fileTable.ContextMenuStrip = this.BasicRightClick;
+            this.fileTable.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.fileTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fileTable.Location = new System.Drawing.Point(248, 12);
             this.fileTable.Name = "fileTable";
             this.fileTable.Size = new System.Drawing.Size(112, 101);
             this.fileTable.TabIndex = 5;
-            this.fileTable.UseVisualStyleBackColor = true;
+            this.fileTable.UseVisualStyleBackColor = false;
             this.fileTable.Click += new System.EventHandler(this.fileTable_Click);
             // 
             // label1
@@ -118,10 +102,40 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "    查看文件表";
             // 
+            // TestFileSet
+            // 
+            this.TestFileSet.BackColor = System.Drawing.Color.White;
+            this.TestFileSet.BackgroundImage = global::DiskFileSystem.Properties.Resources.BigFileSet;
+            this.TestFileSet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TestFileSet.ContextMenuStrip = this.BasicRightClick;
+            this.TestFileSet.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.TestFileSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TestFileSet.Location = new System.Drawing.Point(130, 12);
+            this.TestFileSet.Name = "TestFileSet";
+            this.TestFileSet.Size = new System.Drawing.Size(112, 101);
+            this.TestFileSet.TabIndex = 2;
+            this.TestFileSet.UseVisualStyleBackColor = false;
+            this.TestFileSet.Click += new System.EventHandler(this.Double_Click);
+            // 
+            // Disk_Check
+            // 
+            this.Disk_Check.BackColor = System.Drawing.Color.White;
+            this.Disk_Check.BackgroundImage = global::DiskFileSystem.Properties.Resources.Disk;
+            this.Disk_Check.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Disk_Check.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Disk_Check.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Disk_Check.Location = new System.Drawing.Point(12, 12);
+            this.Disk_Check.Name = "Disk_Check";
+            this.Disk_Check.Size = new System.Drawing.Size(112, 101);
+            this.Disk_Check.TabIndex = 0;
+            this.Disk_Check.UseVisualStyleBackColor = false;
+            this.Disk_Check.Click += new System.EventHandler(this.Disk_Check_Click);
+            // 
             // FileMangerSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(927, 677);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.fileTable);
@@ -129,9 +143,9 @@
             this.Controls.Add(this.TestFileSet);
             this.Controls.Add(this.Disk_Name);
             this.Controls.Add(this.Disk_Check);
-            this.IsMdiContainer = true;
             this.Name = "FileMangerSystem";
             this.Text = "FileMangerSystem";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FileMangerSystem_FormClosed);
             this.Load += new System.EventHandler(this.FileMangerSystem_Load);
             this.BasicRightClick.ResumeLayout(false);
             this.ResumeLayout(false);

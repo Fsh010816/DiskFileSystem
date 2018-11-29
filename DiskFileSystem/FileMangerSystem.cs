@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections;
 
 namespace DiskFileSystem
-{ 
+{
     public partial class FileMangerSystem : Form
     {
         //解决覆盖问题
@@ -74,17 +76,42 @@ namespace DiskFileSystem
         private void FileMangerSystem_Load(object sender, EventArgs e)
         {
             //TestFileSet.SendToBack();
-
-            for (int i = 0; i < Fat.Length; i++)
+            if (System.IO.File.Exists("information.dat"))
             {
-                Fat[i] = 0;
+                Serializable_Date a = (Serializable_Date)FileFunction.GetInstance().FileDeSerialize("information.dat");
+                if (a != null)
+                {
+                    this.fat = a.Fat;
+                    this.disk_Content = a.Disk_content;
+                    this.root = a.File;
+                }
+                else
+                {
+                    for (int i = 0; i < Fat.Length; i++)
+                    {
+                        Fat[i] = 0;
+                    }
+                    Fat[3] = -1; //纪录磁盘剩余块数	
+                    Fat[2] = -1; //纪录磁盘剩余块数	
+                    Fat[1] = -1; //255表示磁盘块已占用
+                    Fat[0] = 124; //纪录磁盘剩余块数	
+                    root = new BasicFile("root", 3, "");
+                    root.Father = root;
+                }
             }
-            Fat[3] = -1; //纪录磁盘剩余块数	
-            Fat[2] = -1; //纪录磁盘剩余块数	
-            Fat[1] = -1; //255表示磁盘块已占用
-            Fat[0] = 124; //纪录磁盘剩余块数	
-            root =  new BasicFile("root", 3, "");
-            root.Father = root;
+            else
+            {
+                for (int i = 0; i < Fat.Length; i++)
+                {
+                    Fat[i] = 0;
+                }
+                Fat[3] = -1; //纪录磁盘剩余块数	
+                Fat[2] = -1; //纪录磁盘剩余块数	
+                Fat[1] = -1; //255表示磁盘块已占用
+                Fat[0] = 124; //纪录磁盘剩余块数	
+                root = new BasicFile("root", 3, "");
+                root.Father = root;
+            }
         }
 
         private void Disk_Check_Click(object sender, EventArgs e)
@@ -108,5 +135,18 @@ namespace DiskFileSystem
             information_.IsOpening = true;
             opened.Show();
         }
+
+        private void FileMangerSystem_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //ArrayList ar = new ArrayList();
+            //ar.Add(fat);
+            //ar.Add(disk_Content);
+            //ar.Add(root);
+            //FileFun.FileSerialize("Config.dat", ar);
+            root.IsOpening = false;
+            Serializable_Date s = new Serializable_Date(fat, disk_Content, root);
+            FileFun.FileSerialize("information.dat", s);
+        }
+
     }
 }

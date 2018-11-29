@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -110,7 +112,6 @@ namespace DiskFileSystem
 	 * 以下为追加内容时修改fat表
 	 * 
 	 */
-
         public bool reAddFat(BasicFile file, int addSize,int[] fat)
         {
             int startNum = file.StartNum;
@@ -536,6 +537,40 @@ namespace DiskFileSystem
                 }
                 diskNo++;
                 s = file.Content;
+            }
+        }
+
+        public void FileSerialize(string FilePath, object obj)
+        {
+            
+                FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+                    //new FileStream(FilePath, FileMode.Create);
+                BinaryFormatter sl = new BinaryFormatter();
+                sl.Serialize(fs, obj);
+                fs.Close();
+       
+        }
+
+        public object FileDeSerialize(string FilePath)
+        {
+            if (System.IO.File.Exists(FilePath))
+            {
+                try
+                {
+                    FileStream fs = new FileStream(FilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                    BinaryFormatter sl = new BinaryFormatter();
+                    object obg = sl.Deserialize(fs);
+                    fs.Close();
+                    return obg;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
             }
         }
 

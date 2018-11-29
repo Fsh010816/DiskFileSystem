@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace DiskFileSystem
 {
+    [Serializable]  //必须添加序列化特性
     public class BasicFile
     {
         private Dictionary<String, BasicFile> childFile = new Dictionary<String, BasicFile>();
