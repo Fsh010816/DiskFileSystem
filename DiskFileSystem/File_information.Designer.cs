@@ -36,6 +36,7 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.infomation_List)).BeginInit();
             this.SuspendLayout();
@@ -52,11 +53,12 @@
             this.Column5,
             this.Column6,
             this.Column7,
+            this.Column9,
             this.Column8});
             this.infomation_List.Location = new System.Drawing.Point(12, 12);
             this.infomation_List.Name = "infomation_List";
             this.infomation_List.RowTemplate.Height = 23;
-            this.infomation_List.Size = new System.Drawing.Size(948, 349);
+            this.infomation_List.Size = new System.Drawing.Size(1153, 349);
             this.infomation_List.TabIndex = 0;
             // 
             // Column1
@@ -94,6 +96,12 @@
             this.Column7.HeaderText = "写指针(块号)";
             this.Column7.Name = "Column7";
             // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "占用的磁盘块";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 200;
+            // 
             // Column8
             // 
             this.Column8.HeaderText = "文件路径";
@@ -104,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 373);
+            this.ClientSize = new System.Drawing.Size(1178, 373);
             this.Controls.Add(this.infomation_List);
             this.MaximizeBox = false;
             this.Name = "File_information";
@@ -126,6 +134,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
 }

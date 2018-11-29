@@ -91,10 +91,13 @@ namespace DiskFileSystem
                     {
                         Fat[i] = 0;
                     }
+                    Fat[4] = 250;
+                    Fat[10] = 250;
+                    fat[13] = 250;
                     Fat[3] = -1; //纪录磁盘剩余块数	
                     Fat[2] = -1; //纪录磁盘剩余块数	
                     Fat[1] = -1; //255表示磁盘块已占用
-                    Fat[0] = 124; //纪录磁盘剩余块数	
+                    Fat[0] = 121; //纪录磁盘剩余块数	
                     root = new BasicFile("root", 3, "");
                     root.Father = root;
                 }
@@ -105,10 +108,14 @@ namespace DiskFileSystem
                 {
                     Fat[i] = 0;
                 }
+
+                Fat[4] = 250;
+                Fat[10] = 250;
+                fat[13] = 250;
                 Fat[3] = -1; //纪录磁盘剩余块数	
                 Fat[2] = -1; //纪录磁盘剩余块数	
                 Fat[1] = -1; //255表示磁盘块已占用
-                Fat[0] = 124; //纪录磁盘剩余块数	
+                Fat[0] = 121; //纪录磁盘剩余块数	
                 root = new BasicFile("root", 3, "");
                 root.Father = root;
             }
@@ -129,7 +136,7 @@ namespace DiskFileSystem
                 MessageBox.Show("不能重复打开文件信息表！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            File_information opened = new File_information(OpenedFileList);
+            File_information opened = new File_information(OpenedFileList, this.fat);
             SetParent((int)opened.Handle, (int)this.Handle);
             information_ = opened;
             information_.IsOpening = true;
@@ -144,6 +151,10 @@ namespace DiskFileSystem
             //ar.Add(root);
             //FileFun.FileSerialize("Config.dat", ar);
             root.IsOpening = false;
+            foreach(var x in openedFileList)
+            {
+                x.Value.IsOpening = false;
+            }
             Serializable_Date s = new Serializable_Date(fat, disk_Content, root);
             FileFun.FileSerialize("information.dat", s);
         }

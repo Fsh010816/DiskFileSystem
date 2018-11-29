@@ -306,7 +306,7 @@ namespace DiskFileSystem
         }
 
         //删除某个父目录下的某个文件
-        public bool deleteFile(BasicFile File,BasicFile fatherFile,int[] fat)
+        public bool deleteFile(BasicFile File,BasicFile fatherFile,int[] fat, String[] disk)
         {
             if (fatherFile.ChildFile.ContainsKey(File.Name))
             {
@@ -316,12 +316,22 @@ namespace DiskFileSystem
                     {
                         return false;
                     }
+                    //清空磁盘数组
+                    List<int> arr;
+                    String link;
+                    findFat(File.StartNum, out link, out arr, fat);
+                    for (int i = 0; i < arr.Count; i++)
+                    {
+                        disk[arr[i]] = "";
+                    }
+
                     BasicFile file;
                     fatherFile.ChildFile.TryGetValue(File.Name, out file);
                     fatherFile.ChildFile.Remove(File.Name);
                     delFat(File.StartNum, fat);
                     return true;
                 }
+                //删除文件夹
                 else
                 {
                     if(File.ChildFile.Count==0)//该目录下没有文件和目录
@@ -337,7 +347,7 @@ namespace DiskFileSystem
                         bool flag = true;//判断子目录子文件能否删除成功
                         foreach(var x in File.ChildFile.ToArray())
                         {
-                            if(!deleteFile(x.Value, File, fat))
+                            if(!deleteFile(x.Value, File, fat, disk))
                             {
                                 flag = false;
                                 break;
@@ -520,22 +530,25 @@ namespace DiskFileSystem
             }
         }
 
-        public void setDiskContent(String[] disk, BasicFile file)
+        public void setDiskContent(String[] disk, BasicFile file,int[] fat)
         {
-            int diskNo = file.StartNum;
+            int j = 0;
             String s = file.Content;
             Console.WriteLine(s.Length);
-            for (int i=0 ; i < file.Content.Length ; i+=64)
+            List<int> arr;
+            String link;
+            findFat(file.StartNum,out link,out arr,fat);
+            for (int i=0 ; i < file.Content.Length ; i += 64)
             {
                 if(i + 63 < file.Content.Length)
                 {
-                    disk[diskNo] = s.Substring(i, 63);
+                    disk[arr[j]] = s.Substring(i, 63);
                 }
                 else
                 {
-                    disk[diskNo] = s.Substring(i, file.Content.Length - i);
+                    disk[arr[j]] = s.Substring(i, file.Content.Length - i);
                 }
-                diskNo++;
+                j++;
                 s = file.Content;
             }
         }
@@ -572,6 +585,28 @@ namespace DiskFileSystem
             {
                 return null;
             }
+        }
+
+        public int findFat(int startNum, out String Link, out List<int> array,int[] fat)
+        {
+            String tnp = "磁盘链表";
+            List<int> a = new List<int>();
+            int curNum = startNum;
+            while (curNum != -1)
+            {
+                tnp += "->" + curNum;
+                a.Add(curNum);
+                if (fat[curNum] == -1)
+                {
+                    Link = tnp;
+                    array = a;
+                    return curNum;
+                }
+                curNum = fat[curNum];
+            }
+            Link = "";
+            array = a;
+            return -1;
         }
 
     }

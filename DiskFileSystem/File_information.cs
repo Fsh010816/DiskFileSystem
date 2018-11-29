@@ -14,14 +14,16 @@ namespace DiskFileSystem
     {
         private Dictionary<String, BasicFile> fileList;
         private bool isOpening;
+        private int[] Fat;
 
         public bool IsOpening { get => isOpening; set => isOpening = value; }
         public Dictionary<string, BasicFile> FileList { get => fileList; set => fileList = value; }
 
-        public File_information(Dictionary<String, BasicFile> fileSet)
+        public File_information(Dictionary<String, BasicFile> fileSet, int[] fat)
         {
             InitializeComponent();
             FileList = fileSet;
+            Fat = fat;
             infomation_List.ClearSelection();
         }
 
@@ -46,8 +48,12 @@ namespace DiskFileSystem
                 this.infomation_List.Rows[index].Cells[4].Value = informaOfFile[4];
                 //指针
                 this.infomation_List.Rows[index].Cells[5].Value = f.StartNum;
-                this.infomation_List.Rows[index].Cells[6].Value = f.StartNum + f.Size - 1;
-                this.infomation_List.Rows[index].Cells[7].Value = f.Path;
+                String link;
+                List<int> a;
+                this.infomation_List.Rows[index].Cells[6].Value = FileFunction.GetInstance().findFat(f.StartNum,out link,out a,Fat);
+                this.infomation_List.Rows[index].Cells[7].Value = link;
+
+                this.infomation_List.Rows[index].Cells[8].Value = f.Path;
             }
         }
 

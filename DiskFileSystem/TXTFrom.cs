@@ -134,18 +134,23 @@ namespace DiskFileSystem
             //少了字节
             if(getStringLength(thisFile.Content) > getStringLength(content.Text) && getDiskPart(thisFile.Content) - getDiskPart(content.Text) >= 1)
             {
-                Console.WriteLine(getDiskPart(thisFile.Content) - getDiskPart(content.Text));
                 FileFun.delFat(thisFile.StartNum, getDiskPart(thisFile.Content) - getDiskPart(content.Text), fat);
             }
             //增加了字节
             else if(getStringLength(thisFile.Content) < getStringLength(content.Text) && getDiskPart(content.Text) - getDiskPart(thisFile.Content) >= 1)
             {
-                FileFun.reAddFat(thisFile, getDiskPart(content.Text) - getDiskPart(thisFile.Content), fat);
+                if(!FileFun.reAddFat(thisFile, getDiskPart(content.Text) - getDiskPart(thisFile.Content), fat))
+                {
+                    //失败
+                    MessageBox.Show("磁盘空间不足！", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //content.Text = thisFile.Content;
+                    return;
+                }
+                
             }
-
             thisFile.Content = content.Text;
 
-            FileFun.setDiskContent(disk,thisFile);
+            FileFun.setDiskContent(disk,thisFile, fat);
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
