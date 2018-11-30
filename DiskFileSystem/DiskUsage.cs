@@ -154,8 +154,8 @@ namespace DiskFileSystem
                         break;
                     }
                 }
-                if (x==0)
-                {
+                if (x==0 && label.Text != "0")
+                { 
                     cnt2++;
                     label.BackColor = Color.Green;
                 }
@@ -229,7 +229,7 @@ namespace DiskFileSystem
                 }
                 else
                 {
-                    File_information of = new File_information(file.ChildFile);
+                    File_information of = new File_information(file.ChildFile,parentform.fat);
                     SetParent((int)of.Handle, (int)this.parentform.Handle);
                     of.Show();
                 }
@@ -245,7 +245,7 @@ namespace DiskFileSystem
 
         private void label1_Click(object sender, EventArgs e)
         {
-            File_information of = new File_information(parentform.root.ChildFile);
+            File_information of = new File_information(parentform.root.ChildFile, parentform.fat);
             SetParent((int)of.Handle, (int)this.parentform.Handle);
             of.Show();
         }

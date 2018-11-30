@@ -71,7 +71,7 @@ namespace DiskFileSystem
         {
             //到时候还要获得名字
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
-            bool flag=FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat);
+            bool flag=FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat, this.parent.Disk_Content);
             if(!flag)
             {
                 MessageBox.Show("删除文件失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -329,14 +329,14 @@ namespace DiskFileSystem
             {
                 Dictionary<string, BasicFile> list = new Dictionary<string, BasicFile>();
                 list.Add(clickedFile.Name,clickedFile);
-                File_information of = new File_information(list);
+                File_information of = new File_information(list,parent.fat);
                 of.Text = "详细信息";
                 SetParent((int)of.Handle, (int)this.parent.Handle);
                 of.Show();
             }
             else
             {
-                File_information of = new File_information(clickedFile.ChildFile);
+                File_information of = new File_information(clickedFile.ChildFile,parent.fat);
                 SetParent((int)of.Handle, (int)this.parent.Handle);
                 of.Text = "详细信息";
                 of.Show();
@@ -448,7 +448,7 @@ namespace DiskFileSystem
 
             //到时候还要获得名字
             BasicFile clickedFile = getFileByName(treeView.SelectedNode.Text);
-            bool flag = FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat);
+            bool flag = FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat,this.parent.Disk_Content);
             if (!flag)
             {
                 MessageBox.Show("删除文件失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
