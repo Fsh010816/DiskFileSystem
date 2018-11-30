@@ -31,10 +31,45 @@ namespace DiskFileSystem
         public int StartNum { get => startNum; set => startNum = value; }
         public int Size { get => size; set => size = value; }
         public BasicFile Father { get => father; set => father = value; }
-        public ListViewItem Item { get => item; set => item = value; }
+        public ListViewItem Item
+        {
+            get
+            {
+                item.Text = this.name;
+                return item;
+            }
+            set
+            {
+                item = value;
+            }
+        }
         public bool IsOpening { get => isOpening; set => isOpening = value; }
         public string Content { get => content; set => content = value; }
-        public string Path { get => path; set => path = value; }
+        public string Path
+        {
+            get
+            {
+                string tmp = "";
+                List<string> namelist = new List<string>();
+                BasicFile curFile = this;
+                while(curFile.name!="root")
+                {
+                    namelist.Add(curFile.Name);
+                    curFile = curFile.father;
+                }
+                for(int i=namelist.Count-1;i>=0;i--)
+                {
+                    tmp += @"\" + namelist[i];
+                }
+                return "root:" + tmp;
+            }
+            set
+            {
+                path = value;
+            }
+
+        }
+
         public string Suffix { get => suffix; set => suffix = value; }
         public bool ReadOnly { get => readOnly; set => readOnly = value; }
 
@@ -74,23 +109,6 @@ namespace DiskFileSystem
             this.IsOpening = false;
             this.Item = new ListViewItem(name);
             this.Item.ImageIndex = 2;
-        }
-        //重新确定该文件路径和item的名字
-        public void UpdatePathandName()
-        {
-            if(path.Equals("root:"))//如果这是根目录
-            {
-                return;
-            }
-            string[] tmp = path.Split(@"\"[0]);
-            string newpath = "root:";
-            for(int i=1;i<tmp.Length-1;i++)
-            {
-                newpath += @"\"+tmp[i];
-            }
-            newpath += @"\"+Name;
-            path = newpath;
-            Item.Text = name;
         }
         override
         public string ToString()

@@ -393,7 +393,6 @@ namespace DiskFileSystem
                     fatherFile.ChildFile.Remove(File.Name);
                     fatherFile.ChildFile.Add(newName, File);
                     File.Name = newName;
-                    File.UpdatePathandName();
                     if(File.Attr==2)//如果是文件，则提取后缀名
                     {
                         string[] str = newName.Split('.');
@@ -407,7 +406,6 @@ namespace DiskFileSystem
                 fatherFile.ChildFile.Remove(File.Name);
                 fatherFile.ChildFile.Add(newName, File);
                 File.Name = newName;
-                File.UpdatePathandName();
                 if (File.Attr == 2)//如果是文件，则提取后缀名
                 {
                     string[] str = newName.Split('.');
