@@ -54,6 +54,7 @@ namespace DiskFileSystem
                 fileView.Items.Add(file.Item);
                 //树形视图的维护
                 upDateTreeView();
+                fileView_Activated(this, e);
             }
             else
             {
@@ -96,7 +97,7 @@ namespace DiskFileSystem
             if (file != null)
             {
                 fileView.Items.Add(file.Item);
-                //this.parent.OpenedFileList.Add(file.Path, file);
+                fileView_Activated(this, e);
             }
             else
             {
@@ -107,16 +108,23 @@ namespace DiskFileSystem
         private void fileView_Activated(object sender, EventArgs e)
         {
             //如果文件夹不为空，则显示文件
-            pathShow.Text = father.Path;
-            fileView.View = View.LargeIcon;
-            fileView.Items.Clear();
-            if (father.ChildFile.Count!=0)
+            if(radioButton2.Checked)
             {
-                foreach(var x in father.ChildFile)
+                DetailsUpdate(this, e);
+            }
+            else
+            {
+                pathShow.Text = father.Path;
+                fileView.View = View.LargeIcon;
+                fileView.Items.Clear();
+                if (father.ChildFile.Count != 0)
                 {
-                    fileView.Items.Add(x.Value.Item);
+                    foreach (var x in father.ChildFile)
+                    {
+                        fileView.Items.Add(x.Value.Item);
+                    }
+
                 }
-                
             } 
         }
         //右键点击事件
@@ -127,7 +135,7 @@ namespace DiskFileSystem
                 fileView.ContextMenuStrip = null;
                 if (fileView.SelectedItems.Count > 0)
                 {
-                    if(getFileByItem(fileView.SelectedItems[0],View.LargeIcon).Attr == 2)
+                    if(getFileByItem(fileView.SelectedItems[0],fileView.View).Attr == 2)
                     {
                         RightClick_File.Show(fileView, new Point(e.X, e.Y));
                     }
@@ -148,7 +156,7 @@ namespace DiskFileSystem
 
         }
 
-        //右键打开
+        //双击事件
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //得到改文件夹，以及该文件夹的父亲
@@ -170,8 +178,9 @@ namespace DiskFileSystem
             if(clickedFile.Attr==3)
             {
                pathShow.Text += @"\" + clickedFile.Name;
+               fileView_Activated(this, e);
             }
-            fileView_Activated(this, e);
+            
         }
 
         private BasicFile getFileByItem(ListViewItem item,View view)
@@ -319,7 +328,7 @@ namespace DiskFileSystem
 
         private void FileShow_Load(object sender, EventArgs e)
         {
-
+            radioButton1.Checked = true;
         }
 
         private void 详细信息ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -472,6 +481,67 @@ namespace DiskFileSystem
                 }
             }
             return null;
+        }
+
+        private void DetailsUpdate(object sender, EventArgs e)
+        {
+            fileView.Items.Clear();
+            fileView.View = View.Details;
+            //ColumnHeader ch = new ColumnHeader();
+            //ch.Text = "文件名";   //设置列标题
+
+            //ch.Width = 250;    //设置列宽度
+
+            //ch.TextAlign = HorizontalAlignment.Left;   //设置列的对齐方式
+
+            //fileView.Columns.Add(ch);    //将列头添加到ListView控件。
+
+
+            ////设置路径列头
+            //ColumnHeader ch1 = new ColumnHeader();
+
+            //ch1.Text = "路径";   //设置列标题
+
+            //ch1.Width = 500;    //设置列宽度
+
+            //ch1.TextAlign = HorizontalAlignment.Left;   //设置列的对齐方式
+
+            //fileView.Columns.Add(ch1);    //将列头添加到ListView控件。
+
+            ////设置大小列头
+            //ColumnHeader ch2 = new ColumnHeader();
+
+            //ch2.Text = "大小";   //设置列标题
+
+            //ch2.Width = 50;    //设置列宽度
+
+            //ch2.TextAlign = HorizontalAlignment.Left;   //设置列的对齐方式
+            //fileView.Columns.Add(ch2);
+
+            ////设置类型列头
+            //ColumnHeader ch3 = new ColumnHeader();
+
+            //ch3.Text = "类型";   //设置列标题
+
+            //ch3.Width = 100;    //设置列宽度
+
+            //ch3.TextAlign = HorizontalAlignment.Left;   //设置列的对齐方式
+            //fileView.Columns.Add(ch3);
+
+
+            
+            
+            foreach (var x in father.ChildFile.Values)
+            {
+                ListViewItem lv = new ListViewItem();
+                lv.Font = new Font("Tahoma", 20);
+                lv.Text = x.Name;
+                lv.ImageIndex = 0;
+                lv.SubItems.Add(x.Path);
+                lv.SubItems.Add(x.Size.ToString());
+                lv.SubItems.Add(x.Attr==2?"文件":"目录");
+                fileView.Items.Add(lv);
+            }
         }
     }
 }

@@ -33,6 +33,10 @@
             this.pathShow = new System.Windows.Forms.TextBox();
             this.searchText = new System.Windows.Forms.TextBox();
             this.fileView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RightClick_View = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,10 +65,14 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.删除DToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.RightClick_View.SuspendLayout();
             this.RightClick_File.SuspendLayout();
             this.RightClick_FileSet.SuspendLayout();
             this.RightClick_Tree.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pathShow
@@ -87,21 +95,47 @@
             // 
             // fileView
             // 
+            this.fileView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
             this.fileView.ContextMenuStrip = this.RightClick_View;
-            this.fileView.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.fileView.Font = new System.Drawing.Font("宋体", 12F);
             this.fileView.FullRowSelect = true;
             this.fileView.GridLines = true;
             this.fileView.LargeImageList = this.imageList2;
             this.fileView.Location = new System.Drawing.Point(178, 41);
             this.fileView.Name = "fileView";
-            this.fileView.Size = new System.Drawing.Size(901, 524);
+            this.fileView.Size = new System.Drawing.Size(1046, 524);
             this.fileView.SmallImageList = this.imageList1;
             this.fileView.TabIndex = 4;
             this.fileView.UseCompatibleStateImageBehavior = false;
+            this.fileView.View = System.Windows.Forms.View.Details;
             this.fileView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.fileView_ItemSelectionChanged);
             this.fileView.SelectedIndexChanged += new System.EventHandler(this.fileView_SelectedIndexChanged);
             this.fileView.DoubleClick += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             this.fileView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.fileView_MouseUp);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "文件名";
+            this.columnHeader1.Width = 250;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "路径";
+            this.columnHeader2.Width = 480;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "大小(磁盘块)";
+            this.columnHeader3.Width = 191;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "类型";
+            this.columnHeader4.Width = 111;
             // 
             // RightClick_View
             // 
@@ -299,7 +333,7 @@
             this.toolStripMenuItem5,
             this.删除DToolStripMenuItem1});
             this.RightClick_Tree.Name = "RightClick_View";
-            this.RightClick_Tree.Size = new System.Drawing.Size(181, 70);
+            this.RightClick_Tree.Size = new System.Drawing.Size(121, 48);
             // 
             // toolStripMenuItem5
             // 
@@ -307,35 +341,70 @@
             this.toolStripMenuItem6,
             this.toolStripMenuItem7});
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(120, 22);
             this.toolStripMenuItem5.Text = "新建(&W)";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(126, 22);
             this.toolStripMenuItem6.Text = "文件夹(&F)";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.文件夹ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(126, 22);
             this.toolStripMenuItem7.Text = "文件(&B)";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
             // 删除DToolStripMenuItem1
             // 
             this.删除DToolStripMenuItem1.Name = "删除DToolStripMenuItem1";
-            this.删除DToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.删除DToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.删除DToolStripMenuItem1.Text = "删除(&D)";
             this.删除DToolStripMenuItem1.Click += new System.EventHandler(this.删除DToolStripMenuItem1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Location = new System.Drawing.Point(792, -2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(267, 37);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(112, 14);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(71, 16);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "详细信息";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.fileView_Activated);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(15, 14);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(59, 16);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "大图标";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.fileView_Activated);
             // 
             // FileShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 563);
+            this.ClientSize = new System.Drawing.Size(1224, 563);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.treeView);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.search);
@@ -354,6 +423,8 @@
             this.RightClick_File.ResumeLayout(false);
             this.RightClick_FileSet.ResumeLayout(false);
             this.RightClick_Tree.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,5 +463,12 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem 删除DToolStripMenuItem1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
