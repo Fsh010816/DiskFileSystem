@@ -61,5 +61,10 @@ namespace DiskFileSystem
         {
             this.IsOpening = false;
         }
+
+        private void infomation_List_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

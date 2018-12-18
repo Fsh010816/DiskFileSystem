@@ -60,6 +60,7 @@
             this.infomation_List.RowTemplate.Height = 23;
             this.infomation_List.Size = new System.Drawing.Size(1153, 349);
             this.infomation_List.TabIndex = 0;
+            this.infomation_List.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.infomation_List_CellContentClick);
             // 
             // Column1
             // 

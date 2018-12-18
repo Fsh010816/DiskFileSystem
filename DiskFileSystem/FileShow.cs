@@ -20,7 +20,6 @@ namespace DiskFileSystem
         [DllImport("user32.dll", EntryPoint = "SetParent")]
         public static extern int SetParent(int hWndChild, int hWndNewParent);
       
-        //
         //单实例函数
         FileFunction FileFun = FileFunction.GetInstance();
         //
@@ -436,6 +435,12 @@ namespace DiskFileSystem
         {
             String path = "";
             TreeNode node = treeView.SelectedNode;
+            if (node.Text == "root")
+            {
+                MessageBox.Show("根目录无法删除", "违规操作", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+                
             while (node.Text != "root")
             {
                 node = node.Parent;

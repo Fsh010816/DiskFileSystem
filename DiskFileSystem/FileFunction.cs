@@ -24,9 +24,9 @@ namespace DiskFileSystem
         }
 
         /*
-        * 
-        * 该方法用于在Fat表分配给文件空余的磁盘块，并且返回第一个磁盘号.
-        */
+         * 
+         * 该方法用于在Fat表分配给文件空余的磁盘块，并且返回第一个磁盘号.
+         */
         public int setFat(int size,int[] fat)
         {
             if (fat[0] < size)
@@ -57,9 +57,9 @@ namespace DiskFileSystem
             return startNum[0]; //返回该文件起始块盘号
         }
         /*
-	 * 
-	 * 该方法用于删除时释放FAT表的空间
-	 */
+	     * 
+	    * 该方法用于删除时释放FAT表的空间
+	    */
         public bool delFat(int startNum,int[] fat)
         {
             int nextPoint = fat[startNum];
@@ -85,9 +85,9 @@ namespace DiskFileSystem
             return true;
         }
         /*
-	 * 
-	 * 该方法用于文件大小变小时候释放FAT表的空间
-	 */
+	     * 
+	     * 该方法用于文件大小变小时候释放FAT表的空间
+	     */
         public void delFat(int startNum,int size,int[] fat)
         {
             List<int> memory = new List<int>();
@@ -108,10 +108,10 @@ namespace DiskFileSystem
             fat[memory[memory.Count - size - 1]] = -1;
         }
         /*
-	 * 
-	 * 以下为追加内容时修改fat表
-	 * 
-	 */
+	     * 
+	     * 以下为追加内容时修改fat表
+	     * 
+	     */
         public bool reAddFat(BasicFile file, int addSize,int[] fat)
         {
             int startNum = file.StartNum;
@@ -136,9 +136,9 @@ namespace DiskFileSystem
             }
         }
         /*
-    * 	以下为根据当前目录创建文件或者目录的方法
-    * 	 参数为 文件名 文件类型 文件大小 当前目录 文件对象字典  FAT登记表
-    */
+        * 	 以下为根据当前目录创建文件或者目录的方法
+        * 	 参数为 文件名 文件类型 文件大小 当前目录 文件对象字典  FAT登记表
+        */
         public BasicFile createFile(BasicFile nowCatalog, int[] fat, String name = "新建文件1.txt", int dept = 1, String type = "读写", int size = 1,string suffix="txt")
         {
             if (fat[0] >= size)
@@ -233,9 +233,9 @@ namespace DiskFileSystem
             return null;
         }
         /*
-	 * 以下根据绝对路径寻找文件或目录
-	 * @return 返回目录或者文件。如果返回的是文件,则要打开不用跳转到父目录，如果返回的是目录，则要跳转到该目录
-	 */
+	     * 以下根据绝对路径寻找文件或目录
+	     * @return 返回目录或者文件。如果返回的是文件,则要打开不用跳转到父目录，如果返回的是目录，则要跳转到该目录
+	     */
         public BasicFile searchFile(string path,BasicFile root)
         {
             if(path[path.Length-1].Equals('\\'))
@@ -281,9 +281,9 @@ namespace DiskFileSystem
             
         }
         /*
-	 * 以下根据相对路径寻找文件或目录
-	 * @return 返回目录或者文件。如果返回的是文件,则要打开不用跳转到父目录，如果返回的是目录，则要跳转到该目录
-	 */
+	     * 以下根据相对路径寻找文件或目录
+	    * @return 返回目录或者文件。如果返回的是文件,则要打开不用跳转到父目录，如果返回的是目录，则要跳转到该目录
+	    */
         public BasicFile searchFile(string path, BasicFile root,BasicFile father)
         {
             string[] name = path.Split(@"\"[0]);
