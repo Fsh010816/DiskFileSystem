@@ -41,18 +41,21 @@
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件夹ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴VToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.RightClick_File = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重命名MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.详细信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.属性RToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.RightClick_FileSet = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.复制CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView = new System.Windows.Forms.TreeView();
@@ -65,6 +68,7 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.删除DToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -140,9 +144,10 @@
             // RightClick_View
             // 
             this.RightClick_View.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.新建ToolStripMenuItem});
+            this.新建ToolStripMenuItem,
+            this.粘贴VToolStripMenuItem});
             this.RightClick_View.Name = "RightClick_View";
-            this.RightClick_View.Size = new System.Drawing.Size(121, 26);
+            this.RightClick_View.Size = new System.Drawing.Size(121, 48);
             // 
             // 新建ToolStripMenuItem
             // 
@@ -167,6 +172,13 @@
             this.文件ToolStripMenuItem.Text = "文件(&B)";
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
+            // 粘贴VToolStripMenuItem
+            // 
+            this.粘贴VToolStripMenuItem.Name = "粘贴VToolStripMenuItem";
+            this.粘贴VToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.粘贴VToolStripMenuItem.Text = "粘贴(&V)";
+            this.粘贴VToolStripMenuItem.Click += new System.EventHandler(this.粘贴VToolStripMenuItem_Click);
+            // 
             // imageList2
             // 
             this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
@@ -187,10 +199,11 @@
             this.打开OToolStripMenuItem,
             this.删除DToolStripMenuItem,
             this.重命名MToolStripMenuItem,
+            this.复制ToolStripMenuItem,
             this.详细信息ToolStripMenuItem,
             this.属性RToolStripMenuItem1});
             this.RightClick_File.Name = "RightClick";
-            this.RightClick_File.Size = new System.Drawing.Size(133, 114);
+            this.RightClick_File.Size = new System.Drawing.Size(133, 136);
             // 
             // 打开OToolStripMenuItem
             // 
@@ -212,6 +225,13 @@
             this.重命名MToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.重命名MToolStripMenuItem.Text = "重命名(&M)";
             this.重命名MToolStripMenuItem.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
+            // 
+            // 复制ToolStripMenuItem
+            // 
+            this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
+            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.复制ToolStripMenuItem.Text = "复制(&C)";
+            this.复制ToolStripMenuItem.Click += new System.EventHandler(this.复制ToolStripMenuItem_Click);
             // 
             // 详细信息ToolStripMenuItem
             // 
@@ -243,36 +263,44 @@
             this.RightClick_FileSet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
+            this.复制CToolStripMenuItem,
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
             this.RightClick_FileSet.Name = "RightClick";
-            this.RightClick_FileSet.Size = new System.Drawing.Size(133, 92);
+            this.RightClick_FileSet.Size = new System.Drawing.Size(181, 136);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "打开(&O)";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "删除(&D)";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.删除DToolStripMenuItem_Click);
+            // 
+            // 复制CToolStripMenuItem
+            // 
+            this.复制CToolStripMenuItem.Name = "复制CToolStripMenuItem";
+            this.复制CToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.复制CToolStripMenuItem.Text = "复制(&C)";
+            this.复制CToolStripMenuItem.Click += new System.EventHandler(this.复制ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "重命名(&M)";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(132, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem4.Text = "详细信息";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.详细信息ToolStripMenuItem_Click);
             // 
@@ -331,9 +359,10 @@
             // 
             this.RightClick_Tree.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem5,
-            this.删除DToolStripMenuItem1});
+            this.删除DToolStripMenuItem1,
+            this.粘贴ToolStripMenuItem});
             this.RightClick_Tree.Name = "RightClick_View";
-            this.RightClick_Tree.Size = new System.Drawing.Size(121, 48);
+            this.RightClick_Tree.Size = new System.Drawing.Size(121, 70);
             // 
             // toolStripMenuItem5
             // 
@@ -364,6 +393,12 @@
             this.删除DToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.删除DToolStripMenuItem1.Text = "删除(&D)";
             this.删除DToolStripMenuItem1.Click += new System.EventHandler(this.删除DToolStripMenuItem1_Click);
+            // 
+            // 粘贴ToolStripMenuItem
+            // 
+            this.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem";
+            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.粘贴ToolStripMenuItem.Text = "粘贴(&V)";
             // 
             // groupBox1
             // 
@@ -470,5 +505,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 复制CToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 粘贴ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 粘贴VToolStripMenuItem;
     }
 }

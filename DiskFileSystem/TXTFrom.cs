@@ -150,7 +150,7 @@ namespace DiskFileSystem
             }
             thisFile.Content = content.Text;
 
-            FileFun.setDiskContent(disk,thisFile, fat);
+            FileFun.setDiskContent(disk, thisFile, fat);
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)

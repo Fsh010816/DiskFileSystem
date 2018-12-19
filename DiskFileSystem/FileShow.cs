@@ -26,6 +26,8 @@ namespace DiskFileSystem
         FileMangerSystem parent;
         //父文件夹,也就是当前目录
         public BasicFile father;
+        //复制的文件夹
+        public BasicFile copyFile = null;
 
         public FileShow(FileMangerSystem form)
         {
@@ -71,7 +73,7 @@ namespace DiskFileSystem
         {
             //到时候还要获得名字
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
-            bool flag=FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat, this.parent.Disk_Content);
+            bool flag=FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat, this.parent.disk_Content);
             if(!flag)
             {
                 MessageBox.Show("删除文件失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -87,7 +89,7 @@ namespace DiskFileSystem
         //点击新建文件
         private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (father.ChildFile.Count>= father.Size*8)
+            if (father.ChildFile.Count >= father.Size * 8)
             {
                 FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
             }
@@ -146,6 +148,29 @@ namespace DiskFileSystem
                 else
                 {
                     RightClick_View.Show(fileView, new Point(e.X, e.Y));
+                    if(copyFile == null)
+                    {
+                        for (int i = 0; i < RightClick_View.Items.Count; i++)
+                        {
+                            if (RightClick_View.Items[i].Text == "粘贴(&V)")
+                            {
+                                RightClick_View.Items[i].Enabled = false;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < RightClick_View.Items.Count; i++)
+                        {
+                            if (RightClick_View.Items[i].Text == "粘贴(&V)")
+                            {
+                                RightClick_View.Items[i].Enabled = true;
+                                break;
+                            }
+                        }
+                    }
+
                 }
             }
         }
@@ -160,7 +185,7 @@ namespace DiskFileSystem
         {
             //得到改文件夹，以及该文件夹的父亲
             BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
-            Form FileFrom = FileFun.openFile(clickedFile, ref father ,fileView,parent.fat, parent.openedFileList, parent.Disk_Content);
+            Form FileFrom = FileFun.openFile(clickedFile, ref father, fileView, parent.fat, parent.openedFileList, parent.disk_Content);
             if(FileFrom != null)
             {
                 TXTFrom FileFrom1 = (TXTFrom)FileFrom;
@@ -228,7 +253,7 @@ namespace DiskFileSystem
                 {
                     if(value.Attr == 2)//是文件则打开,不跳转
                     {
-                        Form form = FileFun.openFile(value, ref father, fileView,parent.fat, parent.openedFileList, parent.Disk_Content);
+                        Form form = FileFun.openFile(value, ref father, fileView, parent.fat, parent.openedFileList, parent.disk_Content);
                         if (form != null)
                         {
                             SetParent((int)form.Handle, (int)this.parent.Handle);
@@ -428,6 +453,28 @@ namespace DiskFileSystem
             {
                 treeView.SelectedNode = e.Node;
                 RightClick_Tree.Show(treeView.PointToScreen(new Point(e.X,e.Y)));
+                if (copyFile == null)
+                {
+                    for (int i = 0; i < RightClick_Tree.Items.Count; i++)
+                    {
+                        if (RightClick_Tree.Items[i].Text == "粘贴(&V)")
+                        {
+                            RightClick_Tree.Items[i].Enabled = false;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < RightClick_Tree.Items.Count; i++)
+                    {
+                        if (RightClick_Tree.Items[i].Text == "粘贴(&V)")
+                        {
+                            RightClick_Tree.Items[i].Enabled = true;
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -462,7 +509,7 @@ namespace DiskFileSystem
 
             //到时候还要获得名字
             BasicFile clickedFile = getFileByName(treeView.SelectedNode.Text);
-            bool flag = FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat,this.parent.Disk_Content);
+            bool flag = FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat,this.parent.disk_Content);
             if (!flag)
             {
                 MessageBox.Show("删除文件失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -548,5 +595,120 @@ namespace DiskFileSystem
                 fileView.Items.Add(lv);
             }
         }
+
+        private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fileView.SelectedItems.Count > 0)
+            {
+                copyFile = getFileByItem(fileView.SelectedItems[0], fileView.View);
+            }
+        }
+
+        private void 粘贴VToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(copyFile.Attr == 2)
+            {
+                if (father.ChildFile.Count >= father.Size * 8)
+                {
+                    FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
+                }
+                BasicFile file = FileFunction.GetInstance().createFile_(father, parent.Fat, copyFile.Name, copyFile.Type, copyFile.Size,copyFile.Suffix,copyFile.Content);
+
+                if (file != null)
+                {
+                    fileView.Items.Add(file.Item);
+                    fileView_Activated(this, e);
+                    
+                    FileFun.setDiskContent(parent.disk_Content, file, parent.fat);
+                }
+                else
+                {
+                    MessageBox.Show("复制文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else if(copyFile.Attr == 3)
+            {
+                if (parent.fat[0] < countDisk(copyFile))
+                {
+                    MessageBox.Show("复制文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+                //创建第一层
+                if (father.ChildFile.Count >= father.Size * 8)
+                {
+                    FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
+                }
+                //第一层文件夹
+                BasicFile file = FileFun.createCatolog_(father, parent.fat, copyFile, copyFile.Name);
+                if (file != null)
+                {
+                    fileView.Items.Add(file.Item);
+                    foreach (var a in copyFile.ChildFile)
+                    {
+                        //递归创建文件
+                        if(a.Value == file)
+                        {
+                            return;
+                        }
+                        copyCatolog(copyFile.Path, a.Value, file);
+                    }
+                    //树形视图的维护
+                    upDateTreeView();
+                    fileView_Activated(this, e);
+                }
+
+                
+            }
+        }
+
+        private void copyCatolog(String fatherPath, BasicFile copy_file, BasicFile file_father)
+        {
+            if(copy_file.Attr == 2)
+            {
+                if (file_father.ChildFile.Count >= file_father.Size * 8)
+                {
+                    FileFun.reAddFat(file_father, 1, parent.fat);//追加目录磁盘块
+                }
+                BasicFile file = FileFunction.GetInstance().createFile_(file_father, parent.Fat, copy_file.Name, copy_file.Type, copy_file.Size, copy_file.Suffix, copy_file.Content);
+
+                if (file != null)
+                {
+                    FileFun.setDiskContent(parent.disk_Content, file, parent.fat);
+                }
+                else
+                {
+                    MessageBox.Show("复制文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else if(copy_file.Attr == 3)
+            {
+                if (file_father.ChildFile.Count >= file_father.Size * 8)
+                {
+                    FileFun.reAddFat(file_father, 1, parent.fat);//追加目录磁盘块
+                }
+                //第一层文件夹
+                BasicFile file = FileFun.createCatolog_(file_father, parent.fat, file_father, copy_file.Name);
+
+                if (file != null)
+                {
+                    foreach (var a in copy_file.ChildFile)
+                    {
+                        //递归创建文件
+                        copyCatolog(file.Path, a.Value, file);
+                    }
+                }
+            }
+        }
+
+        private int countDisk(BasicFile file)
+        {
+            int SUM = file.Size;
+            foreach(var a in file.ChildFile)
+            {
+                 SUM += countDisk(a.Value);
+            }
+            return SUM; 
+        }
+
     }
 }

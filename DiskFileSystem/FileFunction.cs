@@ -179,11 +179,63 @@ namespace DiskFileSystem
                 return null;
             }
             return null;
+        }
 
+        public BasicFile createFile_(BasicFile nowCatalog, int[] fat, String name = "新建文件1.txt", String type = "读写", int size = 1, string suffix = "txt", string content = "")
+        {
+            if (fat[0] >= size)
+            {   //判断磁盘剩余空间是否足够建立文件
+                //该目录下是否寻找同名目录或文件
+                if (nowCatalog.ChildFile.ContainsKey(name))
+                {  //判断该文件是否存在
+                    BasicFile value = nowCatalog.ChildFile[name];
+                    if (value.Attr == 3)
+                    {   //若存在同名目录 继续创建文件
+                        int startNum = setFat(size, fat);
+          
+                        if (startNum == -1)//没有空间分配了
+                        {
+                            return null;
+                        }
+                        BasicFile file = new BasicFile(name, type, startNum, size, nowCatalog.Path, suffix);
+                        //内容复制
+                        file.Content = content;
+
+                        file.Father = nowCatalog; //纪录上一层目录
+                        nowCatalog.ChildFile.Add(name, file); //在父目录添加该文件
+                        return file;
+                    }
+                    else if (value.Attr == 2)
+                    { //若同名文件已存在，则换名字
+                        String name_ = name;
+                        String[] s = name_.Split('.');
+                        name_ = s[0] + "-副本" + "." + s[1];
+                        return createFile_(nowCatalog, fat, name_, type, size, suffix, content);
+                    }
+                }
+                else
+                { //若无同名文件或文件夹，继续创建文件
+                    int startNum = setFat(size, fat);
+
+                    Console.WriteLine("startNum = "+startNum);
+
+                    BasicFile file = new BasicFile(name, type, startNum, size, nowCatalog.Path, suffix);
+                    //内容复制
+                    file.Content = content;
+                    file.Father = nowCatalog; //纪录上一层目录
+                    nowCatalog.ChildFile.Add(name, file); //在父目录添加该文件
+                    return file;
+                }
+            }
+            else
+            {
+                return null;
+            }
+            return null;
         }
 
         //创建文件夹
-        public BasicFile createCatolog(BasicFile nowCatalog, int[] fat, String name="新建文件夹1",int dept=1)
+        public BasicFile createCatolog(BasicFile nowCatalog, int[] fat, String name = "新建文件夹1", int dept = 1)
         {
             //可以创建
             if (fat[0] >= 1)
@@ -232,6 +284,61 @@ namespace DiskFileSystem
             }
             return null;
         }
+
+        //复制的创建文件夹
+        public BasicFile createCatolog_(BasicFile nowCatalog, int[] fat, BasicFile fatherFile, String name = "新建文件夹1")
+        {
+            //可以创建
+            if (fat[0] >= 1)
+            {
+                //判断是否重命名
+                if (nowCatalog.ChildFile.ContainsKey(name))
+                {
+                    BasicFile value = nowCatalog.ChildFile[name];
+                    //不同类型，创建成功
+                    if (value.Attr == 2)
+                    {
+                        int startNum = this.setFat(1, fat);
+                        BasicFile catalog = new BasicFile(name, startNum, nowCatalog.Path);
+                        //子文件夹复制
+                        //catalog.ChildFile = fatherFile.ChildFile;
+                        //设置父亲
+                        catalog.Father = nowCatalog;
+                        //添加到父文件夹下
+                        nowCatalog.ChildFile.Add(catalog.Name, catalog);
+                        return catalog;
+                        //Console.WriteLine("文件夹创建成功");
+                    }
+                    //相同类型，则帮改为默认命名
+                    else if (value.Attr == 3)
+                    {
+                        Console.WriteLine("存在重复命名");
+                        //以默认命名创建文件夹
+
+                        return createCatolog_(nowCatalog, fat, fatherFile, name+"-副本");
+                    }
+                }
+                //不存在同名的文件夹
+                else
+                {
+                    int startNum = this.setFat(1, fat);
+                    BasicFile catalog = new BasicFile(name, startNum, nowCatalog.Path);
+                    //设置父亲
+                    catalog.Father = nowCatalog;
+                    //添加到父文件夹下
+                    nowCatalog.ChildFile.Add(catalog.Name, catalog);
+                    return catalog;
+                    // Console.WriteLine("文件夹创建成功");
+                }
+            }
+            else
+            {
+                //以false为信号弹出失败窗口
+                return null;
+            }
+            return null;
+        }
+
         /*
 	     * 以下根据绝对路径寻找文件或目录
 	     * @return 返回目录或者文件。如果返回的是文件,则要打开不用跳转到父目录，如果返回的是目录，则要跳转到该目录
@@ -451,7 +558,7 @@ namespace DiskFileSystem
         }
 
         //打开文件夹时
-        public Form openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView,int[] fat, Dictionary<string, BasicFile> fileDictionary,String[] disk)
+        public Form openFile(BasicFile clickFile,ref BasicFile fatherFile,ListView fileView,int[] fat, Dictionary<string, BasicFile> fileDictionary, String[] disk)
         {
             if (clickFile.Attr == 2)
             {
@@ -528,19 +635,21 @@ namespace DiskFileSystem
             }
         }
 
-        public void setDiskContent(String[] disk, BasicFile file,int[] fat)
+        public void setDiskContent(String[] disk, BasicFile file, int[] fat)
         {
             int j = 0;
             String s = file.Content;
-            Console.WriteLine(s.Length);
             List<int> arr;
             String link;
-            findFat(file.StartNum,out link,out arr,fat);
-            for (int i=0 ; i < file.Content.Length ; i += 64)
+            Console.WriteLine(file.StartNum);
+            findFat(file.StartNum, out link, out arr, fat);
+            
+            for (int i = 0 ; i < file.Content.Length ; i += 64)
             {
                 if(i + 63 < file.Content.Length)
                 {
                     disk[arr[j]] = s.Substring(i, 63);
+                    
                 }
                 else
                 {
@@ -549,6 +658,7 @@ namespace DiskFileSystem
                 j++;
                 s = file.Content;
             }
+            return;
         }
 
         public void FileSerialize(string FilePath, object obj)
