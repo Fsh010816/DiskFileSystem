@@ -126,7 +126,7 @@ namespace DiskFileSystem
                     }
 
                 }
-            } 
+            }
         }
         //右键点击事件
         private void fileView_MouseUp(object sender, MouseEventArgs e)
@@ -645,23 +645,23 @@ namespace DiskFileSystem
                     fileView.Items.Add(file.Item);
                     foreach (var a in copyFile.ChildFile)
                     {
-                        //递归创建文件
                         if(a.Value == file)
                         {
+                            upDateTreeView();
                             return;
                         }
-                        copyCatolog(copyFile.Path, a.Value, file);
+                        //递归创建文件
+                        copyCatolog(a.Value, file);
                     }
-                    //树形视图的维护
-                    upDateTreeView();
-                    fileView_Activated(this, e);
                 }
-
-                
+                //树形视图的维护
+                upDateTreeView();
+                fileView_Activated(this, e);
             }
+           
         }
 
-        private void copyCatolog(String fatherPath, BasicFile copy_file, BasicFile file_father)
+        private void copyCatolog(BasicFile copy_file, BasicFile file_father)
         {
             if(copy_file.Attr == 2)
             {
@@ -686,7 +686,7 @@ namespace DiskFileSystem
                 {
                     FileFun.reAddFat(file_father, 1, parent.fat);//追加目录磁盘块
                 }
-                //第一层文件夹
+                //文件夹
                 BasicFile file = FileFun.createCatolog_(file_father, parent.fat, file_father, copy_file.Name);
 
                 if (file != null)
@@ -694,7 +694,7 @@ namespace DiskFileSystem
                     foreach (var a in copy_file.ChildFile)
                     {
                         //递归创建文件
-                        copyCatolog(file.Path, a.Value, file);
+                        copyCatolog(a.Value, file);
                     }
                 }
             }
@@ -709,6 +709,5 @@ namespace DiskFileSystem
             }
             return SUM; 
         }
-
     }
 }

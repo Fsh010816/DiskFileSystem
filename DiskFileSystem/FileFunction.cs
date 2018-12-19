@@ -307,7 +307,6 @@ namespace DiskFileSystem
                         //添加到父文件夹下
                         nowCatalog.ChildFile.Add(catalog.Name, catalog);
                         return catalog;
-                        //Console.WriteLine("文件夹创建成功");
                     }
                     //相同类型，则帮改为默认命名
                     else if (value.Attr == 3)

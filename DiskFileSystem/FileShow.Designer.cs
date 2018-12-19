@@ -267,40 +267,40 @@
             this.toolStripMenuItem3,
             this.toolStripMenuItem4});
             this.RightClick_FileSet.Name = "RightClick";
-            this.RightClick_FileSet.Size = new System.Drawing.Size(181, 136);
+            this.RightClick_FileSet.Size = new System.Drawing.Size(133, 114);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.toolStripMenuItem1.Text = "打开(&O)";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.打开OToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
             this.toolStripMenuItem2.Text = "删除(&D)";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.删除DToolStripMenuItem_Click);
             // 
             // 复制CToolStripMenuItem
             // 
             this.复制CToolStripMenuItem.Name = "复制CToolStripMenuItem";
-            this.复制CToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.复制CToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.复制CToolStripMenuItem.Text = "复制(&C)";
             this.复制CToolStripMenuItem.Click += new System.EventHandler(this.复制ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(132, 22);
             this.toolStripMenuItem3.Text = "重命名(&M)";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.重命名MToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(132, 22);
             this.toolStripMenuItem4.Text = "详细信息";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.详细信息ToolStripMenuItem_Click);
             // 
@@ -362,7 +362,7 @@
             this.删除DToolStripMenuItem1,
             this.粘贴ToolStripMenuItem});
             this.RightClick_Tree.Name = "RightClick_View";
-            this.RightClick_Tree.Size = new System.Drawing.Size(121, 70);
+            this.RightClick_Tree.Size = new System.Drawing.Size(181, 92);
             // 
             // toolStripMenuItem5
             // 
@@ -370,7 +370,7 @@
             this.toolStripMenuItem6,
             this.toolStripMenuItem7});
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(120, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem5.Text = "新建(&W)";
             // 
             // toolStripMenuItem6
@@ -390,15 +390,16 @@
             // 删除DToolStripMenuItem1
             // 
             this.删除DToolStripMenuItem1.Name = "删除DToolStripMenuItem1";
-            this.删除DToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.删除DToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.删除DToolStripMenuItem1.Text = "删除(&D)";
             this.删除DToolStripMenuItem1.Click += new System.EventHandler(this.删除DToolStripMenuItem1_Click);
             // 
             // 粘贴ToolStripMenuItem
             // 
             this.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem";
-            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.粘贴ToolStripMenuItem.Text = "粘贴(&V)";
+            this.粘贴ToolStripMenuItem.Click += new System.EventHandler(this.粘贴VToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
