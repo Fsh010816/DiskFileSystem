@@ -27,7 +27,7 @@ namespace DiskFileSystem
         //父文件夹,也就是当前目录
         public BasicFile father;
         //复制的文件夹
-        public BasicFile copyFile = null;
+        public BasicFile[] copyFile_list = null;
 
         public FileShow(FileMangerSystem form)
         {
@@ -148,7 +148,7 @@ namespace DiskFileSystem
                 else
                 {
                     RightClick_View.Show(fileView, new Point(e.X, e.Y));
-                    if(copyFile == null)
+                    if(copyFile_list.Count() == 0)
                     {
                         for (int i = 0; i < RightClick_View.Items.Count; i++)
                         {
@@ -453,7 +453,7 @@ namespace DiskFileSystem
             {
                 treeView.SelectedNode = e.Node;
                 RightClick_Tree.Show(treeView.PointToScreen(new Point(e.X,e.Y)));
-                if (copyFile == null)
+                if (copyFile_list.Count() == 0)
                 {
                     for (int i = 0; i < RightClick_Tree.Items.Count; i++)
                     {
@@ -600,64 +600,76 @@ namespace DiskFileSystem
         {
             if (fileView.SelectedItems.Count > 0)
             {
-                copyFile = getFileByItem(fileView.SelectedItems[0], fileView.View);
+                copyFile_list = new BasicFile[fileView.SelectedItems.Count];
+
+                for (int i = 0; i < fileView.SelectedItems.Count; i++)
+                {
+                    copyFile_list[i] = getFileByItem(fileView.SelectedItems[i], fileView.View);
+                }
+                
             }
         }
 
         private void 粘贴VToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(copyFile.Attr == 2)
+            for (int i = 0; i < copyFile_list.Count(); i++) 
             {
-                if (father.ChildFile.Count >= father.Size * 8)
+                BasicFile copyFile = copyFile_list[i];
+                Console.WriteLine(i);
+                if (copyFile.Attr == 2)
                 {
-                    FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
-                }
-                BasicFile file = FileFunction.GetInstance().createFile_(father, parent.Fat, copyFile.Name, copyFile.Type, copyFile.Size,copyFile.Suffix,copyFile.Content);
-
-                if (file != null)
-                {
-                    fileView.Items.Add(file.Item);
-                    fileView_Activated(this, e);
-                    
-                    FileFun.setDiskContent(parent.disk_Content, file, parent.fat);
-                }
-                else
-                {
-                    MessageBox.Show("复制文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }
-            else if(copyFile.Attr == 3)
-            {
-                if (parent.fat[0] < countDisk(copyFile))
-                {
-                    MessageBox.Show("复制文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-                //创建第一层
-                if (father.ChildFile.Count >= father.Size * 8)
-                {
-                    FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
-                }
-                //第一层文件夹
-                BasicFile file = FileFun.createCatolog_(father, parent.fat, copyFile, copyFile.Name);
-                if (file != null)
-                {
-                    fileView.Items.Add(file.Item);
-                    foreach (var a in copyFile.ChildFile)
+                    if (father.ChildFile.Count >= father.Size * 8)
                     {
-                        if(a.Value == file)
-                        {
-                            upDateTreeView();
-                            return;
-                        }
-                        //递归创建文件
-                        copyCatolog(a.Value, file);
+                        FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
+                    }
+                    BasicFile file = FileFunction.GetInstance().createFile_(father, parent.Fat, copyFile.Name, copyFile.Type, copyFile.Size, copyFile.Suffix, copyFile.Content);
+
+                    if (file != null)
+                    {
+                        fileView.Items.Add(file.Item);
+                        fileView_Activated(this, e);
+
+                        FileFun.setDiskContent(parent.disk_Content, file, parent.fat);
+                    }
+                    else
+                    {
+                        MessageBox.Show("复制文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-                //树形视图的维护
-                upDateTreeView();
-                fileView_Activated(this, e);
+                else if (copyFile.Attr == 3)
+                {
+                    if (parent.fat[0] < countDisk(copyFile))
+                    {
+                        MessageBox.Show("复制文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                    //创建第一层
+                    if (father.ChildFile.Count >= father.Size * 8)
+                    {
+                        FileFun.reAddFat(father, 1, parent.fat);//追加目录磁盘块
+                    }
+                    //第一层文件夹
+                    BasicFile file = FileFun.createCatolog_(father, parent.fat, copyFile, copyFile.Name);
+                    if (file != null)
+                    {
+                        fileView.Items.Add(file.Item);
+                        foreach (var a in copyFile.ChildFile)
+                        {
+                            if (a.Value == file)
+                            {
+                                upDateTreeView();
+                                return;
+                            }
+                            //递归创建文件
+                            copyCatolog(a.Value, file);
+                        }
+                    }
+                    //树形视图的维护
+                    upDateTreeView();
+                    fileView_Activated(this, e);
+                }
             }
+            
            
         }
 
