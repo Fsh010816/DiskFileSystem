@@ -619,7 +619,7 @@ namespace DiskFileSystem
             for (int i = 0; i < copyFile_list.Count(); i++) 
             {
                 BasicFile copyFile = copyFile_list[i];
-                Console.WriteLine(i);
+
                 if (copyFile.Attr == 2)
                 {
                     if (father.ChildFile.Count >= father.Size * 8)
