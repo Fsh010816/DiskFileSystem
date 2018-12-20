@@ -130,7 +130,6 @@ namespace DiskFileSystem
             {
                 this.ChildFile.Add(a.Key, a.Value);
             }
-            
             //this.Father = file.Father;
         }
         override

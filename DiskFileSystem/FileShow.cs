@@ -616,6 +616,7 @@ namespace DiskFileSystem
 
         private void 粘贴VToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //确保父目录在第一个被复制
             for (int i = 0; i < copyFile_list.Count(); i++)
             {
                 if(copyFile_list[i] == father)
@@ -674,8 +675,6 @@ namespace DiskFileSystem
                             if (a.Value == file)
                             {
                                 continue;
-                                //upDateTreeView();
-                                //return;
                             }
                             //递归创建文件
                             copyCatolog(a.Value, file);
@@ -689,17 +688,18 @@ namespace DiskFileSystem
             
            
         }
-
+        //递归复制
         private void copyCatolog(BasicFile copy_file, BasicFile file_father)
         {
             if(copy_file.Attr == 2)
             {
+                //分配空间
                 if (file_father.ChildFile.Count >= file_father.Size * 8)
                 {
                     FileFun.reAddFat(file_father, 1, parent.fat);//追加目录磁盘块
                 }
                 BasicFile file = FileFunction.GetInstance().createFile_(file_father, parent.Fat, copy_file.Name, copy_file.Type, copy_file.Size, copy_file.Suffix, copy_file.Content);
-
+                //创建成功
                 if (file != null)
                 {
                     FileFun.setDiskContent(parent.disk_Content, file, parent.fat);
@@ -709,13 +709,14 @@ namespace DiskFileSystem
                     MessageBox.Show("复制文件失败", "磁盘空间不足!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+            //文件夹
             else if(copy_file.Attr == 3)
             {
                 if (file_father.ChildFile.Count >= file_father.Size * 8)
                 {
                     FileFun.reAddFat(file_father, 1, parent.fat);//追加目录磁盘块
                 }
-                //文件夹
+                //创建1层文件夹
                 BasicFile file = FileFun.createCatolog_(file_father, parent.fat, file_father, copy_file.Name);
 
                 if (file != null)
