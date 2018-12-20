@@ -72,18 +72,22 @@ namespace DiskFileSystem
         private void 删除DToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //到时候还要获得名字
-            BasicFile clickedFile = getFileByItem(fileView.SelectedItems[0],fileView.View);
-            bool flag=FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat, this.parent.disk_Content);
-            if(!flag)
+            for(int i=0;i< fileView.SelectedItems.Count;i++)
             {
-                MessageBox.Show("删除文件失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                BasicFile clickedFile = getFileByItem(fileView.SelectedItems[i], fileView.View);
+                bool flag = FileFun.deleteFile(clickedFile, clickedFile.Father, this.parent.Fat, this.parent.disk_Content);
+                if (!flag)
+                {
+                    MessageBox.Show("删除文件失败", "失败", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    this.parent.OpenedFileList.Remove(clickedFile.Path);
+                    //树形视图的维护
+                    upDateTreeView();
+                }
             }
-            else
-            {
-                this.parent.OpenedFileList.Remove(clickedFile.Path);
-                //树形视图的维护
-                upDateTreeView();
-            }
+            
             fileView_Activated(this, e);
         }
         //点击新建文件

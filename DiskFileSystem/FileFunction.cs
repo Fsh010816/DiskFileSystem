@@ -105,7 +105,10 @@ namespace DiskFileSystem
             {
                 fat[memory[memory.Count - i - 1]]=0;
             }
-            fat[memory[memory.Count - size - 1]] = -1;
+            
+             fat[memory[memory.Count - size - 1]] = -1;
+            
+            fat[0] += size;
         }
         /*
 	     * 
@@ -410,7 +413,13 @@ namespace DiskFileSystem
             Console.WriteLine(curFather.Path + tmp + "-------------");
             return searchFile(curFather.Path+tmp, root);
         }
-
+        //更新父目录大小和磁盘占用情况
+        public void updateCategory(BasicFile category,int[]fat)
+        {
+            int size = (category.ChildFile.Count()-1)/8+1;//实际大小
+            delFat(category.StartNum, category.Size-size, fat);
+            category.Size = size;
+        }
         //删除某个父目录下的某个文件
         public bool deleteFile(BasicFile File,BasicFile fatherFile,int[] fat, String[] disk)
         {
@@ -435,6 +444,7 @@ namespace DiskFileSystem
                     fatherFile.ChildFile.TryGetValue(File.Name, out file);
                     fatherFile.ChildFile.Remove(File.Name);
                     delFat(File.StartNum, fat);
+                    updateCategory(fatherFile, fat);
                     return true;
                 }
                 //删除文件夹
@@ -446,6 +456,7 @@ namespace DiskFileSystem
                         fatherFile.ChildFile.TryGetValue(File.Name, out file);
                         fatherFile.ChildFile.Remove(File.Name);
                         delFat(File.StartNum, fat);
+                        updateCategory(fatherFile, fat);
                         return true;
                     }
                     else
@@ -469,11 +480,13 @@ namespace DiskFileSystem
                             fatherFile.ChildFile.TryGetValue(File.Name, out file);
                             fatherFile.ChildFile.Remove(File.Name);
                             delFat(File.StartNum, fat);
+                            updateCategory(fatherFile, fat);
                             return true;
                         }
                     }
                 }
-               
+
+
             }
             else
             {
