@@ -152,7 +152,7 @@ namespace DiskFileSystem
                 else
                 {
                     RightClick_View.Show(fileView, new Point(e.X, e.Y));
-                    if(copyFile_list.Count() == 0)
+                    if(copyFile_list == null)
                     {
                         for (int i = 0; i < RightClick_View.Items.Count; i++)
                         {
@@ -457,7 +457,7 @@ namespace DiskFileSystem
             {
                 treeView.SelectedNode = e.Node;
                 RightClick_Tree.Show(treeView.PointToScreen(new Point(e.X,e.Y)));
-                if (copyFile_list.Count() == 0)
+                if (copyFile_list == null)
                 {
                     for (int i = 0; i < RightClick_Tree.Items.Count; i++)
                     {
