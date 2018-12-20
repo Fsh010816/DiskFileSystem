@@ -110,6 +110,29 @@ namespace DiskFileSystem
             this.Item = new ListViewItem(name);
             this.Item.ImageIndex = 2;
         }
+        //复制构造函数
+        public BasicFile(BasicFile file)
+        {
+            this.Name = file.Name;
+            this.Type = file.Type;
+            this.Attr = file.Attr;
+            this.StartNum = startNum;
+            this.Size = file.Size;
+            this.Path = file.Path;
+            this.Item = new ListViewItem(file.Name);
+            //暂时定为0
+            this.Item.ImageIndex = file.Item.ImageIndex;
+            this.IsOpening = file.IsOpening;
+            this.Content = file.content;
+            this.ReadOnly = file.ReadOnly;
+            this.suffix = file.Suffix;
+            foreach(var a in file.ChildFile)
+            {
+                this.ChildFile.Add(a.Key, a.Value);
+            }
+            
+            //this.Father = file.Father;
+        }
         override
         public string ToString()
         {

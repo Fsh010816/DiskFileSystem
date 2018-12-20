@@ -608,7 +608,7 @@ namespace DiskFileSystem
 
                 for (int i = 0; i < fileView.SelectedItems.Count; i++)
                 {
-                    copyFile_list[i] = getFileByItem(fileView.SelectedItems[i], fileView.View);
+                    copyFile_list[i] = new BasicFile(getFileByItem(fileView.SelectedItems[i], fileView.View));
                 }
                 
             }
@@ -616,6 +616,17 @@ namespace DiskFileSystem
 
         private void 粘贴VToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < copyFile_list.Count(); i++)
+            {
+                if(copyFile_list[i] == father)
+                {
+                    BasicFile temp = copyFile_list[0];
+                    copyFile_list[0] = copyFile_list[i];
+                    copyFile_list[i] = temp;
+                    break;
+                }
+            }
+
             for (int i = 0; i < copyFile_list.Count(); i++) 
             {
                 BasicFile copyFile = copyFile_list[i];
@@ -657,12 +668,14 @@ namespace DiskFileSystem
                     if (file != null)
                     {
                         fileView.Items.Add(file.Item);
+
                         foreach (var a in copyFile.ChildFile)
                         {
                             if (a.Value == file)
                             {
-                                upDateTreeView();
-                                return;
+                                continue;
+                                //upDateTreeView();
+                                //return;
                             }
                             //递归创建文件
                             copyCatolog(a.Value, file);
